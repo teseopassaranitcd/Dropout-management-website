@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contatti — The College Dropout | Rieti</title>
+  <meta name="description" content="Contattaci via WhatsApp o email. The College Dropout, appartamenti a Rieti."/>
+  <link rel="canonical" href="https://collegedropoutmanagement.com/contatti"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Bebas+Neue&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --black:#0a0a0a;--magenta:#c8185c;--white:#f0ede8;
+      --off:#e8e4df;--gray:#888;
+      --border:rgba(240,237,232,.13);
+      --glow:0 0 12px rgba(200,24,92,.8),0 0 32px rgba(200,24,92,.3);
+      --green:#22c55e;
+    }
+    html,body{
+      width:100%;min-height:100%;
+      font-family:'DM Mono',monospace;
+      background:var(--black);color:var(--white);
+      -webkit-font-smoothing:antialiased;cursor:none;
+      overflow-x:hidden;
+    }
+
+    /* ── CURSOR ── */
+    #cur-dot,#cur-ring{position:fixed;border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%)}
+    #cur-dot{width:6px;height:6px;background:var(--magenta);box-shadow:0 0 8px var(--magenta)}
+    #cur-ring{width:30px;height:30px;border:1.5px solid rgba(200,24,92,.5);transition:width .18s,height .18s,border-color .18s}
+    body.ch #cur-ring{width:46px;height:46px;border-color:var(--magenta)}
+    @media(hover:none){#cur-dot,#cur-ring{display:none}body{cursor:auto}}
+
+    /* ── SCROLL PROGRESS ── */
+    #scroll-prog{position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,var(--magenta),#fff 80%);z-index:9998}
+
+    /* ── CANVAS BG (behind everything) ── */
+    #bg-canvas{position:fixed;inset:0;z-index:0;display:block}
+
+    /* ── NOISE ── */
+    .noise{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.02;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px}
+
+    /* ── LANG BAR ── */
+    .lang-bar{position:fixed;top:0;right:0;z-index:900;display:flex;flex-direction:row;background:rgba(10,10,10,.92);border-left:1px solid var(--border);border-bottom:1px solid var(--border)}
+    .lang-bar a{display:flex;align-items:center;gap:7px;padding:10px 14px;color:var(--white);text-decoration:none;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;font-family:'DM Mono',monospace;border-right:1px solid var(--border);transition:background .2s}
+    .lang-bar a:last-child{border-right:none}
+    .lang-bar a:hover{background:rgba(200,24,92,.22)}
+    .lang-bar a.active{color:var(--magenta)}
+    .lang-bar .flag{font-size:1.1rem}
+
+    /* ── NAV DRAWER ── */
+    .nav-overlay{position:fixed;inset:0;background:rgba(0,0,0,.62);z-index:1800;opacity:0;pointer-events:none;transition:opacity .35s}
+    .nav-overlay.open{opacity:1;pointer-events:all}
+    .nav-drawer{position:fixed;top:0;left:0;width:min(340px,90vw);height:100vh;background:var(--black);border-right:2px solid var(--magenta);z-index:1900;transform:translateX(-100%);transition:transform .4s cubic-bezier(.16,1,.3,1);display:flex;flex-direction:column;overflow:hidden}
+    .nav-drawer.open{transform:translateX(0)}
+    .nav-drawer-header{padding:24px 28px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+    .nav-drawer-brand{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.06em;color:var(--magenta)}
+    .nav-close{background:none;border:none;color:var(--white);font-size:1.6rem;cursor:none;line-height:1;transition:color .2s}
+    .nav-close:hover{color:var(--magenta)}
+    .nav-links{display:flex;flex-direction:column;padding:24px 0;flex:1}
+    .nav-links a{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:.04em;color:var(--white);text-decoration:none;padding:13px 28px;border-bottom:1px solid var(--border);transition:color .2s,padding-left .2s;position:relative}
+    .nav-links a:hover{color:var(--magenta);padding-left:40px}
+    .nav-links a.current{color:var(--magenta)}
+    .nav-links a.current::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--magenta)}
+    .nav-drawer-footer{padding:20px 28px;font-size:.68rem;color:var(--gray);letter-spacing:.08em;text-transform:uppercase;border-top:1px solid var(--border);font-family:'DM Mono',monospace;display:flex;justify-content:space-between;align-items:center}
+    .nav-footer-links a{color:var(--gray);text-decoration:none;font-size:.65rem;transition:color .2s}
+    .nav-footer-links a:hover{color:var(--magenta)}
+    .nav-trigger{position:fixed;top:0;left:0;z-index:600;height:56px;display:flex;align-items:center;padding:0 20px;background:rgba(10,10,10,.92);border-bottom:1px solid var(--border);border-right:1px solid var(--border);cursor:none;backdrop-filter:blur(8px)}
+    .nav-trigger-brand{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.06em;color:var(--white)}
+    .nav-trigger-brand span{color:var(--magenta)}
+    .nav-trigger:hover .nav-trigger-brand{color:var(--magenta)}
+    @media(min-width:768px){.nav-trigger{height:64px}}
+
+    /* ════════════════════════════════════
+       PAGE LAYOUT
+    ════════════════════════════════════ */
+    .page-wrap{
+      position:relative;z-index:2;
+      min-height:100vh;
+      display:flex;flex-direction:column;
+      align-items:center;justify-content:center;
+      padding:80px 24px 48px;
+    }
+
+    /* ════════════════════════════════════
+       TERMINAL
+    ════════════════════════════════════ */
+    .terminal{
+      width:100%;max-width:640px;
+      background:rgba(6,4,6,.97);
+      border:1px solid var(--magenta);
+      border-radius:4px;
+      box-shadow:var(--glow),0 0 80px rgba(200,24,92,.08);
+      overflow:hidden;
+      /* Boot animation controlled by JS class */
+      opacity:0;
+      filter:blur(16px) brightness(0);
+      transform:scale(.96);
+      transition:none; /* JS handles timing */
+    }
+    .terminal.booted{
+      opacity:1;filter:blur(0) brightness(1);transform:scale(1);
+      transition:opacity .35s ease, filter .4s ease, transform .4s cubic-bezier(.16,1,.3,1);
+    }
+
+    .term-bar{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:10px 16px;
+      background:rgba(200,24,92,.1);
+      border-bottom:1px solid rgba(200,24,92,.25);
+      flex-shrink:0;
+    }
+    .term-bar-dots{display:flex;gap:6px}
+    .term-dot{width:10px;height:10px;border-radius:50%}
+    .term-dot:nth-child(1){background:#ff5f57}
+    .term-dot:nth-child(2){background:#febc2e}
+    .term-dot:nth-child(3){background:#28c840}
+    .term-title{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(200,24,92,.7)}
+    .term-hint{font-size:.55rem;letter-spacing:.1em;color:var(--gray)}
+
+    .term-body{
+      padding:20px 20px 24px;
+      min-height:120px;
+      max-height:70vh;
+      overflow-y:auto;
+    }
+    /* Custom scrollbar */
+    .term-body::-webkit-scrollbar{width:4px}
+    .term-body::-webkit-scrollbar-track{background:transparent}
+    .term-body::-webkit-scrollbar-thumb{background:rgba(200,24,92,.3);border-radius:2px}
+
+    .term-line{
+      font-size:clamp(.72rem,.85vw,.82rem);
+      line-height:1.75;letter-spacing:.04em;
+      white-space:pre-wrap;word-break:break-word;
+    }
+    .term-line.prompt{color:var(--magenta)}
+    .term-line.system{color:var(--gray)}
+    .term-line.success{color:var(--green)}
+    .term-line.error{color:#ef4444}
+    .term-line.white{color:var(--white)}
+    .term-line.dim{color:rgba(240,237,232,.3)}
+
+    .cursor{
+      display:inline-block;width:7px;height:.9em;
+      background:var(--magenta);vertical-align:text-bottom;
+      animation:cblink .65s step-end infinite;
+    }
+    @keyframes cblink{0%,100%{opacity:1}50%{opacity:0}}
+
+    .term-options{margin-top:10px;display:flex;flex-direction:column;gap:5px}
+    .term-option{
+      display:flex;align-items:center;gap:10px;
+      padding:10px 14px;
+      border:1px solid var(--border);border-radius:2px;
+      cursor:none;color:var(--off);
+      font-size:clamp(.72rem,.85vw,.82rem);letter-spacing:.04em;
+      transition:background .2s,border-color .2s,color .2s;
+    }
+    .term-option:hover{background:rgba(200,24,92,.08);border-color:rgba(200,24,92,.5);color:var(--white)}
+    .term-option:hover .opt-key,.term-option:hover .opt-arrow{color:var(--magenta)}
+    .opt-key{color:rgba(200,24,92,.65);min-width:22px}
+    .opt-label{flex:1;font-weight:500}
+    .opt-desc{font-size:.62rem;color:var(--gray);letter-spacing:.05em}
+    .opt-arrow{color:var(--gray);transition:transform .2s,color .2s}
+    .term-option:hover .opt-arrow{transform:translateX(3px)}
+
+    /* Email form */
+    .term-form{
+      margin-top:12px;display:flex;flex-direction:column;gap:10px;
+      opacity:0;transition:opacity .4s ease;
+    }
+    .term-form.visible{opacity:1}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    @media(max-width:480px){.form-row{grid-template-columns:1fr}}
+    .form-field{display:flex;flex-direction:column;gap:4px}
+    .form-label{font-size:.57rem;letter-spacing:.14em;text-transform:uppercase;color:var(--magenta)}
+    .form-input,.form-textarea{
+      background:rgba(240,237,232,.04);border:1px solid var(--border);border-radius:2px;
+      padding:9px 12px;color:var(--white);font-family:'DM Mono',monospace;
+      font-size:.76rem;letter-spacing:.04em;outline:none;resize:none;
+      transition:border-color .2s,background .2s;
+    }
+    .form-input:focus,.form-textarea:focus{border-color:rgba(200,24,92,.6);background:rgba(200,24,92,.04)}
+    .form-input::placeholder,.form-textarea::placeholder{color:rgba(240,237,232,.18)}
+    .form-textarea{min-height:88px}
+    .form-actions{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:4px}
+    .form-submit{
+      display:inline-flex;align-items:center;gap:8px;
+      background:var(--magenta);color:var(--white);
+      font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
+      padding:10px 20px;border:none;border-radius:2px;cursor:none;
+      transition:background .2s,box-shadow .2s;
+    }
+    .form-submit:hover{background:#e01e6a;box-shadow:var(--glow)}
+    .form-submit:disabled{opacity:.45;pointer-events:none}
+    .form-back{font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);background:none;border:none;cursor:none;transition:color .2s}
+    .form-back:hover{color:var(--magenta)}
+    .form-status{font-size:.7rem;letter-spacing:.06em;padding:8px 0;display:none}
+    .form-status.visible{display:block}
+    .form-status.ok{color:var(--green)}
+    .form-status.err{color:#ef4444}
+
+    /* Footer */
+    .page-footer{
+      margin-top:28px;font-size:.54rem;letter-spacing:.12em;text-transform:uppercase;
+      color:var(--gray);text-align:center;line-height:1.9;position:relative;z-index:2;
+    }
+    .page-footer a{color:var(--gray);text-decoration:none;transition:color .2s}
+    .page-footer a:hover{color:var(--magenta)}
+    .fdot{display:inline-block;width:4px;height:4px;border-radius:50%;background:var(--magenta);margin:0 6px;vertical-align:middle;animation:fdotBlink 2s ease-in-out infinite}
+    @keyframes fdotBlink{0%,100%{opacity:1}50%{opacity:.2}}
+
+    /* Flash overlay for boot effect */
+    #boot-flash{
+      position:fixed;inset:0;z-index:9900;
+      background:#fff;opacity:0;pointer-events:none;
+    }
+  </style>
+</head>
+<body>
+
+<!-- CANVAS BG -->
+<canvas id="bg-canvas"></canvas>
+<div class="noise"></div>
+
+<!-- BOOT FLASH -->
+<div id="boot-flash"></div>
+
+<div id="cur-dot"></div>
+<div id="cur-ring"></div>
+<div id="scroll-prog"></div>
+
+<!-- LANG BAR -->
+<div class="lang-bar" role="navigation">
+  <a href="contatti.html" class="active" aria-label="Italiano">
+    <svg class="flag" viewBox="0 0 3 2" width="20" height="14"><rect width="1" height="2" x="0" fill="#009246"/><rect width="1" height="2" x="1" fill="#f1f2f1"/><rect width="1" height="2" x="2" fill="#ce2b37"/></svg>
+    <span>IT</span>
+  </a>
+  <a href="#" aria-label="English">
+    <svg class="flag" viewBox="0 0 60 30" width="20" height="14"><clipPath id="tcd-uk-clip5"><path d="M0,0 v30 h60 v-30 z"/></clipPath><g clip-path="url(#tcd-uk-clip5)"><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="2"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></g></svg>
+    <span>EN</span>
+  </a>
+</div>
+
+<!-- NAV DRAWER -->
+<div class="nav-overlay" id="navOverlay" onclick="closeNav()"></div>
+<nav class="nav-drawer" id="navDrawer">
+  <div class="nav-drawer-header">
+    <span class="nav-drawer-brand">TCD.</span>
+    <button class="nav-close" onclick="closeNav()">✕</button>
+  </div>
+  <div class="nav-links">
+    <a href="index.html">Homepage</a>
+    <a href="soluzioni.html">Soluzioni</a>
+    <a href="servizi.html">I Nostri Servizi</a>
+    <a href="chi-siamo.html">Chi Siamo</a>
+    <a href="contatti.html" class="current">Contatti</a>
+    <a href="proprietari.html">Proprietari</a>
+  </div>
+  <div class="nav-drawer-footer">
+    <span>The College Dropout © 2026</span>
+    <div class="nav-footer-links"><a href="#">Privacy</a></div>
+  </div>
+</nav>
+<button class="nav-trigger" onclick="openNav()">
+  <span class="nav-trigger-brand">TCD<span>.</span></span>
+</button>
+
+<!-- PAGE -->
+<div class="page-wrap" id="pageWrap">
+  <div class="terminal" id="terminal">
+    <div class="term-bar">
+      <div class="term-bar-dots">
+        <div class="term-dot"></div>
+        <div class="term-dot"></div>
+        <div class="term-dot"></div>
+      </div>
+      <span class="term-title">tcd-contact — bash</span>
+      <span class="term-hint">The College Dropout · Rieti</span>
+    </div>
+    <div class="term-body" id="termBody"></div>
+  </div>
+  <div class="page-footer">
+    The College Dropout<span class="fdot"></span>Rieti, Italia · © 2026
+    &nbsp;·&nbsp;Design: <a href="https://tevwebstudio.it" target="_blank">T&V Web Studio</a>
+  </div>
+</div>
+
+<script>
+/* ══════════════════════════════════════════════════
+   CANVAS BACKGROUND — Signal Equalizer
+   Vertical columns of bars that pulse like an
+   audio spectrum / signal transmission display.
+   Unique to the Contatti page.
+══════════════════════════════════════════════════ */
+(function(){
+  const c=document.getElementById('bg-canvas');
+  const ctx=c.getContext('2d');
+  let W,H,cols=[];
+
+  function resize(){
+    W=c.width=innerWidth;
+    H=c.height=innerHeight;
+    buildCols();
+  }
+
+  function buildCols(){
+    cols=[];
+    const spacing=clamp(24,W/32,42);
+    const n=Math.floor(W/spacing)+1;
+    for(let i=0;i<n;i++){
+      cols.push({
+        x:i*spacing,
+        phase:Math.random()*Math.PI*2,
+        speed:0.4+Math.random()*1.1,
+        amp:0.25+Math.random()*0.55,
+        // Some columns are "signal" colored, most are dim white
+        accent:Math.random()<0.18,
+        barCount:Math.floor(6+Math.random()*8),
+      });
+    }
+  }
+
+  function clamp(min,v,max){return Math.min(Math.max(v,min),max)}
+
+  let t=0;
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle='#0a0a0a';
+    ctx.fillRect(0,0,W,H);
+    t+=0.012;
+
+    cols.forEach(col=>{
+      const signal=col.amp*(0.5+0.5*Math.sin(t*col.speed+col.phase));
+      const maxH=H*0.45*signal;
+      const barH=maxH/col.barCount;
+      const barGap=2;
+      const barW=clamp(6,W/cols.length*0.55,14);
+
+      for(let b=0;b<col.barCount;b++){
+        const bh=Math.max(2,barH-barGap);
+        const by=H/2+(H*0.05)-(b+1)*barH;
+        const byMirror=H/2+(H*0.05)+b*barH;
+        const fade=1-(b/col.barCount)*0.7;
+
+        if(col.accent){
+          // Magenta signal bars
+          const a=fade*signal*0.7;
+          ctx.fillStyle=`rgba(200,24,92,${a})`;
+          ctx.fillRect(col.x-barW/2,by,barW,bh);
+          ctx.fillRect(col.x-barW/2,byMirror,barW,bh);
+          // Glow on tallest bar
+          if(b===0&&signal>0.5){
+            const g=ctx.createRadialGradient(col.x,by+bh/2,0,col.x,by+bh/2,20);
+            g.addColorStop(0,`rgba(200,24,92,${signal*0.35})`);
+            g.addColorStop(1,'rgba(200,24,92,0)');
+            ctx.fillStyle=g;
+            ctx.fillRect(col.x-20,by-10,40,bh+20);
+          }
+        } else {
+          // Dim white bars
+          const a=fade*signal*0.06;
+          ctx.fillStyle=`rgba(240,237,232,${a})`;
+          ctx.fillRect(col.x-barW/2,by,barW,bh);
+          ctx.fillRect(col.x-barW/2,byMirror,barW,bh);
+        }
+      }
+
+      // Center line dot
+      const dotA=signal*(col.accent?0.5:0.08);
+      ctx.fillStyle=col.accent?`rgba(200,24,92,${dotA})`:`rgba(240,237,232,${dotA})`;
+      ctx.fillRect(col.x-barW/2,H/2+(H*0.05)-1,barW,2);
+    });
+
+    // Horizontal center line
+    ctx.strokeStyle='rgba(200,24,92,0.06)';
+    ctx.lineWidth=1;
+    ctx.setLineDash([4,8]);
+    ctx.beginPath();
+    ctx.moveTo(0,H/2+(H*0.05));
+    ctx.lineTo(W,H/2+(H*0.05));
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    // Vignette
+    const vg=ctx.createRadialGradient(W/2,H/2,H*0.12,W/2,H/2,H*0.9);
+    vg.addColorStop(0,'rgba(0,0,0,0)');
+    vg.addColorStop(1,'rgba(0,0,0,0.72)');
+    ctx.fillStyle=vg;
+    ctx.fillRect(0,0,W,H);
+
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize',resize);
+  resize();draw();
+})();
+
+/* ══ CURSOR ══ */
+const dot=document.getElementById('cur-dot'),ring=document.getElementById('cur-ring');
+let mx=-100,my=-100,rx=-100,ry=-100;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px'});
+(function ac(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(ac)})();
+
+/* ══ SCROLL PROGRESS ══ */
+const prog=document.getElementById('scroll-prog');
+window.addEventListener('scroll',()=>{prog.style.width=Math.min(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100,100)+'%'},{passive:true});
+
+/* ══ HOVER CURSOR ══ */
+function bindHover(){
+  document.querySelectorAll('a,button,[role=button],.term-option,.form-submit,.form-back').forEach(el=>{
+    el.addEventListener('mouseenter',()=>document.body.classList.add('ch'));
+    el.addEventListener('mouseleave',()=>document.body.classList.remove('ch'));
+  });
+}
+bindHover();
+
+/* ══ NAVBAR ══ */
+function openNav(){document.getElementById('navDrawer').classList.add('open');document.getElementById('navOverlay').classList.add('open');document.body.style.overflow='hidden'}
+function closeNav(){document.getElementById('navDrawer').classList.remove('open');document.getElementById('navOverlay').classList.remove('open');document.body.style.overflow=''}
+
+/* ══════════════════════════════════════════════════
+   BOOT ANIMATION — monitor turning on
+   1. Flash white (20ms)
+   2. Terminal appears with blur+scale transition
+   3. After transition ends, terminal sequence starts
+══════════════════════════════════════════════════ */
+const terminal=document.getElementById('terminal');
+const bootFlash=document.getElementById('boot-flash');
+const pageWrap=document.getElementById('pageWrap');
+
+function bootTerminal(onDone){
+  pageWrap.style.opacity='1'; // page visible immediately (bg + footer)
+
+  // Short delay, then flash
+  setTimeout(()=>{
+    // White flash
+    bootFlash.style.transition='opacity 0.06s ease';
+    bootFlash.style.opacity='0.85';
+    setTimeout(()=>{
+      bootFlash.style.transition='opacity 0.2s ease';
+      bootFlash.style.opacity='0';
+      // Terminal materializes
+      terminal.classList.add('booted');
+      // Start typing sequence after transition
+      setTimeout(onDone,420);
+    },80);
+  },300);
+}
+
+/* ══════════════════════════════════════════════════
+   TERMINAL ENGINE
+══════════════════════════════════════════════════ */
+const termBody=document.getElementById('termBody');
+let cursorEl=null;
+let termState='idle';
+
+function makeLine(cls=''){
+  const d=document.createElement('div');
+  d.className='term-line'+(cls?' '+cls:'');
+  return d;
+}
+
+function appendLine(text,cls=''){
+  const d=makeLine(cls);
+  d.textContent=text;
+  termBody.appendChild(d);
+  scrollTerm();
+  return d;
+}
+
+function typeLine(text,cls='',speed=26,delay=0){
+  return new Promise(resolve=>{
+    setTimeout(()=>{
+      const d=makeLine(cls);
+      termBody.appendChild(d);
+      moveCursor(d);
+      let i=0;
+      function next(){
+        if(i<text.length){
+          cursorEl.insertAdjacentText('beforebegin',text[i++]);
+          scrollTerm();
+          setTimeout(next,speed+(Math.random()-.5)*speed*.35);
+        } else {
+          resolve(d);
+        }
+      }
+      next();
+    },delay);
+  });
+}
+
+function moveCursor(line){
+  if(cursorEl)cursorEl.remove();
+  cursorEl=document.createElement('span');
+  cursorEl.className='cursor';
+  line.appendChild(cursorEl);
+}
+
+function removeCursor(){
+  if(cursorEl){cursorEl.remove();cursorEl=null;}
+}
+
+function addBlank(){appendLine('')}
+
+function scrollTerm(){
+  termBody.scrollTop=termBody.scrollHeight;
+}
+
+async function runTerminal(){
+  await typeLine('TCD Contact System · Rieti','dim',16,0);
+  await typeLine('Connected · Rieti, Italia · 2026','dim',13,100);
+  addBlank();
+  await typeLine('> Come possiamo aiutarti?','prompt',30,180);
+  addBlank();
+  await typeLine('Scegli il metodo di contatto:','white',20,260);
+  addBlank();
+  removeCursor();
+  termState='options';
+  showOptions();
+}
+
+function showOptions(){
+  const opts=document.createElement('div');
+  opts.className='term-options';
+  opts.id='termOptions';
+
+  const wa=document.createElement('div');
+  wa.className='term-option';
+  wa.innerHTML=`
+    <span class="opt-key">[1]</span>
+    <svg viewBox="0 0 24 24" style="width:15px;height:15px;fill:#25D366;flex-shrink:0" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+    <span class="opt-label">whatsapp</span>
+    <span class="opt-desc">Risposta immediata</span>
+    <span class="opt-arrow">→</span>`;
+
+  const em=document.createElement('div');
+  em.className='term-option';
+  em.innerHTML=`
+    <span class="opt-key">[2]</span>
+    <svg viewBox="0 0 24 24" style="width:15px;height:15px;fill:none;stroke:rgba(200,24,92,.75);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+    <span class="opt-label">email</span>
+    <span class="opt-desc">info@collegedropoutmanagement.com</span>
+    <span class="opt-arrow">→</span>`;
+  em.onclick=()=>{if(termState==='options')handleEmail()};
+
+  opts.appendChild(wa);
+  opts.appendChild(em);
+  termBody.appendChild(opts);
+  scrollTerm();
+  bindHover();
+
+  function keyHandler(e){
+    if(termState!=='options')return;
+    if(e.key==='1'){handleWhatsApp();document.removeEventListener('keydown',keyHandler)}
+    if(e.key==='2'){handleEmail();document.removeEventListener('keydown',keyHandler)}
+  }
+  document.addEventListener('keydown',keyHandler);
+}
+
+function removeOptions(){
+  const o=document.getElementById('termOptions');
+  if(o)o.remove();
+}
+
+/* ── WHATSAPP ── */
+async function handleWhatsApp(){
+  if(termState!=='options')return;
+  termState='whatsapp';
+  removeOptions();
+  addBlank();
+  await typeLine('$ whatsapp --open','prompt',18);
+  await typeLine('Apertura WhatsApp...','system',16,180);
+  await typeLine('Numero: +39 351 3519603','white',14,360);
+  await typeLine('⚠ Non chiamare senza aver prima preso contatto tramite messaggio WhatsApp!','error',14,420);
+  await typeLine('→ Reindirizzamento...','system',14,540);
+  await new Promise(r=>setTimeout(r,800));
+  window.open('https://wa.me/393513519603?text=Ciao%2C%20vi%20contatto%20tramite%20il%20sito%20The%20College%20Dropout.%20Vorrei%20informazioni%20su%3A%20','_blank');
+  addBlank();
+  await typeLine('✓ WhatsApp aperto in nuova tab','success',16);
+  addBlank();
+  await typeLine('Altro da fare?','white',18,300);
+  addBlank();
+  termState='options';
+  showOptions();
+}
+
+/* ── EMAIL ── */
+async function handleEmail(){
+  if(termState!=='options')return;
+  termState='email';
+  removeOptions();
+  addBlank();
+  await typeLine('$ email --compose','prompt',18);
+  await typeLine('Caricamento form...','system',16,180);
+  await typeLine('Form pronto. Compila i campi.','system',14,480);
+  addBlank();
+  removeCursor();
+  showEmailForm();
+}
+
+function showEmailForm(){
+  const wrapper=document.createElement('div');
+  wrapper.className='term-form';
+  wrapper.id='emailForm';
+  wrapper.innerHTML=`
+    <div class="form-row">
+      <div class="form-field">
+        <label class="form-label">Nome *</label>
+        <input class="form-input" id="f-nome" type="text" placeholder="Mario Rossi" autocomplete="name"/>
+      </div>
+      <div class="form-field">
+        <label class="form-label">Email *</label>
+        <input class="form-input" id="f-email" type="email" placeholder="mario@email.com" autocomplete="email"/>
+      </div>
+    </div>
+    <div class="form-field">
+      <label class="form-label">Oggetto</label>
+      <input class="form-input" id="f-oggetto" type="text" placeholder="Informazioni soluzione Centro Storico"/>
+    </div>
+    <div class="form-field">
+      <label class="form-label">Messaggio *</label>
+      <textarea class="form-textarea" id="f-msg" placeholder="Scrivi il tuo messaggio..."></textarea>
+    </div>
+    <div class="form-actions">
+      <button class="form-submit" id="formSubmit" onclick="submitForm()">
+        <span id="submitLabel">$ invia</span>
+      </button>
+      <button class="form-back" onclick="resetToOptions()">← annulla</button>
+    </div>
+    <div class="form-status" id="formStatus"></div>`;
+  termBody.appendChild(wrapper);
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    wrapper.classList.add('visible');
+    scrollTerm();
+    bindHover();
+  }));
+}
+
+async function submitForm(){
+  const nome=document.getElementById('f-nome')?.value.trim();
+  const email=document.getElementById('f-email')?.value.trim();
+  const oggetto=document.getElementById('f-oggetto')?.value.trim();
+  const msg=document.getElementById('f-msg')?.value.trim();
+  const status=document.getElementById('formStatus');
+
+  if(!nome||!email||!msg){
+    status.textContent='✗ Campi obbligatori: nome, email, messaggio.';
+    status.className='form-status visible err';
+    return;
+  }
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+    status.textContent='✗ Email non valida.';
+    status.className='form-status visible err';
+    return;
+  }
+
+  const btn=document.getElementById('formSubmit');
+  btn.disabled=true;
+  document.getElementById('submitLabel').textContent='$ invio in corso...';
+
+  const CONTACT_EMAIL='info@collegedropoutmanagement.com';
+  const corpo=`Nome: ${nome}\nEmail: ${email}\n\n${msg}`;
+  const mailtoLink=`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(oggetto||'Richiesta informazioni dal sito')}&body=${encodeURIComponent(corpo)}`;
+
+  await new Promise(r=>setTimeout(r,900));
+  window.location.href=mailtoLink;
+
+  document.getElementById('emailForm')?.remove();
+  addBlank();
+  await typeLine('$ apertura client email...','prompt',16);
+  await typeLine(`Destinatario: ${CONTACT_EMAIL}`,'system',14,200);
+  await typeLine('Messaggio precompilato ✓','success',16,600);
+  addBlank();
+  await typeLine('✓ Controlla la tua app email per confermare l\'invio.','white',18,300);
+  addBlank();
+  termState='options';
+  showOptions();
+}
+
+async function resetToOptions(){
+  document.getElementById('emailForm')?.remove();
+  addBlank();
+  await typeLine('$ annullato','system',16);
+  addBlank();
+  termState='options';
+  showOptions();
+}
+
+/* ══ NAVIGATION — direct ══ */
+document.addEventListener('click',e=>{
+  const link=e.target.closest('a[href]');
+  if(!link)return;
+  const href=link.getAttribute('href');
+  if(!href||href.startsWith('#')||href.startsWith('http')||href.startsWith('mailto'))return;
+  e.preventDefault();
+  window.location.href=href;
+});
+
+/* ══ LOAD ══ */
+window.addEventListener('load',()=>{
+  bootTerminal(runTerminal);
+});
+</script>
+</body>
+</html>

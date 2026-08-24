@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Appartamento — The College Dropout | Rieti</title>
+  <meta name="description" content="Dettagli soluzione su The College Dropout Rieti."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Bebas+Neue&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --black:#0a0a0a;--magenta:#c8185c;--white:#f0ede8;
+      --off:#e8e4df;--gray:#888;
+      --border:rgba(240,237,232,.13);
+      --glow:0 0 12px rgba(200,24,92,.8),0 0 32px rgba(200,24,92,.3);
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:'Space Grotesk',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased;cursor:none}
+
+    /* ── CURSOR ── */
+    #cur-dot,#cur-ring{position:fixed;border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%)}
+    #cur-dot{width:6px;height:6px;background:var(--magenta);box-shadow:0 0 8px var(--magenta)}
+    #cur-ring{width:30px;height:30px;border:1.5px solid rgba(200,24,92,.5);transition:width .18s,height .18s,border-color .18s}
+    body.ch #cur-ring{width:46px;height:46px;border-color:var(--magenta)}
+    @media(hover:none){#cur-dot,#cur-ring{display:none}body{cursor:auto}}
+
+    /* ── SCROLL PROGRESS ── */
+    #scroll-prog{position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,var(--magenta),#fff 80%);z-index:9998;transition:width .05s linear}
+
+    /* ── CANVAS BACKGROUND ── */
+    #bg-canvas{position:fixed;inset:0;z-index:0;display:block}
+
+    /* ── NOISE ── */
+    .noise{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.022;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px}
+
+    /* ── TRANSITION CANVAS (top z-index) ── */
+    #trans-canvas{position:fixed;inset:0;z-index:99000;display:block;pointer-events:none}
+
+    /* ── TOP BAR — fixed strip with TCD + back btn ── */
+    .top-bar-strip{
+      position:fixed;top:0;left:0;right:0;z-index:600;
+      height:56px;
+      display:flex;align-items:center;
+      background:rgba(10,10,10,.92);
+      border-bottom:1px solid var(--border);
+      backdrop-filter:blur(8px);
+      pointer-events:none; /* children handle their own events */
+    }
+    @media(min-width:768px){.top-bar-strip{height:64px}}
+
+    /* Back button — centered in the top bar */
+    .back-btn{
+      position:absolute;left:50%;transform:translateX(-50%);
+      display:flex;align-items:center;gap:10px;
+      color:var(--gray);text-decoration:none;
+      font-family:'DM Mono',monospace;font-size:.62rem;
+      letter-spacing:.14em;text-transform:uppercase;
+      cursor:none;pointer-events:all;
+      padding:8px 20px;
+      border:1px solid var(--border);
+      border-radius:2px;
+      transition:color .25s,border-color .25s,background .25s;
+      white-space:nowrap;
+    }
+    .back-btn:hover{
+      color:var(--white);
+      border-color:rgba(200,24,92,.5);
+      background:rgba(200,24,92,.07);
+    }
+    .back-btn:hover .back-arrow{color:var(--magenta)}
+    .back-arrow{
+      font-size:.9rem;line-height:1;
+      color:var(--magenta);
+      transition:transform .2s;
+    }
+    .back-btn:hover .back-arrow{transform:translateX(-3px)}
+
+    /* ── LANG BAR ── */
+    .lang-bar{position:fixed;top:0;right:0;z-index:900;display:flex;flex-direction:row;background:rgba(10,10,10,.92);border-left:1px solid var(--border);border-bottom:1px solid var(--border)}
+    .lang-bar a{display:flex;align-items:center;gap:7px;padding:10px 14px;color:var(--white);text-decoration:none;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;font-family:'DM Mono',monospace;border-right:1px solid var(--border);transition:background .2s}
+    .lang-bar a:last-child{border-right:none}
+    .lang-bar a:hover{background:rgba(200,24,92,.22)}
+    .lang-bar a.active{color:var(--magenta)}
+    .lang-bar .flag{font-size:1.1rem}
+
+    /* ── NAV DRAWER ── */
+    .nav-overlay{position:fixed;inset:0;background:rgba(0,0,0,.62);z-index:1800;opacity:0;pointer-events:none;transition:opacity .35s}
+    .nav-overlay.open{opacity:1;pointer-events:all}
+    .nav-drawer{position:fixed;top:0;left:0;width:min(340px,90vw);height:100vh;background:var(--black);border-right:2px solid var(--magenta);z-index:1900;transform:translateX(-100%);transition:transform .4s cubic-bezier(.16,1,.3,1);display:flex;flex-direction:column;overflow:hidden}
+    .nav-drawer.open{transform:translateX(0)}
+    .nav-drawer-header{padding:24px 28px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+    .nav-drawer-brand{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.06em;color:var(--magenta)}
+    .nav-close{background:none;border:none;color:var(--white);font-size:1.6rem;cursor:none;line-height:1;transition:color .2s}
+    .nav-close:hover{color:var(--magenta)}
+    .nav-links{display:flex;flex-direction:column;padding:24px 0;flex:1}
+    .nav-links a{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:.04em;color:var(--white);text-decoration:none;padding:13px 28px;border-bottom:1px solid var(--border);transition:color .2s,padding-left .2s;position:relative}
+    .nav-links a:hover{color:var(--magenta);padding-left:40px}
+    .nav-drawer-footer{padding:20px 28px;font-size:.68rem;color:var(--gray);letter-spacing:.08em;text-transform:uppercase;border-top:1px solid var(--border);font-family:'DM Mono',monospace;display:flex;justify-content:space-between;align-items:center}
+    .nav-footer-links a{color:var(--gray);text-decoration:none;font-size:.65rem;transition:color .2s}
+    .nav-footer-links a:hover{color:var(--magenta)}
+    .nav-trigger{position:fixed;top:0;left:0;z-index:600;height:56px;display:flex;align-items:center;padding:0 20px;background:rgba(10,10,10,.92);border-bottom:1px solid var(--border);border-right:1px solid var(--border);cursor:none;backdrop-filter:blur(8px)}
+    .nav-trigger-brand{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.06em;color:var(--white)}
+    .nav-trigger-brand span{color:var(--magenta)}
+    .nav-trigger:hover .nav-trigger-brand{color:var(--magenta)}
+    @media(min-width:768px){.nav-trigger{height:64px}}
+
+    /* ── PAGE WRAP ── */
+    .page-wrap{position:relative;z-index:2;padding-top:56px;min-height:100vh;opacity:0;transition:opacity .5s ease}
+    .page-wrap.visible{opacity:1}
+    @media(min-width:768px){.page-wrap{padding-top:64px}}
+    .container{max-width:1200px;margin:0 auto;padding:0 24px}
+    @media(min-width:768px){.container{padding:0 40px}}
+
+    /* ── HEADER ── */
+    .apt-header{padding:20px 0 24px;border-bottom:1px solid var(--border)}
+    .apt-header-top{
+      display:flex;align-items:center;justify-content:space-between;
+      margin-bottom:16px;
+      padding-bottom:12px;
+      border-bottom:1px solid var(--border);
+    }
+    .apt-breadcrumb{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gray);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+    .apt-breadcrumb a{color:var(--gray);text-decoration:none;transition:color .2s;cursor:none}
+    .apt-breadcrumb a:hover{color:var(--magenta)}
+    .apt-breadcrumb-sep{color:var(--border)}
+    .apt-name{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,7vw,5rem);letter-spacing:.02em;line-height:.92;color:var(--white);margin-bottom:12px}
+    .apt-meta-row{display:flex;flex-wrap:wrap;align-items:center;gap:16px}
+    .apt-badge{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;padding:5px 10px;border-radius:2px}
+    .apt-badge.free{background:rgba(16,185,129,.15);color:#10b981;border:1px solid rgba(16,185,129,.3)}
+    .apt-badge.taken{background:rgba(200,24,92,.15);color:var(--magenta);border:1px solid rgba(200,24,92,.3)}
+    .apt-price{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--white);letter-spacing:.04em}
+    .apt-price span{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--gray);letter-spacing:.08em;font-weight:400}
+    .apt-zone{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gray)}
+
+    /* ════════════════════════════════════════
+       HERO RIQUADRO
+       ROOT FIX: .hero-riquadro has NO overflow:hidden
+       .media-area has overflow:hidden (clips media only)
+       .media-controls is a SIBLING of .media-area,
+       not a child — Leaflet can never push it away.
+    ════════════════════════════════════════ */
+    .hero-riquadro{
+      margin:28px 0;
+      border:1px solid var(--border);
+      border-radius:4px;
+      /* NO overflow:hidden here */
+    }
+    .media-area{
+      position:relative;
+      width:100%;
+      height:clamp(260px,48vh,540px);
+      background:var(--black);
+      overflow:hidden; /* clips ONLY the media panels */
+      border-radius:4px;
+    }
+    .media-panel{
+      position:absolute;inset:0;
+      opacity:0;pointer-events:none;
+      transition:opacity .35s ease;
+    }
+    .media-panel.active{opacity:1;pointer-events:all}
+    .media-photo{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.9)}
+
+    /* ── TILE GRID ── */
+    .tiles-section{margin:40px 0 0}
+    .tiles-label{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--magenta);margin-bottom:20px}
+    .tiles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:3px;overflow:hidden}
+    @media(max-width:600px){.tiles-grid{grid-template-columns:repeat(2,1fr)}}
+    .tile{position:relative;background:rgba(12,10,12,.92);padding:clamp(20px,4vw,32px) clamp(16px,3vw,28px);cursor:none;display:flex;flex-direction:column;justify-content:space-between;min-height:clamp(110px,16vw,160px);overflow:hidden;transition:background .25s}
+    .tile::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(200,24,92,.06),transparent 60%);opacity:0;transition:opacity .3s}
+    .tile:hover{background:rgba(20,10,14,.98)}
+    .tile:hover::before{opacity:1}
+    .tile::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--magenta);transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.16,1,.3,1)}
+    .tile:hover::after{transform:scaleX(1)}
+    .tile-icon{width:clamp(28px,4vw,40px);height:clamp(28px,4vw,40px);stroke:var(--magenta);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;margin-bottom:auto;transition:stroke .25s,filter .25s}
+    .tile:hover .tile-icon{stroke:#fff;filter:drop-shadow(0 0 6px rgba(200,24,92,.6))}
+    .tile-footer{margin-top:16px}
+    .tile-name{font-family:'Bebas Neue',sans-serif;font-size:clamp(.9rem,2vw,1.2rem);letter-spacing:.04em;color:var(--white);display:block;margin-bottom:3px;transition:color .25s}
+    .tile:hover .tile-name{color:var(--magenta)}
+    .tile-hint{font-family:'DM Mono',monospace;font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gray)}
+
+    /* ── TILE OVERLAY ── */
+    #tile-overlay{position:fixed;inset:16px;z-index:9500;background:rgba(8,6,8,.97);border:1px solid var(--magenta);border-radius:4px;backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);box-shadow:var(--glow),0 0 100px rgba(200,24,92,.1);display:flex;flex-direction:column;opacity:0;pointer-events:none;transform:scale(.94);transition:opacity .35s ease,transform .4s cubic-bezier(.16,1,.3,1);overflow:hidden}
+    #tile-overlay.open{opacity:1;pointer-events:all;transform:scale(1)}
+    .tov-header{display:flex;align-items:center;justify-content:space-between;padding:20px 28px;border-bottom:1px solid var(--border);flex-shrink:0}
+    .tov-tag{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--magenta)}
+    .tov-close{background:none;border:none;color:var(--gray);font-size:1.5rem;cursor:none;transition:color .2s;line-height:1}
+    .tov-close:hover{color:var(--magenta)}
+    .tov-body{flex:1;overflow-y:auto;padding:28px}
+    .tov-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,6vw,3.5rem);letter-spacing:.02em;color:var(--white);margin-bottom:20px;line-height:1}
+    .tov-divider{width:40px;height:2px;background:var(--magenta);margin-bottom:20px}
+    .tov-content{font-size:.92rem;line-height:1.75;color:var(--off);max-width:640px}
+    .tov-content:has(.fp-wrap){max-width:none}
+    .tov-content:has(.tov-split){max-width:1120px}
+    .tov-split{display:flex;gap:40px;align-items:flex-start}
+    .tov-text{flex:1;min-width:0}
+    .tov-photo{width:340px;flex-shrink:0;position:sticky;top:0;border-radius:3px;overflow:hidden;border:1px solid var(--border)}
+    .tov-photo img{width:100%;height:440px;object-fit:cover;display:block;filter:brightness(.92) saturate(.95)}
+    @media(max-width:900px){.tov-split{flex-direction:column}.tov-photo{width:100%;position:static;order:-1}.tov-photo img{height:220px}}
+    .tov-content p+p{margin-top:12px}
+    .tov-content strong{color:var(--white)}
+    .chars-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-top:4px}
+    .char-item{background:rgba(200,24,92,.06);border:1px solid rgba(200,24,92,.2);border-radius:2px;padding:14px 16px}
+    .char-label{font-family:'DM Mono',monospace;font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gray);margin-bottom:4px}
+    .char-val{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:.04em;color:var(--white)}
+    .services-list{display:flex;flex-direction:column;gap:0;margin-top:4px}
+    .service-item{display:flex;align-items:center;gap:14px;padding:13px 0;border-bottom:1px solid var(--border)}
+    .service-item:last-child{border-bottom:none}
+    .service-dot{width:6px;height:6px;border-radius:50%;background:var(--magenta);flex-shrink:0}
+    .service-name{font-size:.88rem;color:var(--off)}
+    .service-dist{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.1em;color:var(--gray);margin-left:auto}
+    .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px;margin-top:4px}
+    .gallery-thumb{aspect-ratio:4/3;object-fit:cover;width:100%;display:block;cursor:none;filter:brightness(.8) saturate(.8);transition:filter .25s,transform .25s;border-radius:2px}
+    .gallery-thumb:hover{filter:brightness(1) saturate(1);transform:scale(1.02)}
+
+    /* ══ PLAN & PICS — planimetria interattiva ══ */
+    .fp-wrap{display:flex;flex-direction:column;gap:18px;margin-top:4px}
+    @media(min-width:860px){
+      .fp-wrap{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(280px,1fr);align-items:start;gap:28px}
+      .fp-wrap>.cond-subtitle,.fp-wrap>.gallery-grid{grid-column:1/-1}
+      .fp-detail{position:sticky;top:0}
+    }
+    .fp-image-wrap{position:relative;width:100%;border:1px solid var(--border);border-radius:2px;overflow:hidden}
+    .fp-image-wrap svg.fp-room-overlay{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+    .fp-room-poly{transition:fill-opacity .2s,stroke-opacity .2s,opacity .2s}
+    .fp-room-poly.available{filter:drop-shadow(0 0 6px rgba(57,255,20,.85)) drop-shadow(0 0 18px rgba(57,255,20,.45)) drop-shadow(0 0 34px rgba(57,255,20,.2))}
+    .fp-room-poly.taken{filter:drop-shadow(0 0 6px rgba(200,24,92,.85)) drop-shadow(0 0 18px rgba(200,24,92,.45)) drop-shadow(0 0 34px rgba(200,24,92,.2))}
+    .fp-room-poly.dim{fill-opacity:.04 !important;stroke-opacity:.35 !important;opacity:.35}
+    .fp-image-wrap svg{display:block;width:100%;height:auto}
+    .fp-hotspot{position:absolute;transform:translate(-50%,-50%);width:28px;height:28px;border-radius:50%;border:2px solid var(--white);color:var(--white);font-family:'DM Mono',monospace;font-size:.72rem;display:flex;align-items:center;justify-content:center;cursor:none;transition:transform .2s,background .2s,color .2s;padding:0}
+    .fp-hotspot.available{background:#39ff14;color:#0a0a0a;box-shadow:0 0 0 4px rgba(57,255,20,.22),0 0 14px rgba(57,255,20,.7),0 0 28px rgba(57,255,20,.35)}
+    .fp-hotspot.taken{background:var(--magenta);box-shadow:0 0 0 4px rgba(200,24,92,.22),0 0 14px rgba(200,24,92,.7),0 0 28px rgba(200,24,92,.35)}
+    .fp-hotspot:hover,.fp-hotspot.active{transform:translate(-50%,-50%) scale(1.18);background:var(--white)}
+    .fp-hotspot.available:hover,.fp-hotspot.available.active{color:#18a83e}
+    .fp-hotspot.taken:hover,.fp-hotspot.taken.active{color:var(--magenta)}
+    .fp-detail{background:rgba(200,24,92,.06);border:1px solid rgba(200,24,92,.2);border-radius:2px;padding:18px 20px;min-height:70px}
+    .fp-hint{color:var(--gray);font-size:.8rem}
+    .fp-noplan{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;aspect-ratio:4/3;color:var(--gray);background:rgba(255,255,255,.02)}
+    .fp-noplan span{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase}
+    .fp-room-list{display:flex;flex-wrap:wrap;gap:8px}
+    .fp-room-chip{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.06em;padding:9px 16px;border-radius:20px;cursor:none;border:1px solid var(--border);background:rgba(255,255,255,.03);color:var(--off);transition:all .2s}
+    .fp-room-chip.available{border-color:rgba(57,255,20,.4);color:#39ff14}
+    .fp-room-chip.taken{border-color:rgba(200,24,92,.4);color:var(--magenta)}
+    .fp-room-chip.active,.fp-room-chip:hover{background:var(--white);color:var(--black);border-color:var(--white)}
+    .fp-photos-pending{grid-column:1/-1;color:var(--gray);font-size:.78rem;font-style:italic;padding:16px 0}
+    .media-panel.no-cover{display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.02)}
+    .media-panel.no-cover::after{content:attr(data-pending-label);font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gray)}
+    .fp-room-photos{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:6px;margin-bottom:14px}
+    .fp-room-photos img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:2px;filter:brightness(.85);cursor:none;transition:filter .25s,transform .25s}
+    .fp-room-photos img:hover{filter:brightness(1);transform:scale(1.02)}
+    .fp-room-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:6px;flex-wrap:wrap}
+    .fp-room-head h3{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.03em;color:var(--white)}
+    .fp-room-prices{display:flex;gap:10px;margin-bottom:10px}
+    .fp-price-tag{background:rgba(200,24,92,.1);border:1px solid rgba(200,24,92,.25);border-radius:2px;padding:8px 14px;text-align:center}
+    .cond-deposito-box{display:inline-flex;align-items:center;gap:14px;background:rgba(200,24,92,.1);border:1px solid rgba(200,24,92,.25);border-radius:2px;padding:12px 20px;margin-top:16px}
+    .cond-deposito-box .deposito-num{font-family:'Bebas Neue',sans-serif;font-size:2.1rem;color:var(--magenta);line-height:1}
+    .cond-deposito-box .deposito-label{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.06em;text-transform:uppercase;color:var(--off);line-height:1.4}
+    .fp-price-tag strong{display:block;font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:var(--magenta)}
+    .fp-price-tag span{font-family:'DM Mono',monospace;font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gray)}
+    .fp-room-feats{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+    .fp-feat{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:var(--off);background:rgba(255,255,255,.06);border:1px solid var(--border);padding:4px 9px;border-radius:2px}
+    .fp-intero-banner{display:flex;align-items:center;justify-content:space-between;gap:16px;background:rgba(255,255,255,.03);border:1px dashed var(--border);border-radius:2px;padding:16px 20px;flex-wrap:wrap}
+    .fp-intero-head strong{display:block;font-family:'Bebas Neue',sans-serif;font-size:1.05rem;color:var(--white);letter-spacing:.02em}
+    .fp-intero-head span{color:var(--gray);font-size:.76rem}
+    .fp-intero-tiers{display:flex;gap:10px;flex-wrap:wrap}
+    .fp-intero-tier{text-align:center;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:2px;padding:8px 14px}
+    .fp-intero-tier strong{display:block;font-family:'Bebas Neue',sans-serif;font-size:1.25rem;color:var(--white)}
+    .fp-intero-tier span{font-family:'DM Mono',monospace;font-size:.54rem;color:var(--gray);text-transform:uppercase;letter-spacing:.06em}
+
+    /* ══ CONDIZIONI ══ */
+    .cond-subtitle{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--magenta);margin:18px 0 10px}
+    .cond-subtitle.is-available{color:#39ff14}
+    .cond-subtitle.is-taken{color:var(--magenta)}
+    .cond-intero-unavailable{color:var(--magenta);font-family:'DM Mono',monospace;font-size:.78rem;letter-spacing:.03em}
+    .cond-subtitle:first-child{margin-top:0}
+    .cond-rooms{display:flex;flex-direction:column;gap:10px}
+    .cond-room-row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:2px;padding:12px 16px}
+    .cond-room-name{font-family:'Bebas Neue',sans-serif;font-size:1.7rem;letter-spacing:.02em;color:var(--white)}
+    .cond-room-name.is-available{color:#39ff14}
+    .cond-room-name.is-taken{color:var(--magenta)}
+    .cond-room-info{display:flex;flex-direction:column;gap:4px}
+    .cond-room-avail{font-family:'DM Mono',monospace;font-size:.72rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--magenta)}
+    .cond-room-avail.is-available{color:#39ff14}
+    .cond-room-avail.is-taken{color:var(--magenta)}
+    .cond-room-prices{display:flex;gap:8px}
+    .cond-note{margin-top:18px;color:var(--gray);font-size:.78rem;font-style:italic}
+
+    /* ── LIGHTBOX ── */
+    #lightbox{position:fixed;inset:0;z-index:9800;background:rgba(0,0,0,.96);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s ease}
+    #lightbox.open{opacity:1;pointer-events:all}
+    #lightbox img{max-width:92vw;max-height:88vh;object-fit:contain;border:1px solid var(--border)}
+    .lb-close{position:absolute;top:20px;right:24px;background:none;border:none;color:var(--white);font-size:1.8rem;cursor:none;transition:color .2s}
+    .lb-close:hover{color:var(--magenta)}
+    .lb-prev,.lb-next{position:absolute;top:50%;transform:translateY(-50%);background:rgba(10,10,10,.7);border:1px solid var(--border);color:var(--white);font-size:1.4rem;width:48px;height:48px;border-radius:2px;cursor:none;display:flex;align-items:center;justify-content:center;transition:background .2s,border-color .2s}
+    .lb-prev{left:16px}.lb-next{right:16px}
+    .lb-prev:hover,.lb-next:hover{background:rgba(200,24,92,.2);border-color:var(--magenta)}
+    .lb-counter{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gray)}
+
+    /* ── CTA + FOOTER ── */
+    .apt-cta-block{margin:40px 0 56px;padding:32px;border:1px solid var(--border);border-radius:3px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;background:rgba(200,24,92,.04)}
+    .apt-cta-text h3{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.03em;color:var(--white);margin-bottom:4px}
+    .apt-cta-text p{font-size:.85rem;color:var(--gray)}
+    .apt-cta-btn{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.06em;color:var(--black);background:var(--white);padding:14px 32px;border-radius:2px;text-decoration:none;cursor:none;transition:background .2s,box-shadow .2s;white-space:nowrap}
+    .apt-cta-btn:hover{background:var(--magenta);color:var(--white);box-shadow:var(--glow)}
+    .site-footer{border-top:1px solid var(--border)}
+    .footer-bottom{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;flex-wrap:wrap;gap:10px}
+    .footer-bottom-left,.footer-bottom-right{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gray)}
+    .footer-bottom-right a{color:var(--gray);text-decoration:none;transition:color .2s}
+    .footer-bottom-right a:hover{color:var(--magenta)}
+    .footer-dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--magenta);margin:0 7px;vertical-align:middle;animation:blink 2s ease-in-out infinite}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+    @media(max-width:600px){#tile-overlay{inset:0;border-radius:0}.apt-cta-block{flex-direction:column;text-align:center}}
+  </style>
+</head>
+<body>
+
+<!-- GENERATIVE BACKGROUND -->
+<canvas id="bg-canvas"></canvas>
+
+<!-- TRANSITION CANVAS -->
+<canvas id="trans-canvas"></canvas>
+
+<div class="noise"></div>
+<div id="cur-dot"></div>
+<div id="cur-ring"></div>
+<div id="scroll-prog"></div>
+
+<!-- TOP BAR STRIP -->
+<div class="top-bar-strip">
+  <a href="soluzioni.html" class="back-btn">
+    <span class="back-arrow">←</span>
+    Torna a Soluzioni
+  </a>
+</div>
+
+<!-- LANG BAR -->
+<div class="lang-bar" role="navigation" aria-label="Language selection">
+  <a href="#" id="lang-it" onclick="setLang('it');return false" aria-label="Italiano">
+    <svg class="flag" viewBox="0 0 3 2" width="20" height="14"><rect width="1" height="2" x="0" fill="#009246"/><rect width="1" height="2" x="1" fill="#f1f2f1"/><rect width="1" height="2" x="2" fill="#ce2b37"/></svg>
+    <span>IT</span>
+  </a>
+  <a href="#" id="lang-en" onclick="setLang('en');return false" aria-label="English">
+    <svg class="flag" viewBox="0 0 60 30" width="20" height="14"><clipPath id="tcd-uk-clip2"><path d="M0,0 v30 h60 v-30 z"/></clipPath><g clip-path="url(#tcd-uk-clip2)"><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="2"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></g></svg>
+    <span>EN</span>
+  </a>
+</div>
+
+<!-- NAV DRAWER -->
+<div class="nav-overlay" id="navOverlay" onclick="closeNav()"></div>
+<nav class="nav-drawer" id="navDrawer">
+  <div class="nav-drawer-header">
+    <span class="nav-drawer-brand">TCD.</span>
+    <button class="nav-close" onclick="closeNav()">✕</button>
+  </div>
+  <div class="nav-links">
+    <a href="index.html" data-i18n="nav.home">Homepage</a>
+    <a href="soluzioni.html" data-i18n="nav.solutions">Soluzioni</a>
+    <a href="servizi.html" data-i18n="nav.services">I Nostri Servizi</a>
+    <a href="chi-siamo.html" data-i18n="nav.about">Chi Siamo</a>
+    <a href="contatti.html" data-i18n="nav.contact">Contatti</a>
+    <a href="proprietari.html" data-i18n="nav.owners">Proprietari</a>
+  </div>
+  <div class="nav-drawer-footer">
+    <span data-i18n="footer.copyright">The College Dropout © 2026</span>
+    <div class="nav-footer-links"><a href="#" data-i18n="footer.privacy">Privacy</a></div>
+  </div>
+</nav>
+<button class="nav-trigger" onclick="openNav()">
+  <span class="nav-trigger-brand">TCD<span>.</span></span>
+</button>
+
+<!-- TILE OVERLAY -->
+<div id="tile-overlay">
+  <div class="tov-header">
+    <span class="tov-tag" id="tov-tag"></span>
+    <button class="tov-close" onclick="closeTileOverlay()">✕</button>
+  </div>
+  <div class="tov-body">
+    <h2 class="tov-title" id="tov-title"></h2>
+    <div class="tov-divider"></div>
+    <div class="tov-content" id="tov-content"></div>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox">
+  <button class="lb-close" onclick="closeLightbox()">✕</button>
+  <button class="lb-prev" onclick="lbNav(-1)">‹</button>
+  <img id="lb-img" src="" alt=""/>
+  <button class="lb-next" onclick="lbNav(1)">›</button>
+  <span class="lb-counter" id="lb-counter"></span>
+</div>
+
+<!-- PAGE -->
+<div class="page-wrap" id="pageWrap">
+<div class="container">
+
+  <header class="apt-header">
+    <div class="apt-breadcrumb">
+      <a href="soluzioni.html" data-i18n="nav.solutions">Soluzioni</a>
+      <span class="apt-breadcrumb-sep">›</span>
+      <span id="hdr-zone">—</span>
+    </div>
+    <h1 class="apt-name" id="hdr-name">—</h1>
+    <div class="apt-meta-row">
+      <span class="apt-price" id="hdr-price">—<span data-i18n="apt.perMonth">/mese</span></span>
+      <span class="apt-badge" id="hdr-badge">—</span>
+      <span class="apt-zone" id="hdr-zone2">—</span>
+    </div>
+  </header>
+
+  <!-- HERO RIQUADRO -->
+  <div class="hero-riquadro">
+    <div class="media-area">
+      <div class="media-panel active" id="panel-photo">
+        <img class="media-photo" id="cover-photo" src="" alt=""/>
+      </div>
+    </div>
+  </div>
+
+  <!-- TILE GRID -->
+  <section class="tiles-section">
+    <p class="tiles-label" data-i18n="apt.exploreLabel">— Esplora la soluzione</p>
+    <div class="tiles-grid">
+      <div class="tile" onclick="openTile('descrizione')">
+        <svg class="tile-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        <div class="tile-footer"><span class="tile-name" data-i18n="apt.tileDescName">Descrizione</span><span class="tile-hint" data-i18n="apt.tileDescHint">Apri →</span></div>
+      </div>
+      <div class="tile" onclick="openTile('condizioni')">
+        <svg class="tile-icon" viewBox="0 0 24 24">
+          <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+          <line x1="16" y1="13" x2="8" y2="13"/>
+          <line x1="16" y1="17" x2="8" y2="17"/>
+          <line x1="10" y1="9" x2="8" y2="9"/>
+        </svg>
+        <div class="tile-footer">
+          <span class="tile-name" data-i18n="apt.tileCondName">Condizioni</span>
+          <span class="tile-hint" data-i18n="apt.tileCondHint">Scopri →</span>
+        </div>
+      </div>
+      <div class="tile" onclick="openTile('planpics')">
+        <svg class="tile-icon" viewBox="0 0 24 24">
+          <rect x="3" y="3" width="18" height="18" rx="1"/>
+          <path d="M3 9h18M9 21V9"/>
+          <circle cx="15" cy="6" r="1"/>
+        </svg>
+        <div class="tile-footer">
+          <span class="tile-name">Plan & Pics</span>
+          <span class="tile-hint" id="planpics-hint" data-i18n="apt.tilePlanHint">Planimetria + foto →</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="apt-cta-block">
+    <div class="apt-cta-text">
+      <h3 data-i18n="apt.ctaTitle">Ti interessa questa soluzione?</h3>
+      <p data-i18n="apt.ctaText">Contattaci direttamente. Nessuna agenzia, risposta in giornata.</p>
+    </div>
+    <a href="contatti.html" class="apt-cta-btn" data-i18n="apt.ctaBtn">Scrivici ora →</a>
+  </div>
+
+</div>
+<footer class="site-footer">
+  <div class="footer-bottom container">
+    <span class="footer-bottom-left">© 2026 The College Dropout<span class="footer-dot"></span><span data-i18n="footer.location">Rieti, Italia</span></span>
+    <span class="footer-bottom-right"><span data-i18n="footer.designOnly">Design:</span> <a href="https://tevwebstudio.it" target="_blank">T&V Web Studio</a></span>
+  </div>
+</footer>
+</div><!-- end page-wrap -->
+
+<script src="data.js"></script>
+  <script>
+/* ══════════════════════════════════════════════════
+   ANIMATED CANVAS BACKGROUND
+   Isometric architectural grid + magenta particles
+══════════════════════════════════════════════════ */
+(function(){
+try{
+  const c=document.getElementById('bg-canvas');
+  const ctx=c&&c.getContext('2d');
+  if(!ctx)return; /* niente canvas o contesto non disponibile: esci senza bloccare il resto della pagina */
+  let W,H,nodes=[],particles=[];
+  const COLS=12,ROWS=8;
+
+  function resize(){W=c.width=innerWidth;H=c.height=innerHeight;build()}
+
+  function build(){
+    nodes=[];
+    const cw=W/COLS*1.5,ch=H/ROWS*1.4;
+    const ox=W*.5,oy=H*.4;
+    for(let r=0;r<=ROWS;r++)
+      for(let co=0;co<=COLS;co++){
+        const x=ox+(co-COLS/2)*cw*.5+(r-ROWS/2)*cw*.5;
+        const y=oy+(co-COLS/2)*ch*.22-(r-ROWS/2)*ch*.22;
+        nodes.push({r,co,x,y});
+      }
+    particles=Array.from({length:20},()=>spawnParticle());
+  }
+
+  function spawnParticle(){
+    const r=Math.floor(Math.random()*ROWS);
+    const co=Math.random()*COLS;
+    return{r,co,speed:.006+Math.random()*.01,a:.2+Math.random()*.5,life:1};
+  }
+
+  function node(r,co){return nodes.find(n=>n.r===r&&n.co===co)}
+
+  let t=0;
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle='#0a0a0a';ctx.fillRect(0,0,W,H);
+    t+=.003;
+
+    const breath=.97+.03*Math.sin(t*.5);
+    ctx.save();ctx.translate(W/2,H/2);ctx.scale(breath,breath);ctx.translate(-W/2,-H/2);
+
+    /* Grid lines */
+    for(let r=0;r<=ROWS;r++){
+      ctx.beginPath();
+      for(let co=0;co<=COLS;co++){
+        const n=node(r,co);if(!n)continue;
+        co===0?ctx.moveTo(n.x,n.y):ctx.lineTo(n.x,n.y);
+      }
+      ctx.strokeStyle=`rgba(240,237,232,${.035*(1-.5*Math.abs(r-ROWS/2)/ROWS)})`;
+      ctx.lineWidth=.8;ctx.stroke();
+    }
+    for(let co=0;co<=COLS;co++){
+      ctx.beginPath();
+      for(let r=0;r<=ROWS;r++){
+        const n=node(r,co);if(!n)continue;
+        r===0?ctx.moveTo(n.x,n.y):ctx.lineTo(n.x,n.y);
+      }
+      ctx.strokeStyle=`rgba(240,237,232,${.03*(1-.5*Math.abs(co-COLS/2)/COLS)})`;
+      ctx.lineWidth=.8;ctx.stroke();
+    }
+
+    /* Vertical building strokes at select intersections */
+    [[1,2],[3,5],[5,9],[2,7],[6,3],[4,11],[7,6]].forEach(([r,co])=>{
+      const n=node(r,co);if(!n)return;
+      const h=18+10*Math.sin(t*.4+r+co);
+      ctx.beginPath();ctx.moveTo(n.x,n.y);ctx.lineTo(n.x,n.y-h);
+      ctx.strokeStyle='rgba(200,24,92,.07)';ctx.lineWidth=1.2;ctx.stroke();
+      ctx.fillStyle='rgba(200,24,92,.13)';ctx.beginPath();ctx.arc(n.x,n.y-h,1.5,0,Math.PI*2);ctx.fill();
+    });
+
+    /* Particles travel along rows */
+    particles.forEach((p,i)=>{
+      p.co+=p.speed;
+      if(p.co>COLS){particles[i]=spawnParticle();return}
+      const co0=Math.floor(p.co),co1=Math.min(co0+1,COLS);
+      const f=p.co-co0;
+      const n0=node(p.r,co0),n1=node(p.r,co1);
+      if(!n0||!n1)return;
+      const px=n0.x+(n1.x-n0.x)*f,py=n0.y+(n1.y-n0.y)*f;
+      const g=ctx.createRadialGradient(px,py,0,px,py,7);
+      g.addColorStop(0,`rgba(200,24,92,${p.a})`);g.addColorStop(1,'rgba(200,24,92,0)');
+      ctx.fillStyle=g;ctx.beginPath();ctx.arc(px,py,7,0,Math.PI*2);ctx.fill();
+      ctx.fillStyle=`rgba(200,24,92,${p.a})`;ctx.beginPath();ctx.arc(px,py,1.4,0,Math.PI*2);ctx.fill();
+    });
+    ctx.restore();
+
+    /* Vignette */
+    const vg=ctx.createRadialGradient(W/2,H/2,H*.18,W/2,H/2,H*.88);
+    vg.addColorStop(0,'rgba(0,0,0,0)');vg.addColorStop(1,'rgba(0,0,0,.6)');
+    ctx.fillStyle=vg;ctx.fillRect(0,0,W,H);
+
+    requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize',resize);
+  resize();draw();
+}catch(e){
+  console.error('Sfondo animato non disponibile:',e);
+}
+})();
+
+/* ══ APARTMENT DATA ══ */
+const APARTMENTS=window.APARTMENTS;
+
+const urlId=parseInt(new URLSearchParams(location.search).get('id'))||1;
+const APT=APARTMENTS[urlId]||APARTMENTS[1];
+
+/* ══ I18N ══ */
+const I18N={
+  en:{
+    'nav.home':'Homepage','nav.solutions':'Solutions','nav.services':'Our Services','nav.about':'About Us','nav.contact':'Contact','nav.owners':'Property Owners',
+    'footer.copyright':'The College Dropout © 2026','footer.privacy':'Privacy','footer.location':'Rieti, Italy','footer.designOnly':'Design:',
+    'apt.perMonth':'/month','apt.exploreLabel':'— Explore this place',
+    'apt.tileDescName':'Description','apt.tileDescHint':'Open →',
+    'apt.tileCondName':'Terms','apt.tileCondHint':'Discover →',
+    'apt.tilePlanHint':'Floor plan + photos →',
+    'apt.ctaTitle':'Interested in this place?','apt.ctaText':'Get in touch directly. No agencies, same-day reply.','apt.ctaBtn':'Message us →',
+    'apt.available':'Available','apt.taken':'Taken',
+    'apt.startingFrom':'from €','apt.singola':'single','apt.doppia':'double','apt.persone':'people','apt.perPerson':'per person',
+    'apt.condRoomsTitle':'Renting by room','apt.condInteroTitle':'Whole apartment rental','apt.availableFrom':'Available from','apt.interoUnavailable':'Option not available at the moment.',
+    'apt.condNote':'Condominium fees and Wi-Fi subscription are included in the rent.',
+    'apt.deposito':'A security deposit equal to one month\'s rent is required.',
+    'apt.depositoLabel':'month\'s rent<br>security deposit',
+    'apt.planHint':'Click a number on the floor plan to see the room details',
+    'apt.planNoRooms':'No individual rooms configured for this apartment.',
+    'apt.otherPhotos':'Other photos','apt.charsTitle':'Features','apt.serviziTitle':'Nearby',
+    'apt.planComingSoon':'Floor plan coming soon','apt.photosPending':'Photos coming soon',
+    'apt.contactTitle':'Contact','apt.contactText':'Interested? Message us directly.','apt.contactLink':'Go to the Contact page →',
+  },
+  it:{
+    'nav.home':'Homepage','nav.solutions':'Soluzioni','nav.services':'I Nostri Servizi','nav.about':'Chi Siamo','nav.contact':'Contatti','nav.owners':'Proprietari',
+    'footer.copyright':'The College Dropout © 2026','footer.privacy':'Privacy','footer.location':'Rieti, Italia','footer.designOnly':'Design:',
+    'apt.perMonth':'/mese','apt.exploreLabel':'— Esplora la soluzione',
+    'apt.tileDescName':'Descrizione','apt.tileDescHint':'Apri →',
+    'apt.tileCondName':'Condizioni','apt.tileCondHint':'Scopri →',
+    'apt.tilePlanHint':'Planimetria + foto →',
+    'apt.ctaTitle':'Ti interessa questa soluzione?','apt.ctaText':'Contattaci direttamente. Nessuna agenzia, risposta in giornata.','apt.ctaBtn':'Scrivici ora →',
+    'apt.available':'Disponibile','apt.taken':'Occupato',
+    'apt.startingFrom':'da €','apt.singola':'singola','apt.doppia':'doppia','apt.persone':'persone','apt.perPerson':'a persona',
+    'apt.condRoomsTitle':'Affitto a camere','apt.condInteroTitle':'Affitto intero appartamento','apt.availableFrom':'Disponibile da','apt.interoUnavailable':'Opzione non disponibile al momento.',
+    'apt.condNote':"Le spese condominiali e l'abbonamento Wi-Fi sono inclusi nel canone.",
+    'apt.deposito':'È richiesto un deposito cauzionale pari ad una mensilità.',
+    'apt.depositoLabel':'mensilità<br>di deposito cauzionale',
+    'apt.planHint':'Clicca un numero sulla planimetria per vedere i dettagli della camera',
+    'apt.planNoRooms':'Nessuna camera singola configurata per questo appartamento.',
+    'apt.otherPhotos':'Altre foto','apt.charsTitle':'Caratteristiche','apt.serviziTitle':'Nei dintorni',
+    'apt.planComingSoon':'Planimetria in arrivo','apt.photosPending':'Foto in arrivo',
+    'apt.contactTitle':'Contatta','apt.contactText':'Sei interessato? Scrivici direttamente.','apt.contactLink':'Vai alla pagina Contatti →',
+  }
+};
+
+/* ══ DISPONIBILITÀ AUTOMATICA (regola dei due mesi) ══
+   Una camera appare "disponibile" (verde) se la data di inizio
+   disponibilità è entro due mesi da oggi (o già passata).
+   Se manca più di due mesi, appare "non disponibile" (fucsia),
+   pur mostrando comunque la data a partire dalla quale lo sarà. ══ */
+function isRoomAvailable(availableFromISO){
+  if(!availableFromISO)return true;
+  const target=new Date(availableFromISO+'T00:00:00');
+  const threshold=new Date(target);
+  threshold.setMonth(threshold.getMonth()-2);
+  return new Date()>=threshold;
+}
+function formatAvailableFrom(availableFromISO,lang){
+  if(!availableFromISO)return '';
+  const d=new Date(availableFromISO+'T00:00:00');
+  return new Intl.DateTimeFormat(lang==='it'?'it-IT':'en-GB',{month:'long',year:'numeric'}).format(d);
+}
+
+function renderApartmentData(){
+  const lang=window.__tcdLang||'en';
+  document.title=`${APT.name[lang]} — The College Dropout | Rieti`;
+  document.getElementById('hdr-zone').textContent=APT.zone[lang];
+  document.getElementById('hdr-name').textContent=APT.name[lang];
+  if((APT.rentalMode==='camere'||APT.rentalMode==='entrambi')&&APT.rooms&&APT.rooms.length){
+    const allPrices=APT.rooms.flatMap(r=>[r.priceSingola, r.priceDoppia!=null?r.priceDoppia/2:null]).filter(p=>p!=null);
+    const minPrice=allPrices.length?Math.round(Math.min(...allPrices)):0;
+    document.getElementById('hdr-price').innerHTML=`${I18N[lang]['apt.startingFrom']}${minPrice}<span>${I18N[lang]['apt.perMonth']}</span>`;
+  }else{
+    document.getElementById('hdr-price').innerHTML=`${APT.price}<span>${I18N[lang]['apt.perMonth']}</span>`;
+  }
+  document.getElementById('hdr-zone2').textContent=APT.zone[lang];
+  const badge=document.getElementById('hdr-badge');
+  badge.textContent=APT.available?I18N[lang]['apt.available']:I18N[lang]['apt.taken'];
+  badge.className='apt-badge '+(APT.available?'free':'taken');
+  const coverEl=document.getElementById('cover-photo');
+  const coverWrap=document.getElementById('panel-photo');
+  if(APT.cover){
+    coverEl.src=APT.cover;
+    coverEl.alt=APT.name[lang];
+    coverEl.style.display='';
+    coverWrap.classList.remove('no-cover');
+  }else{
+    coverEl.style.display='none';
+    coverWrap.classList.add('no-cover');
+    coverWrap.setAttribute('data-pending-label',I18N[lang]['apt.photosPending']);
+  }
+}
+
+function setLang(lang){
+  if(!I18N[lang])return;
+  document.documentElement.lang=lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const key=el.getAttribute('data-i18n');
+    if(I18N[lang][key]!==undefined)el.innerHTML=I18N[lang][key];
+  });
+  const itBtn=document.getElementById('lang-it'),enBtn=document.getElementById('lang-en');
+  if(itBtn)itBtn.classList.toggle('active',lang==='it');
+  if(enBtn)enBtn.classList.toggle('active',lang==='en');
+  try{localStorage.setItem('tcd_lang',lang)}catch(e){}
+  window.__tcdLang=lang;
+  renderApartmentData();
+  /* se un riquadro (tile) è già aperto, lo ridisegna nella nuova lingua */
+  if(document.getElementById('tile-overlay').classList.contains('open')&&window.__tcdOpenTile){
+    openTile(window.__tcdOpenTile);
+  }
+}
+(function initLang(){
+  let lang='en';
+  try{lang=localStorage.getItem('tcd_lang')||'en'}catch(e){}
+  setLang(lang);
+})();
+
+/* ══ CURSOR ══ */
+const dot=document.getElementById('cur-dot'),ring=document.getElementById('cur-ring');
+let mx=-100,my=-100,rx=-100,ry=-100;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px'});
+(function ac(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(ac)})();
+document.querySelectorAll('a,button,[role=button],.tile,.gallery-thumb,.apt-cta-btn').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('ch'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('ch'));
+});
+
+/* ══ SCROLL PROGRESS ══ */
+const prog=document.getElementById('scroll-prog');
+window.addEventListener('scroll',()=>{prog.style.width=Math.min(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100,100)+'%'},{passive:true});
+
+/* ══ NAVBAR ══ */
+function openNav(){document.getElementById('navDrawer').classList.add('open');document.getElementById('navOverlay').classList.add('open');document.body.style.overflow='hidden'}
+function closeNav(){document.getElementById('navDrawer').classList.remove('open');document.getElementById('navOverlay').classList.remove('open');document.body.style.overflow=''}
+
+/* ══ TILE OVERLAY ══ */
+function openTileOverlay(tag,title,html){
+  document.getElementById('tov-tag').textContent=tag;
+  document.getElementById('tov-title').textContent=title;
+  document.getElementById('tov-content').innerHTML=html;
+  document.getElementById('tile-overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeTileOverlay(){document.getElementById('tile-overlay').classList.remove('open');document.body.style.overflow=''}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeTileOverlay();closeLightbox()}});
+
+function openTile(key){
+  const A=APT,lang=window.__tcdLang||'en';
+  window.__tcdOpenTile=key;
+  switch(key){
+    case 'descrizione':{
+      const chars=`<div class="chars-grid">${A.caratteristiche.map(c=>`<div class="char-item"><div class="char-label">${c.label[lang]}</div><div class="char-val">${c.value[lang]}</div></div>`).join('')}</div>`;
+      const servizi=`<div class="services-list">${A.servizi.map(s=>`<div class="service-item"><div class="service-dot"></div><span class="service-name">${s.name[lang]}</span><span class="service-dist">${s.dist[lang]}</span></div>`).join('')}</div>`;
+      const sideImg=A.sideImg||A.cover;
+      const testo=`${A.descrizione[lang]}<h4 class="cond-subtitle">${I18N[lang]['apt.charsTitle']}</h4>${chars}<h4 class="cond-subtitle">${I18N[lang]['apt.serviziTitle']}</h4>${servizi}`;
+      const withPhoto=sideImg?`<div class="tov-split"><div class="tov-text">${testo}</div><div class="tov-photo"><img src="${sideImg}" alt="${A.name[lang]}" loading="lazy"/></div></div>`:testo;
+      openTileOverlay('01 — '+I18N[lang]['apt.tileDescName'],I18N[lang]['apt.tileDescName'],withPhoto);
+      break;
+    }
+    case 'condizioni': openTileOverlay(I18N[lang]['apt.tileCondName'],I18N[lang]['apt.tileCondName'],renderCondizioni());break;
+    case 'planpics': openTileOverlay('Plan & Pics','Plan & Pics',renderPlanPics());break;
+    case 'contatti': openTileOverlay(I18N[lang]['apt.contactTitle'],I18N[lang]['apt.contactTitle'],`<p>${I18N[lang]['apt.contactText']}</p><p style="margin-top:16px"><a href="contatti.html" style="color:var(--magenta);font-family:'DM Mono',monospace;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase">${I18N[lang]['apt.contactLink']}</a></p>`);break;
+  }
+}
+
+/* ══ PLAN & PICS — planimetria interattiva ══ */
+/* ══ CONDIZIONI ══ */
+function renderCondizioni(){
+  const A=APT,lang=window.__tcdLang||'en';
+  let roomsHtml='';
+  if(A.rooms&&A.rooms.length){
+    roomsHtml=`<div class="cond-rooms">${A.rooms.map(r=>{
+      const avail=isRoomAvailable(r.availableFrom);
+      const statusClass=avail?'is-available':'is-taken';
+      return `
+      <div class="cond-room-row">
+        <div class="cond-room-info">
+          <span class="cond-room-name ${statusClass}">${r.name[lang]}</span>
+          ${r.availableFrom?`<span class="cond-room-avail ${statusClass}">${I18N[lang]['apt.availableFrom']} ${formatAvailableFrom(r.availableFrom,lang)}</span>`:''}
+        </div>
+        <div class="cond-room-prices">
+          ${r.priceSingola!=null?`<div class="fp-price-tag"><strong>€${r.priceSingola}</strong><span>${I18N[lang]['apt.singola']}</span></div>`:''}
+          ${r.priceDoppia!=null?`<div class="fp-price-tag"><strong>€${r.priceDoppia}</strong><span>${I18N[lang]['apt.doppia']}</span></div><div class="fp-price-tag"><strong>€${Math.round(r.priceDoppia/2)}</strong><span>${I18N[lang]['apt.perPerson']}</span></div>`:''}
+        </div>
+      </div>`;
+    }).join('')}</div>`;
+  }
+  let interoHtml='';
+  if((A.rentalMode==='entrambi'||A.rentalMode==='intero')&&A.interoPricing&&A.interoPricing.length){
+    const tiers=A.interoPricing.map(t=>`<div class="fp-intero-tier"><strong>€${t.prezzo}</strong><span>${t.persone} ${I18N[lang]['apt.persone']}</span></div>`).join('');
+    let statusClass='';
+    let body=`<div class="fp-intero-tiers">${tiers}</div>`;
+    if(A.rentalMode==='entrambi'&&A.rooms&&A.rooms.length){
+      const allAvailable=A.rooms.every(r=>isRoomAvailable(r.availableFrom));
+      statusClass=allAvailable?'is-available':'is-taken';
+      if(!allAvailable)body=`<p class="cond-intero-unavailable">${I18N[lang]['apt.interoUnavailable']}</p>`;
+    }
+    interoHtml=`<h4 class="cond-subtitle ${statusClass}">${I18N[lang]['apt.condInteroTitle']}</h4>${body}`;
+  }
+  const sideImg=A.sideImg||A.cover;
+  const testo=`
+    <div class="cond-wrap">
+      ${roomsHtml?`<h4 class="cond-subtitle">${I18N[lang]['apt.condRoomsTitle']}</h4>${roomsHtml}`:''}
+      ${interoHtml}
+      <p class="cond-note">${I18N[lang]['apt.condNote']}</p>
+      ${A.deposito?`<div class="cond-deposito-box"><span class="deposito-num">${A.deposito}</span><span class="deposito-label">${I18N[lang]['apt.depositoLabel']}</span></div>`:''}
+    </div>
+  `;
+  return sideImg?`<div class="tov-split"><div class="tov-text">${testo}</div><div class="tov-photo"><img src="${sideImg}" alt="${A.name[lang]}" loading="lazy"/></div></div>`:testo;
+}
+
+function renderPlanPics(){
+  const A=APT,lang=window.__tcdLang||'en';
+  const hasRooms=A.rooms&&A.rooms.length;
+  const hasFloorplan=!!(A.floorplan||A.floorplanSVG);
+  const roomsWithHotspot=hasRooms?A.rooms.filter(r=>r.hotspot):[];
+  const hotspots=roomsWithHotspot.map((r,i)=>`<button class="fp-hotspot ${isRoomAvailable(r.availableFrom)?'available':'taken'}" style="left:${r.hotspot.x}%;top:${r.hotspot.y}%" onclick="selectRoom('${r.id}')" data-room="${r.id}"><span>${r.legendNum||(i+1)}</span></button>`).join('');
+  const overlays=hasRooms?A.rooms.filter(r=>r.overlayPoly).map(r=>{
+    const avail=isRoomAvailable(r.availableFrom);
+    const color=avail?'#39ff14':'var(--magenta)';
+    const cls=avail?'available':'taken';
+    const pts=r.overlayPoly.map(p=>p.join(',')).join(' ');
+    return `<polygon class="fp-room-poly ${cls}" data-room="${r.id}" points="${pts}" fill="${color}" fill-opacity=".14" stroke="${color}" stroke-width=".7" stroke-opacity=".95"/>`;
+  }).join(''):'';
+
+  /* Planimetria non ancora disponibile: elenco camere cliccabile al posto dei coni ottici */
+  const roomListFallback=(!hasFloorplan&&hasRooms)?`<div class="fp-room-list">${A.rooms.map(r=>{
+    const avail=isRoomAvailable(r.availableFrom);
+    return `<button class="fp-room-chip ${avail?'available':'taken'}" onclick="selectRoom('${r.id}')" data-room="${r.id}">${r.name[lang]}</button>`;
+  }).join('')}</div>`:'';
+
+  return `
+    <div class="fp-wrap">
+      <div class="fp-image-wrap">
+        ${hasFloorplan?`${A.floorplan?`<img src="${A.floorplan}" alt="Floor plan" style="width:100%;display:block"/>`:A.floorplanSVG}${overlays?`<svg class="fp-room-overlay" viewBox="0 0 100 100" preserveAspectRatio="none">${overlays}</svg>`:''}${hotspots}`:`<div class="fp-noplan"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 15l4-4a2 2 0 013 0l5 5"/><path d="M14 13l1-1a2 2 0 013 0l3 3"/><circle cx="8.5" cy="8.5" r="1.5"/></svg><span>${I18N[lang]['apt.planComingSoon']}</span></div>`}
+      </div>
+      ${roomListFallback}
+      <div class="fp-detail" id="fp-detail">
+        <p class="fp-hint">${hasRooms?I18N[lang]['apt.planHint']:I18N[lang]['apt.planNoRooms']}</p>
+      </div>
+      ${A.gallery&&A.gallery.length?`<h4 class="cond-subtitle">${I18N[lang]['apt.otherPhotos']}</h4><div class="gallery-grid">${A.gallery.map((url,i)=>`<img class="gallery-thumb" src="${url}" alt="Photo ${i+1}" onclick="openLightbox(${i},APARTMENTS[${A.id}].gallery)" loading="lazy"/>`).join('')}</div>`:''}
+    </div>
+  `;
+}
+function selectRoom(id){
+  const A=APT,lang=window.__tcdLang||'en';
+  const r=A.rooms.find(x=>x.id===id);
+  if(!r)return;
+  document.querySelectorAll('.fp-hotspot').forEach(h=>h.classList.toggle('active',h.dataset.room===id));
+  document.querySelectorAll('.fp-room-poly').forEach(p=>p.classList.toggle('dim',p.dataset.room!==id));
+  document.querySelectorAll('.fp-room-chip').forEach(c=>c.classList.toggle('active',c.dataset.room===id));
+  const badge=isRoomAvailable(r.availableFrom)?`<span class="apt-badge free">${I18N[lang]['apt.available']}</span>`:`<span class="apt-badge taken">${I18N[lang]['apt.taken']}</span>`;
+  document.getElementById('fp-detail').innerHTML=`
+    <div class="fp-room-photos">${r.photos.length?r.photos.map((p,i)=>`<img src="${p}" loading="lazy" alt="${r.name[lang]}" onclick="openLightbox(${i},APARTMENTS[${A.id}].rooms.find(x=>x.id==='${r.id}').photos)"/>`).join(''):`<div class="fp-photos-pending">${I18N[lang]['apt.photosPending']}</div>`}</div>
+    <div class="fp-room-head"><h3>${r.name[lang]}</h3>${badge}</div>
+    <div class="fp-room-feats">${r.features.map(f=>`<span class="fp-feat">${f[lang]}</span>`).join('')}${r.sqm?`<span class="fp-feat">${r.sqm} m²</span>`:''}</div>
+  `;
+}
+
+/* ══ LIGHTBOX ══ */
+var lbIdx=0,lbPhotos=[];
+function openLightbox(i,photos){lbPhotos=photos||APT.gallery;lbIdx=i;updateLb();document.getElementById('lightbox').classList.add('open')}
+function closeLightbox(){document.getElementById('lightbox').classList.remove('open')}
+function lbNav(d){lbIdx=(lbIdx+d+lbPhotos.length)%lbPhotos.length;updateLb()}
+function updateLb(){document.getElementById('lb-img').src=lbPhotos[lbIdx];document.getElementById('lb-counter').textContent=`${lbIdx+1} / ${lbPhotos.length}`}
+
+/* ══════════════════════════════════════════════════
+   TRANSITION — VENETIAN BLIND SLAM
+   ─────────────────────────────────────────────────
+   EXIT: 12 horizontal slats slam closed from top,
+         each staggered by 40ms, like a venetian blind
+         snapping shut. Color: deep black with magenta
+         edge glow on the leading face of each slat.
+         Total: ~700ms.
+
+   ENTRY: Same slats already closed, fly open upward
+          revealing the page beneath. Each slat shoots
+          up with spring overshoot. Total: ~800ms.
+
+   Feels mechanical, precise, architectural — matches
+   the DM Mono / grid aesthetic of the site perfectly.
+══════════════════════════════════════════════════ */
+const tCanvas=document.getElementById('trans-canvas');
+const tCtx=tCanvas.getContext('2d');
+function resizeT(){tCanvas.width=innerWidth;tCanvas.height=innerHeight}
+resizeT();window.addEventListener('resize',resizeT);
+
+const N_SLATS=12;
+
+/* progress 0→1 for each slat, staggered */
+function slotProgress(p,i,n,mode){
+  /* stagger: each slat delayed by (i/n)*0.4 of total duration */
+  const stagger=(i/n)*0.38;
+  const local=Math.max(0,Math.min((p-stagger)/(1-stagger),1));
+  /* spring easing: overshoot then settle */
+  if(mode==='exit'){
+    /* slam: fast ease-in (gravity drop) */
+    return 1-Math.pow(1-local,2.4);
+  } else {
+    /* open: spring with slight overshoot */
+    const c=local*Math.PI;
+    return Math.max(0,1-(Math.cos(c)*0.5+0.5)*(1-local*0.3));
+  }
+}
+
+function drawBlinds(progress,mode){
+  const W=tCanvas.width,H=tCanvas.height;
+  tCtx.clearRect(0,0,W,H);
+  const slotH=H/N_SLATS;
+
+  for(let i=0;i<N_SLATS;i++){
+    const sp=slotProgress(progress,i,N_SLATS,mode);
+    const y=i*slotH;
+
+    if(mode==='exit'){
+      /* Slat drops down from top of each band */
+      const slatH=sp*slotH;
+      if(slatH<=0) continue;
+
+      /* Main slat face */
+      tCtx.fillStyle='#0a0a0a';
+      tCtx.fillRect(0,y,W,slatH);
+
+      /* Leading edge glow */
+      if(sp<0.98){
+        const edgeY=y+slatH;
+        const grad=tCtx.createLinearGradient(0,edgeY-8,0,edgeY+4);
+        grad.addColorStop(0,`rgba(200,24,92,0)`);
+        grad.addColorStop(0.5,`rgba(200,24,92,${0.5+sp*0.4})`);
+        grad.addColorStop(1,`rgba(200,24,92,0)`);
+        tCtx.fillStyle=grad;
+        tCtx.fillRect(0,edgeY-8,W,12);
+        /* Sharp pixel line */
+        tCtx.fillStyle=`rgba(220,80,120,0.9)`;
+        tCtx.fillRect(0,edgeY,W,1.5);
+      }
+
+      /* Horizontal ribbing — mechanical texture */
+      if(slatH>4){
+        tCtx.fillStyle='rgba(255,255,255,0.018)';
+        for(let r=y+3;r<y+slatH-2;r+=6){
+          tCtx.fillRect(0,r,W,1);
+        }
+      }
+    } else {
+      /* ENTRY: slat already closed, shoots upward */
+      const openAmount=sp;
+      const remaining=(1-openAmount)*slotH;
+      if(remaining>=slotH-0.5){
+        /* Fully closed */
+        tCtx.fillStyle='#0a0a0a';
+        tCtx.fillRect(0,y,W,slotH+1);
+      } else if(remaining>0.5){
+        /* Partially open — draw what's left of slat at top of band */
+        tCtx.fillStyle='#0a0a0a';
+        tCtx.fillRect(0,y,W,remaining);
+        /* Edge glow at bottom of retreating slat */
+        const edgeY=y+remaining;
+        const grad=tCtx.createLinearGradient(0,edgeY-4,0,edgeY+8);
+        grad.addColorStop(0,`rgba(200,24,92,${0.6*(1-sp)})`);
+        grad.addColorStop(1,'rgba(200,24,92,0)');
+        tCtx.fillStyle=grad;
+        tCtx.fillRect(0,edgeY-4,W,12);
+        tCtx.fillStyle=`rgba(220,80,120,${0.7*(1-sp)})`;
+        tCtx.fillRect(0,edgeY,W,1);
+        /* Ribbing */
+        tCtx.fillStyle='rgba(255,255,255,0.018)';
+        for(let r=y+1;r<y+remaining-1;r+=6){
+          tCtx.fillRect(0,r,W,1);
+        }
+      }
+      /* else fully open — nothing drawn */
+    }
+  }
+}
+
+function runBlinds(mode,duration,onComplete){
+  tCanvas.style.pointerEvents='all';
+  let startT=null;
+  function frame(ts){
+    if(!startT)startT=ts;
+    const p=Math.min((ts-startT)/duration,1);
+    drawBlinds(p,mode);
+    if(p<1){requestAnimationFrame(frame)}
+    else{
+      tCtx.clearRect(0,0,tCanvas.width,tCanvas.height);
+      tCanvas.style.pointerEvents='none';
+      if(onComplete)onComplete();
+    }
+  }
+  requestAnimationFrame(frame);
+}
+
+/* ENTRY on load — slats fly open */
+window.addEventListener('load',()=>{
+  /* Start fully closed */
+  const W=tCanvas.width,H=tCanvas.height;
+  tCtx.fillStyle='#0a0a0a';
+  tCtx.fillRect(0,0,W,H);
+  runBlinds('entry',900,()=>{
+    document.getElementById('pageWrap').classList.add('visible');
+  });
+});
+
+/* ══ NAVIGATION LOGIC ══
+   back-btn ("Torna a Soluzioni"):
+     → Venetian Blind exit + soluzioni.html?from=appartamento
+     → soluzioni skips its glitch intro on arrival
+
+   All other links (navbar, CTA, footer):
+     → Direct navigation, no exit animation.
+     → Destination plays its own entry animation only.
+══ */
+document.addEventListener('click',e=>{
+  const link=e.target.closest('a[href]');
+  if(!link)return;
+  const href=link.getAttribute('href');
+  if(!href||href.startsWith('#')||href.startsWith('http')||href.startsWith('mailto'))return;
+  e.preventDefault();
+
+  if(link.classList.contains('back-btn')){
+    /* Venetian Blind exit → land on soluzioni without its glitch */
+    document.getElementById('pageWrap').style.transition='none';
+    document.getElementById('pageWrap').style.opacity='0';
+    const dest=href+(href.includes('?')?'&':'?')+'from=appartamento';
+    runBlinds('exit',680,()=>{window.location.href=dest});
+  } else {
+    /* Direct nav — destination handles its own entry */
+    window.location.href=href;
+  }
+});
+</script>
+</body>
+</html>

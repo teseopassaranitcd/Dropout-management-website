@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chi Siamo — The College Dropout | Rieti</title>
+  <meta name="description" content="Chi è The College Dropout e chi è Ing. Teseo Passarani. Gestione professionale di appartamenti a Rieti per studenti e proprietari."/>
+  <link rel="canonical" href="https://collegedropoutmanagement.com/chi-siamo"/>
+  <meta property="og:title" content="Chi Siamo — The College Dropout"/>
+  <meta property="og:description" content="La storia di TCD, come lavoriamo, i nostri servizi a Rieti."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:locale" content="it_IT"/>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Person","name":"Teseo Passarani","jobTitle":"Fondatore","worksFor":{"@type":"LocalBusiness","name":"The College Dropout","address":{"@type":"PostalAddress","addressLocality":"Rieti","addressCountry":"IT"}}}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&family=Bebas+Neue&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --black:#0a0a0a;--magenta:#c8185c;--white:#f0ede8;
+      --off:#e8e4df;--gray:#888;
+      --border:rgba(240,237,232,.13);
+      --glow:0 0 12px rgba(200,24,92,.8),0 0 32px rgba(200,24,92,.3);
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:'Space Grotesk',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased;cursor:none}
+
+    /* ── CURSOR ── */
+    #cur-dot,#cur-ring{position:fixed;border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%)}
+    #cur-dot{width:6px;height:6px;background:var(--magenta);box-shadow:0 0 8px var(--magenta)}
+    #cur-ring{width:30px;height:30px;border:1.5px solid rgba(200,24,92,.5);transition:width .18s,height .18s,border-color .18s}
+    body.ch #cur-ring{width:46px;height:46px;border-color:var(--magenta)}
+    @media(hover:none){#cur-dot,#cur-ring{display:none}body{cursor:auto}}
+
+    #scroll-prog{position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,var(--magenta),#fff 80%);z-index:9998}
+
+    /* ── CANVAS BG ── */
+    #bg-canvas{position:fixed;inset:0;z-index:0;display:block}
+
+    /* ── NOISE ── */
+    .noise{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.025;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px}
+
+    /* ── CURTAIN CANVAS ── */
+    #curtain{position:fixed;inset:0;z-index:8000;display:block;pointer-events:none}
+
+    /* ── LANG BAR ── */
+    .lang-bar{position:fixed;top:0;right:0;z-index:900;display:flex;flex-direction:row;background:rgba(10,10,10,.92);border-left:1px solid var(--border);border-bottom:1px solid var(--border)}
+    .lang-bar a{display:flex;align-items:center;gap:7px;padding:10px 14px;color:var(--white);text-decoration:none;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;font-family:'DM Mono',monospace;border-right:1px solid var(--border);transition:background .2s}
+    .lang-bar a:last-child{border-right:none}
+    .lang-bar a:hover{background:rgba(200,24,92,.22)}
+    .lang-bar a.active{color:var(--magenta)}
+    .lang-bar .flag{font-size:1.1rem}
+
+    /* ── NAV DRAWER ── */
+    .nav-overlay{position:fixed;inset:0;background:rgba(0,0,0,.62);z-index:1800;opacity:0;pointer-events:none;transition:opacity .35s}
+    .nav-overlay.open{opacity:1;pointer-events:all}
+    .nav-drawer{position:fixed;top:0;left:0;width:min(340px,90vw);height:100vh;background:var(--black);border-right:2px solid var(--magenta);z-index:1900;transform:translateX(-100%);transition:transform .4s cubic-bezier(.16,1,.3,1);display:flex;flex-direction:column;overflow:hidden}
+    .nav-drawer.open{transform:translateX(0)}
+    .nav-drawer-header{padding:24px 28px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+    .nav-drawer-brand{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.06em;color:var(--magenta)}
+    .nav-close{background:none;border:none;color:var(--white);font-size:1.6rem;cursor:none;line-height:1;transition:color .2s}
+    .nav-close:hover{color:var(--magenta)}
+    .nav-links{display:flex;flex-direction:column;padding:24px 0;flex:1}
+    .nav-links a{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:.04em;color:var(--white);text-decoration:none;padding:13px 28px;border-bottom:1px solid var(--border);transition:color .2s,padding-left .2s;position:relative}
+    .nav-links a:hover{color:var(--magenta);padding-left:40px}
+    .nav-links a.current{color:var(--magenta)}
+    .nav-links a.current::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--magenta)}
+    .nav-drawer-footer{padding:20px 28px;font-size:.68rem;color:var(--gray);letter-spacing:.08em;text-transform:uppercase;border-top:1px solid var(--border);font-family:'DM Mono',monospace;display:flex;justify-content:space-between}
+    .nav-trigger{position:fixed;top:0;left:0;z-index:600;height:56px;display:flex;align-items:center;padding:0 20px;background:rgba(10,10,10,.92);border-bottom:1px solid var(--border);border-right:1px solid var(--border);cursor:none;backdrop-filter:blur(8px)}
+    .nav-trigger-brand{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.06em;color:var(--white)}
+    .nav-trigger-brand span{color:var(--magenta)}
+    .nav-trigger:hover .nav-trigger-brand{color:var(--magenta)}
+    @media(min-width:768px){.nav-trigger{height:64px}}
+
+    /* ── PAGE WRAP ── */
+    .page-wrap{position:relative;z-index:2;padding-top:56px;opacity:0;transition:opacity .6s ease}
+    .page-wrap.visible{opacity:1}
+    @media(min-width:768px){.page-wrap{padding-top:64px}}
+    .container{max-width:1100px;margin:0 auto;padding:0 24px}
+    @media(min-width:768px){.container{padding:0 40px}}
+
+    /* ════════════════════════════════════════
+       HERO
+    ════════════════════════════════════════ */
+    .hero{
+      padding:80px 0 64px;
+      border-bottom:1px solid var(--border);
+      position:relative;overflow:hidden;
+    }
+    .hero-label{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--magenta);margin-bottom:20px;display:block}
+    .hero-title{
+      font-family:'Bebas Neue',sans-serif;
+      font-size:clamp(4rem,12vw,9rem);
+      line-height:.88;letter-spacing:-.01em;
+      color:var(--white);margin-bottom:24px;
+    }
+    .hero-sub{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gray)}
+    /* Big ghost text behind hero */
+    .hero-ghost{
+      position:absolute;right:-2%;bottom:-10%;
+      font-family:'Bebas Neue',sans-serif;
+      font-size:clamp(6rem,22vw,18rem);
+      line-height:1;letter-spacing:-.02em;
+      color:transparent;-webkit-text-stroke:1px rgba(240,237,232,.04);
+      pointer-events:none;user-select:none;white-space:nowrap;
+    }
+
+    /* ════════════════════════════════════════
+       STORIA — bicolumn
+    ════════════════════════════════════════ */
+    .storia{padding:80px 0;border-bottom:1px solid var(--border)}
+    .storia-grid{
+      display:flex;
+      flex-direction:column;
+      gap:48px;
+    }
+
+    .foto-stack{display:flex;flex-direction:column;gap:20px}
+    @media(min-width:600px){.foto-stack{flex-direction:row}}
+    .foto-gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:8px}
+    @media(min-width:600px){.foto-gallery{grid-template-columns:repeat(3,1fr)}}
+    .foto-gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:2px;border:1px solid var(--border);display:block;transition:transform .25s ease}
+    .foto-gallery img:hover{transform:scale(1.03)}
+    .foto-stack .foto-placeholder{aspect-ratio:4/3;flex:1}
+
+    /* Photo placeholder */
+    .foto-placeholder{
+      width:100%;
+      aspect-ratio:3/4;
+      background:rgba(200,24,92,.04);
+      border:1px solid rgba(200,24,92,.2);
+      border-radius:2px;
+      display:flex;flex-direction:column;
+      align-items:center;justify-content:center;
+      gap:12px;
+      position:relative;overflow:hidden;
+    }
+    .foto-placeholder::before{
+      content:'';position:absolute;inset:0;
+      background:linear-gradient(135deg,rgba(200,24,92,.06) 0%,transparent 60%);
+    }
+    .foto-icon{
+      width:48px;height:48px;
+      stroke:rgba(200,24,92,.4);fill:none;
+      stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;
+      position:relative;z-index:1;
+    }
+    .foto-label{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(200,24,92,.5);position:relative;z-index:1;text-align:center;line-height:1.6}
+    .foto-name{
+      position:absolute;bottom:0;left:0;right:0;
+      padding:14px 16px;
+      background:rgba(10,10,10,.85);
+      border-top:1px solid rgba(200,24,92,.2);
+      font-family:'DM Mono',monospace;font-size:.6rem;
+      letter-spacing:.12em;text-transform:uppercase;color:var(--off);
+      backdrop-filter:blur(4px);
+    }
+    .foto-name span{color:var(--magenta)}
+
+    /* Letter / text */
+    .storia-text{display:flex;flex-direction:column;gap:0}
+    .storia-quote{
+      font-family:'Bebas Neue',sans-serif;
+      font-size:clamp(3rem,8vw,5.5rem);
+      line-height:1;letter-spacing:.02em;
+      color:var(--magenta);opacity:.18;
+      margin-bottom:8px;
+    }
+    .storia-body{
+      font-size:clamp(.9rem,1.6vw,1rem);
+      line-height:1.82;
+      color:var(--off);
+    }
+    .storia-body p+p{margin-top:18px}
+    .storia-body strong{color:var(--white);font-weight:600}
+    .storia-firma{
+      margin-top:32px;
+      padding-top:24px;
+      border-top:1px solid var(--border);
+      display:flex;flex-direction:column;gap:4px;
+    }
+    .firma-name{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.04em;color:var(--white)}
+    .firma-role{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--magenta)}
+
+    /* ════════════════════════════════════════
+       PROCESSO — accordion
+    ════════════════════════════════════════ */
+    .processo{padding:80px 0;border-bottom:1px solid var(--border)}
+    .section-label{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--magenta);margin-bottom:40px;display:block}
+    .section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,5vw,3.5rem);letter-spacing:.02em;color:var(--white);margin-bottom:48px;line-height:1}
+
+    .accordion{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--border)}
+    .acc-item{border-bottom:1px solid var(--border)}
+    .acc-trigger{
+      width:100%;display:flex;align-items:center;gap:20px;
+      padding:24px 0;background:none;border:none;
+      cursor:none;text-align:left;
+      transition:background .2s;
+    }
+    .acc-trigger:hover{padding-left:4px}
+    .acc-num{
+      font-family:'Bebas Neue',sans-serif;font-size:2.2rem;
+      line-height:1;color:var(--magenta);opacity:.25;
+      min-width:52px;transition:opacity .3s;
+    }
+    .acc-item.open .acc-num{opacity:1}
+    .acc-title{
+      font-family:'Bebas Neue',sans-serif;
+      font-size:clamp(1.1rem,2.5vw,1.6rem);
+      letter-spacing:.03em;color:var(--white);flex:1;
+      transition:color .2s;
+    }
+    .acc-trigger:hover .acc-title{color:var(--magenta)}
+    .acc-item.open .acc-title{color:var(--magenta)}
+    .acc-arrow{
+      font-size:1.1rem;color:var(--gray);
+      transition:transform .35s cubic-bezier(.16,1,.3,1),color .2s;
+      flex-shrink:0;
+    }
+    .acc-item.open .acc-arrow{transform:rotate(45deg);color:var(--magenta)}
+    .acc-body{
+      overflow:hidden;
+      max-height:0;
+      transition:max-height .4s cubic-bezier(.16,1,.3,1);
+    }
+    .acc-item.open .acc-body{max-height:300px}
+    .acc-inner{
+      padding:0 0 28px 72px;
+      font-size:.9rem;line-height:1.78;color:var(--gray);max-width:600px;
+    }
+    @media(max-width:600px){.acc-inner{padding-left:52px}}
+
+    /* ════════════════════════════════════════
+       IN PIÙ — three cards
+    ════════════════════════════════════════ */
+    .inpiu{padding:80px 0}
+    .inpiu-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:1px;
+      background:var(--border);
+      border:1px solid var(--border);
+      border-radius:3px;
+      overflow:hidden;
+    }
+    @media(min-width:768px){.inpiu-grid{grid-template-columns:repeat(3,1fr)}}
+
+    .inpiu-card{
+      background:rgba(12,10,12,.92);
+      padding:clamp(24px,4vw,40px) clamp(20px,3vw,32px);
+      display:flex;flex-direction:column;gap:0;
+      position:relative;overflow:hidden;
+      transition:background .25s;
+    }
+    .inpiu-card::after{
+      content:'';position:absolute;top:0;left:0;right:0;height:2px;
+      background:var(--magenta);transform:scaleX(0);transform-origin:left;
+      transition:transform .35s cubic-bezier(.16,1,.3,1);
+    }
+    .inpiu-card:hover{background:rgba(20,10,14,.98)}
+    .inpiu-card:hover::after{transform:scaleX(1)}
+    .inpiu-icon{
+      width:36px;height:36px;
+      stroke:var(--magenta);fill:none;
+      stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;
+      margin-bottom:24px;transition:filter .25s;
+    }
+    .inpiu-card:hover .inpiu-icon{filter:drop-shadow(0 0 6px rgba(200,24,92,.6))}
+    .inpiu-title{
+      font-family:'Bebas Neue',sans-serif;
+      font-size:1.3rem;letter-spacing:.04em;
+      color:var(--white);margin-bottom:10px;
+      transition:color .25s;
+    }
+    .inpiu-card:hover .inpiu-title{color:var(--magenta)}
+    .inpiu-desc{font-size:.85rem;line-height:1.7;color:var(--gray)}
+
+    /* ── FOOTER ── */
+    .site-footer{border-top:1px solid var(--border)}
+    .footer-title-row{padding:48px 24px 32px;border-bottom:1px solid var(--border)}
+    .footer-giant{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,14vw,10rem);line-height:.88;letter-spacing:-.02em;color:transparent;-webkit-text-stroke:1px rgba(240,237,232,.18);transition:color .4s ease,-webkit-text-stroke .4s ease;display:block;cursor:none}
+    .footer-giant:hover{color:var(--white);-webkit-text-stroke:1px transparent}
+    .footer-giant .accent{color:var(--magenta);-webkit-text-stroke:0}
+    .footer-tagline{margin-top:16px;font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gray)}
+    .footer-links-row{display:grid;grid-template-columns:1fr;gap:0;border-bottom:1px solid var(--border)}
+    .footer-col{padding:32px 24px;border-bottom:1px solid var(--border)}
+    .footer-col:last-child{border-bottom:none}
+    .footer-col-label{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--magenta);margin-bottom:16px}
+    .footer-col a{display:block;font-family:'Space Grotesk',sans-serif;font-size:.88rem;color:var(--gray);text-decoration:none;padding:5px 0;border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
+    .footer-col a:hover{color:var(--white);border-color:rgba(240,237,232,.1)}
+    .footer-bottom{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;flex-wrap:wrap;gap:10px}
+    .footer-bottom-left,.footer-bottom-right{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gray)}
+    .footer-bottom-right a{color:var(--gray);text-decoration:none;transition:color .2s}
+    .footer-bottom-right a:hover{color:var(--magenta)}
+    .footer-dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--magenta);margin:0 7px;vertical-align:middle;animation:blink 2s ease-in-out infinite}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+    @media(min-width:768px){
+      .footer-links-row{grid-template-columns:repeat(3,1fr)}
+      .footer-col{border-bottom:none;border-right:1px solid var(--border)}
+      .footer-col:last-child{border-right:none}
+      .footer-title-row,.footer-bottom{padding-left:40px;padding-right:40px}
+    }
+
+    /* ── DROP ENTRANCE (hero elements, fires after curtain exits) ── */
+    .drop-in{
+      opacity:0;
+      transform:translateY(28px);
+      filter:blur(4px);
+    }
+    .drop-in.landed{
+      transition:opacity .7s cubic-bezier(.16,1,.3,1),
+                 transform .7s cubic-bezier(.16,1,.3,1),
+                 filter .6s ease;
+      opacity:1;transform:translateY(0);filter:blur(0);
+    }
+    @media(prefers-reduced-motion:reduce){.drop-in{opacity:1;transform:none;filter:none}}
+    .rv{opacity:0;transform:translateY(22px);transition:opacity .65s cubic-bezier(.16,1,.3,1),transform .65s cubic-bezier(.16,1,.3,1)}
+    .rv.in{opacity:1;transform:translateY(0)}
+    @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+  </style>
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+<canvas id="curtain"></canvas>
+<div class="noise"></div>
+<div id="cur-dot"></div>
+<div id="cur-ring"></div>
+<div id="scroll-prog"></div>
+
+<!-- LANG BAR -->
+<div class="lang-bar" role="navigation">
+  <a href="chi-siamo.html" class="active" aria-label="Italiano">
+    <svg class="flag" viewBox="0 0 3 2" width="20" height="14"><rect width="1" height="2" x="0" fill="#009246"/><rect width="1" height="2" x="1" fill="#f1f2f1"/><rect width="1" height="2" x="2" fill="#ce2b37"/></svg>
+    <span>IT</span>
+  </a>
+  <a href="#" aria-label="English">
+    <svg class="flag" viewBox="0 0 60 30" width="20" height="14"><clipPath id="tcd-uk-clip4"><path d="M0,0 v30 h60 v-30 z"/></clipPath><g clip-path="url(#tcd-uk-clip4)"><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="2"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></g></svg>
+    <span>EN</span>
+  </a>
+</div>
+
+<!-- NAV DRAWER -->
+<div class="nav-overlay" id="navOverlay" onclick="closeNav()"></div>
+<nav class="nav-drawer" id="navDrawer">
+  <div class="nav-drawer-header">
+    <span class="nav-drawer-brand">TCD.</span>
+    <button class="nav-close" onclick="closeNav()">✕</button>
+  </div>
+  <div class="nav-links">
+    <a href="index.html">Homepage</a>
+    <a href="soluzioni.html">Soluzioni</a>
+    <a href="servizi.html">I Nostri Servizi</a>
+    <a href="chi-siamo.html" class="current">Chi Siamo</a>
+    <a href="contatti.html">Contatti</a>
+    <a href="proprietari.html">Proprietari</a>
+  </div>
+  <div class="nav-drawer-footer">
+    <span>The College Dropout © 2026</span>
+    <div><a href="#" style="color:var(--gray);text-decoration:none;font-size:.65rem">Privacy</a></div>
+  </div>
+</nav>
+<button class="nav-trigger" onclick="openNav()">
+  <span class="nav-trigger-brand">TCD<span>.</span></span>
+</button>
+
+<!-- PAGE -->
+<div class="page-wrap" id="pageWrap">
+
+  <!-- ════ HERO ════ -->
+  <section class="hero">
+    <div class="container">
+      <span class="hero-label drop-in" data-delay="0">The College Dropout · Rieti</span>
+      <h1 class="hero-title drop-in" data-delay="120">Chi<br>Siamo</h1>
+      <p class="hero-sub drop-in" data-delay="260">Ing. Teseo Passarani & Arch. Gulnaz Turgaliyeva · Est. 2024</p>
+    </div>
+    <div class="hero-ghost" aria-hidden="true">TCD</div>
+  </section>
+
+  <!-- ════ STORIA ════ -->
+  <section class="storia">
+    <div class="container">
+      <div class="storia-grid">
+
+        <!-- Lettera -->
+        <div class="storia-text rv">
+          <div class="storia-quote" aria-hidden="true">"</div>
+          <div class="storia-body">
+            <p>TCD nasce nel 2024 da un'idea di Teseo Passarani. Nel corso degli anni ha ripetutamente cercato di creare un movimento universitario reatino vero e proprio, che potesse fare da cornice al crescente afflusso di studenti internazionali e non nel capoluogo Sabino, cimentandosi più volte nell'organizzazione di eventi sportivi e sociali — riscuotendo alle volte discreto successo, alle volte fallendo miseramente.</p>
+            <p>Questa presenza nel mondo universitario reatino ha portato alcuni conoscenti a chiedergli consigli e aiuto nella gestione dei loro appartamenti, intenzionati com'erano ad offrire la proprietà in affitto agli studenti. In poco tempo si è reso conto di quanto questo ambito sia delicato, intricato e di difficile interpretazione — e ha trovato da subito un buon feeling con quest'attività, tanto che altre persone hanno iniziato a rivolgersi a lui per lo stesso motivo.</p>
+            <p>Con il crescere della richiesta, ha deciso di strutturare la cosa e organizzarsi, trasformando questo hobby in una vera e propria attività gestionale.</p>
+            <p><strong>Oggi TCD è composto da Teseo e Gulnaz</strong>, compagni nella vita e nel lavoro: lui ingegnere, lei architetto e interior designer. Insieme uniscono la gestione quotidiana degli immobili alle competenze tecniche e progettuali necessarie a seguirli in ogni fase — dalle pratiche edilizie alla scelta dell'arredo.</p>
+            <p>Le sfide non mancano, ma la possibilità di conoscere moltissime persone, culture e situazioni con cui altrimenti non avrebbero mai avuto a che fare ha affinato le loro <strong>capacità relazionali</strong> e contribuito alla crescita del fenomeno universitario nella nostra città.</p>
+            <p>Ad oggi, a distanza di due anni dall'inizio della prima collaborazione, TCD gestisce <strong>oltre 20 soluzioni abitative</strong> sul territorio, ponendo al primo posto il benessere degli studenti, la tranquillità dei proprietari e la crescita del movimento universitario reatino.</p>
+          </div>
+          <div class="storia-firma">
+            <span class="firma-name">THE COLLEGE DROPOUT</span>
+            <span class="firma-role">Fotogallery</span>
+          </div>
+        </div>
+
+        <!-- Galleria foto -->
+        <div class="foto-gallery">
+          <img src="images/chi-siamo/foto-01.jpg" alt="The College Dropout" loading="lazy">
+          <img src="images/chi-siamo/foto-02.jpg" alt="The College Dropout" loading="lazy">
+          <img src="images/chi-siamo/foto-04.jpg" alt="The College Dropout" loading="lazy">
+          <img src="images/chi-siamo/foto-05.jpg" alt="The College Dropout" loading="lazy">
+          <img src="images/chi-siamo/foto-06.jpg" alt="The College Dropout" loading="lazy">
+          <img src="images/chi-siamo/foto-07.jpg" alt="The College Dropout" loading="lazy">
+          <img src="images/chi-siamo/foto-08.jpg" alt="The College Dropout" loading="lazy">
+          <img src="images/chi-siamo/foto-09.jpg" alt="The College Dropout" loading="lazy">
+          <img src="images/chi-siamo/foto-10.jpg" alt="The College Dropout" loading="lazy">
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ FOOTER ════ -->
+  <footer class="site-footer">
+    <div class="footer-title-row">
+      <span class="footer-giant">THE COLLEGE<br><span class="accent">DROPOUT</span></span>
+      <p class="footer-tagline">Soluzioni abitative a Rieti — per studenti e non solo · Est. 2024</p>
+    </div>
+    <div class="footer-links-row">
+      <div class="footer-col">
+        <p class="footer-col-label">Navigazione</p>
+        <a href="index.html">Homepage</a>
+        <a href="soluzioni.html">Soluzioni</a>
+        <a href="servizi.html">I Nostri Servizi</a>
+        <a href="chi-siamo.html">Chi Siamo</a>
+        <a href="contatti.html">Contatti</a>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-label">Per gli studenti</p>
+        <a href="soluzioni.html">Trova una soluzione</a>
+        <a href="soluzioni.html">Mappa degli alloggi</a>
+        <a href="#">Rieti — guida alla città</a>
+        <a href="#">Erasmus & internazionali</a>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-label">Per i proprietari</p>
+        <a href="servizi.html">I nostri servizi</a>
+        <a href="chi-siamo.html">Chi siamo</a>
+        <a href="contatti.html">Scrivici</a>
+        <a href="#">FAQ</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-bottom-left">© 2026 The College Dropout<span class="footer-dot"></span>Rieti, Italia</span>
+      <span class="footer-bottom-right">Design: <a href="https://tevwebstudio.it" target="_blank" rel="noopener noreferrer">T&V Web Studio</a></span>
+    </div>
+  </footer>
+
+</div><!-- end page-wrap -->
+
+<script>
+/* ══════════════════════════════════════════════════
+   CANVAS BG — Particle Network
+   Points drift slowly, connect when close enough.
+   Some nodes are magenta, most are dim white.
+   Unique to Chi Siamo.
+══════════════════════════════════════════════════ */
+(function(){
+try{
+  const c=document.getElementById('bg-canvas');
+  const ctx=c&&c.getContext('2d');
+  if(!ctx)throw new Error('no 2d context');
+  let W,H,pts=[];
+  const N=70,CONNECT_DIST=140;
+
+  function resize(){W=c.width=innerWidth;H=c.height=innerHeight;build()}
+
+  function build(){
+    pts=[];
+    for(let i=0;i<N;i++){
+      const accent=Math.random()<0.12;
+      pts.push({
+        x:Math.random()*W,y:Math.random()*H,
+        vx:(Math.random()-.5)*.22,vy:(Math.random()-.5)*.22,
+        r:accent?2.2:1.1,
+        baseAlpha:accent?.65:.2,
+        accent,
+        twinkle:Math.random()<0.4,
+        phase:Math.random()*Math.PI*2,
+        speed:.4+Math.random()*.8
+      });
+    }
+  }
+
+  let t=0;
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle='#0a0a0a';ctx.fillRect(0,0,W,H);
+    t+=0.01;
+
+    // Move points
+    pts.forEach(p=>{
+      p.x+=p.vx;p.y+=p.vy;
+      if(p.x<-20)p.x=W+20;if(p.x>W+20)p.x=-20;
+      if(p.y<-20)p.y=H+20;if(p.y>H+20)p.y=-20;
+    });
+
+    // Draw connections
+    for(let i=0;i<pts.length;i++){
+      for(let j=i+1;j<pts.length;j++){
+        const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y;
+        const dist=Math.sqrt(dx*dx+dy*dy);
+        if(dist>CONNECT_DIST)continue;
+        const strength=1-dist/CONNECT_DIST;
+        const isMag=pts[i].accent||pts[j].accent;
+        ctx.strokeStyle=isMag
+          ?`rgba(200,24,92,${strength*.35})`
+          :`rgba(240,237,232,${strength*.06})`;
+        ctx.lineWidth=isMag?1:0.5;
+        ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);ctx.stroke();
+      }
+    }
+
+    // Draw points
+    pts.forEach(p=>{
+      let a=p.baseAlpha;
+      if(p.twinkle)a*=0.5+0.5*Math.sin(t*p.speed+p.phase);
+      ctx.globalAlpha=a;
+      if(p.accent){
+        const g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*5);
+        g.addColorStop(0,'rgba(200,24,92,.8)');g.addColorStop(1,'rgba(200,24,92,0)');
+        ctx.fillStyle=g;ctx.beginPath();ctx.arc(p.x,p.y,p.r*5,0,Math.PI*2);ctx.fill();
+      }
+      ctx.fillStyle=p.accent?'rgba(200,24,92,1)':'rgba(240,237,232,1)';
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();
+    });
+    ctx.globalAlpha=1;
+
+    // Vignette
+    const vg=ctx.createRadialGradient(W/2,H/2,H*.15,W/2,H/2,H*.9);
+    vg.addColorStop(0,'rgba(0,0,0,0)');vg.addColorStop(1,'rgba(0,0,0,.65)');
+    ctx.fillStyle=vg;ctx.fillRect(0,0,W,H);
+
+    requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize',resize);
+  resize();draw();
+}catch(e){
+  console.error('Sfondo animato non disponibile:',e);
+}
+})();
+
+/* ══ CURSOR ══ */
+const dot=document.getElementById('cur-dot'),ring=document.getElementById('cur-ring');
+let mx=-100,my=-100,rx=-100,ry=-100;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px'});
+(function ac(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(ac)})();
+document.querySelectorAll('a,button,[role=button],.acc-trigger,.inpiu-card').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('ch'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('ch'));
+});
+
+/* ══ SCROLL PROGRESS ══ */
+const prog=document.getElementById('scroll-prog');
+window.addEventListener('scroll',()=>{prog.style.width=Math.min(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100,100)+'%'},{passive:true});
+
+/* ══ NAVBAR ══ */
+function openNav(){document.getElementById('navDrawer').classList.add('open');document.getElementById('navOverlay').classList.add('open');document.body.style.overflow='hidden'}
+function closeNav(){document.getElementById('navDrawer').classList.remove('open');document.getElementById('navOverlay').classList.remove('open');document.body.style.overflow=''}
+
+/* ══ ACCORDION ══ */
+function toggleAcc(btn){
+  const item=btn.closest('.acc-item');
+  const isOpen=item.classList.contains('open');
+  document.querySelectorAll('.acc-item.open').forEach(el=>{
+    el.classList.remove('open');
+    el.querySelector('.acc-trigger').setAttribute('aria-expanded','false');
+  });
+  if(!isOpen){
+    item.classList.add('open');
+    btn.setAttribute('aria-expanded','true');
+  }
+}
+
+/* ══ SCROLL REVEAL — observer defined here, activated after curtain exits ══ */
+const rvObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rvObs.unobserve(e.target)}});
+},{threshold:.1});
+
+/* ══════════════════════════════════════════════════
+   CURTAIN ENTRY ANIMATION
+   A vertical magenta curtain slides in from left,
+   holds with "CHI SIAMO" typed in the center,
+   then exits to the right revealing the page.
+   Total: ~1400ms.
+══════════════════════════════════════════════════ */
+const curtainCanvas=document.getElementById('curtain');
+const cCtx=curtainCanvas&&curtainCanvas.getContext('2d');
+function resizeCurtain(){curtainCanvas.width=innerWidth;curtainCanvas.height=innerHeight}
+resizeCurtain();window.addEventListener('resize',resizeCurtain);
+
+function drawCurtain(progress,phase){
+  const W=curtainCanvas.width,H=curtainCanvas.height;
+  cCtx.clearRect(0,0,W,H);
+
+  if(phase==='enter'){
+    // Curtain slides in from left: 0=not visible, 1=full screen
+    const curtainW=progress*W;
+    if(curtainW<=0)return;
+
+    // Main curtain fill
+    const grad=cCtx.createLinearGradient(0,0,curtainW,0);
+    grad.addColorStop(0,'rgba(10,10,10,1)');
+    grad.addColorStop(0.85,'rgba(10,10,10,1)');
+    grad.addColorStop(1,'rgba(200,24,92,0.6)');
+    cCtx.fillStyle=grad;
+    cCtx.fillRect(0,0,curtainW,H);
+
+    // Leading edge glow
+    const edgeG=cCtx.createLinearGradient(curtainW-30,0,curtainW+8,0);
+    edgeG.addColorStop(0,'rgba(200,24,92,0)');
+    edgeG.addColorStop(0.6,`rgba(200,24,92,${progress*0.9})`);
+    edgeG.addColorStop(1,'rgba(200,24,92,0)');
+    cCtx.fillStyle=edgeG;
+    cCtx.fillRect(curtainW-30,0,38,H);
+    cCtx.fillStyle=`rgba(220,80,120,${progress*0.8})`;
+    cCtx.fillRect(curtainW,0,2,H);
+
+  } else if(phase==='hold'){
+    // Full black screen + text
+    cCtx.fillStyle='#0a0a0a';cCtx.fillRect(0,0,W,H);
+
+    // "CHI SIAMO" text
+    const fs=Math.round(Math.min(W*.14,110));
+    cCtx.font=`${fs}px 'Bebas Neue',sans-serif`;
+    cCtx.fillStyle='rgba(240,237,232,.9)';
+    cCtx.textAlign='center';cCtx.textBaseline='middle';
+    // Slight glitch
+    const glitch=Math.sin(progress*12)*3;
+    cCtx.globalAlpha=0.18;
+    cCtx.fillStyle='rgba(0,255,255,1)';
+    cCtx.fillText('CHI SIAMO',W/2-4+glitch,H/2);
+    cCtx.fillStyle='rgba(200,24,92,1)';
+    cCtx.fillText('CHI SIAMO',W/2+4-glitch,H/2);
+    cCtx.globalAlpha=1;
+    cCtx.fillStyle='rgba(240,237,232,1)';
+    cCtx.fillText('CHI SIAMO',W/2,H/2);
+
+    // Magenta underline
+    const tw=cCtx.measureText('CHI SIAMO').width;
+    cCtx.fillStyle='rgba(200,24,92,0.8)';
+    cCtx.fillRect(W/2-tw/2,H/2+fs*.6,tw,2);
+
+  } else if(phase==='exit'){
+    // Curtain exits to the right
+    const remainW=(1-progress)*W;
+    if(remainW<=0)return;
+    const grad=cCtx.createLinearGradient(W-remainW,0,W,0);
+    grad.addColorStop(0,'rgba(200,24,92,0.5)');
+    grad.addColorStop(0.1,'rgba(10,10,10,1)');
+    grad.addColorStop(1,'rgba(10,10,10,1)');
+    cCtx.fillStyle=grad;
+    cCtx.fillRect(W-remainW,0,remainW,H);
+    // Leading edge
+    cCtx.fillStyle=`rgba(220,80,120,${(1-progress)*0.8})`;
+    cCtx.fillRect(W-remainW-2,0,3,H);
+  }
+}
+
+function runCurtain(){
+  const ENTER_DUR=500,HOLD_DUR=1100,EXIT_DUR=500;
+  let startT=null;
+  const totalDur=ENTER_DUR+HOLD_DUR+EXIT_DUR;
+
+  function frame(ts){
+    if(!startT)startT=ts;
+    const elapsed=ts-startT;
+    cCtx.clearRect(0,0,curtainCanvas.width,curtainCanvas.height);
+
+    if(elapsed<ENTER_DUR){
+      const p=elapsed/ENTER_DUR;
+      const eased=1-Math.pow(1-p,2.5);
+      drawCurtain(eased,'enter');
+    } else if(elapsed<ENTER_DUR+HOLD_DUR){
+      const p=(elapsed-ENTER_DUR)/HOLD_DUR;
+      drawCurtain(p,'hold');
+    } else if(elapsed<totalDur){
+      const p=(elapsed-ENTER_DUR-HOLD_DUR)/EXIT_DUR;
+      const eased=p<0.5?2*p*p:(1-Math.pow(-2*p+2,2)/2);
+      drawCurtain(eased,'exit');
+    } else {
+      cCtx.clearRect(0,0,curtainCanvas.width,curtainCanvas.height);
+      curtainCanvas.style.pointerEvents='none';
+      document.getElementById('pageWrap').classList.add('visible');
+
+      /* ── Fire drop-in entrance for hero elements ── */
+      document.querySelectorAll('.drop-in').forEach(el=>{
+        const delay=parseInt(el.dataset.delay||0,10);
+        setTimeout(()=>el.classList.add('landed'),delay);
+      });
+
+      /* ── Activate scroll reveal for all .rv elements ── */
+      document.querySelectorAll('.rv').forEach(el=>rvObs.observe(el));
+
+      return;
+    }
+    requestAnimationFrame(frame);
+  }
+  curtainCanvas.style.pointerEvents='all';
+  requestAnimationFrame(frame);
+}
+
+function revealPageNow(){
+  document.getElementById('pageWrap').classList.add('visible');
+  document.querySelectorAll('.drop-in').forEach(el=>{
+    const delay=parseInt(el.dataset.delay||0,10);
+    setTimeout(()=>el.classList.add('landed'),delay);
+  });
+  document.querySelectorAll('.rv').forEach(el=>rvObs.observe(el));
+}
+
+let __revealed=false;
+function safeRunCurtain(){
+  if(__revealed)return;__revealed=true;
+  try{
+    if(!cCtx)throw new Error('no 2d context');
+    runCurtain();
+  }catch(e){
+    console.error('Tenda animata non disponibile, mostro la pagina direttamente:',e);
+    curtainCanvas.style.pointerEvents='none';
+    revealPageNow();
+  }
+}
+if(document.readyState==='complete')safeRunCurtain();
+else window.addEventListener('load',safeRunCurtain);
+setTimeout(safeRunCurtain,1200); /* rete di sicurezza se una risorsa esterna non risponde */
+
+/* ══ NAVIGATION — direct ══ */
+document.addEventListener('click',e=>{
+  const link=e.target.closest('a[href]');
+  if(!link)return;
+  const href=link.getAttribute('href');
+  if(!href||href.startsWith('#')||href.startsWith('http')||href.startsWith('mailto'))return;
+  e.preventDefault();
+  window.location.href=href;
+});
+</script>
+</body>
+</html>
