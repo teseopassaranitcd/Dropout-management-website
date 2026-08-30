@@ -446,7 +446,7 @@
 <footer class="site-footer">
   <div class="footer-bottom container">
     <span class="footer-bottom-left">© 2026 The College Dropout<span class="footer-dot"></span><span data-i18n="footer.location">Rieti, Italia</span></span>
-    <span class="footer-bottom-right"><span data-i18n="footer.designOnly">Design:</span> <a href="https://tevwebstudio.it" target="_blank">T&V Web Studio</a></span>
+    <span class="footer-bottom-right">Teseo Passarani · Via Velinia 20b, 02100 Rieti (RI) · P.IVA IT01282110574</span>
   </div>
 </footer>
 </div><!-- end page-wrap -->
@@ -620,13 +620,13 @@ function setLang(lang){
   const itBtn=document.getElementById('lang-it'),enBtn=document.getElementById('lang-en');
   if(itBtn)itBtn.classList.toggle('active',lang==='it');
   if(enBtn)enBtn.classList.toggle('active',lang==='en');
-  try{localStorage.setItem('tcd_lang_owner',lang)}catch(e){}
+  try{localStorage.setItem('tcd_lang',lang)}catch(e){}
   window.__tcdLang=lang;
   document.title=lang==='it'?'Per i Proprietari — The College Dropout | Rieti':'For Property Owners — The College Dropout | Rieti';
 }
 (function initLang(){
   let lang='it';
-  try{lang=localStorage.getItem('tcd_lang_owner')||'it'}catch(e){}
+  try{lang=localStorage.getItem('tcd_lang')||'it'}catch(e){}
   setLang(lang);
 })();
 

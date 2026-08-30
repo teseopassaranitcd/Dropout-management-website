@@ -131,6 +131,8 @@
     .apt-badge{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;padding:5px 10px;border-radius:2px}
     .apt-badge.free{background:rgba(16,185,129,.15);color:#10b981;border:1px solid rgba(16,185,129,.3)}
     .apt-badge.taken{background:rgba(200,24,92,.15);color:var(--magenta);border:1px solid rgba(200,24,92,.3)}
+    .apt-badge.progress{background:rgba(240,196,25,.15);color:#f0c419;border:1px solid rgba(240,196,25,.3)}
+    .apt-badge.locked{background:rgba(136,136,136,.15);color:#888;border:1px solid rgba(136,136,136,.3)}
     .apt-price{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--white);letter-spacing:.04em}
     .apt-price span{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--gray);letter-spacing:.08em;font-weight:400}
     .apt-zone{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gray)}
@@ -228,6 +230,8 @@
     .fp-room-poly{transition:fill-opacity .2s,stroke-opacity .2s,opacity .2s}
     .fp-room-poly.available{filter:drop-shadow(0 0 6px rgba(57,255,20,.85)) drop-shadow(0 0 18px rgba(57,255,20,.45)) drop-shadow(0 0 34px rgba(57,255,20,.2))}
     .fp-room-poly.taken{filter:drop-shadow(0 0 6px rgba(200,24,92,.85)) drop-shadow(0 0 18px rgba(200,24,92,.45)) drop-shadow(0 0 34px rgba(200,24,92,.2))}
+    .fp-room-poly.progress{filter:drop-shadow(0 0 6px rgba(240,196,25,.85)) drop-shadow(0 0 18px rgba(240,196,25,.45)) drop-shadow(0 0 34px rgba(240,196,25,.2))}
+    .fp-room-poly.locked{filter:drop-shadow(0 0 6px rgba(136,136,136,.7)) drop-shadow(0 0 18px rgba(136,136,136,.35))}
     .fp-room-poly.dim{fill-opacity:.04 !important;stroke-opacity:.35 !important;opacity:.35}
     .fp-image-wrap svg{display:block;width:100%;height:auto}
     .fp-hotspot{position:absolute;transform:translate(-50%,-50%);width:28px;height:28px;border-radius:50%;border:2px solid var(--white);color:var(--white);font-family:'DM Mono',monospace;font-size:.72rem;display:flex;align-items:center;justify-content:center;cursor:none;transition:transform .2s,background .2s,color .2s;padding:0}
@@ -236,6 +240,20 @@
     .fp-hotspot:hover,.fp-hotspot.active{transform:translate(-50%,-50%) scale(1.18);background:var(--white)}
     .fp-hotspot.available:hover,.fp-hotspot.available.active{color:#18a83e}
     .fp-hotspot.taken:hover,.fp-hotspot.taken.active{color:var(--magenta)}
+    .fp-hotspot.progress{background:#f0c419;color:#0a0a0a;box-shadow:0 0 0 4px rgba(240,196,25,.22),0 0 14px rgba(240,196,25,.7)}
+    .fp-hotspot.locked{background:#888;color:#0a0a0a;box-shadow:0 0 0 4px rgba(136,136,136,.22)}
+    .fp-hotspot.progress:hover,.fp-hotspot.progress.active{color:#a8860f}
+    .fp-hotspot.locked:hover,.fp-hotspot.locked.active{color:#555}
+    .fp-floor-nav{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;background:rgba(10,10,10,.6);border:1px solid rgba(255,255,255,.25);color:var(--white);font-size:1.3rem;display:flex;align-items:center;justify-content:center;cursor:none;transition:background .2s,opacity .2s}
+    .fp-floor-nav:hover{background:rgba(255,255,255,.15)}
+    .fp-floor-nav:disabled{opacity:.25;pointer-events:none}
+    .fp-floor-prev{left:10px}
+    .fp-floor-next{right:10px}
+    .fp-floor-label{position:absolute;top:10px;left:50%;transform:translateX(-50%);font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--white);background:rgba(10,10,10,.6);border:1px solid rgba(255,255,255,.2);padding:5px 12px;border-radius:2px}
+    .fp-room-list-unmapped{margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.12)}
+    .fp-unmapped-label{display:block;font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:8px}
+    .fp-locked-note{font-size:.85rem;color:rgba(255,255,255,.55);font-style:italic}
+    .fp-photos-pending{font-size:.85rem;color:rgba(255,255,255,.45);padding:20px;text-align:center}
     .fp-detail{background:rgba(200,24,92,.06);border:1px solid rgba(200,24,92,.2);border-radius:2px;padding:18px 20px;min-height:70px}
     .fp-hint{color:var(--gray);font-size:.8rem}
     .fp-noplan{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;aspect-ratio:4/3;color:var(--gray);background:rgba(255,255,255,.02)}
@@ -244,6 +262,8 @@
     .fp-room-chip{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.06em;padding:9px 16px;border-radius:20px;cursor:none;border:1px solid var(--border);background:rgba(255,255,255,.03);color:var(--off);transition:all .2s}
     .fp-room-chip.available{border-color:rgba(57,255,20,.4);color:#39ff14}
     .fp-room-chip.taken{border-color:rgba(200,24,92,.4);color:var(--magenta)}
+    .fp-room-chip.progress{border-color:rgba(240,196,25,.4);color:#f0c419}
+    .fp-room-chip.locked{border-color:rgba(136,136,136,.4);color:#888}
     .fp-room-chip.active,.fp-room-chip:hover{background:var(--white);color:var(--black);border-color:var(--white)}
     .fp-photos-pending{grid-column:1/-1;color:var(--gray);font-size:.78rem;font-style:italic;padding:16px 0}
     .media-panel.no-cover{display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.02)}
@@ -332,7 +352,7 @@
 <div class="top-bar-strip">
   <a href="soluzioni.html" class="back-btn">
     <span class="back-arrow">←</span>
-    Torna a Soluzioni
+    <span data-i18n="apt.backSolutions">Torna a Soluzioni</span>
   </a>
 </div>
 
@@ -468,7 +488,7 @@
 <footer class="site-footer">
   <div class="footer-bottom container">
     <span class="footer-bottom-left">© 2026 The College Dropout<span class="footer-dot"></span><span data-i18n="footer.location">Rieti, Italia</span></span>
-    <span class="footer-bottom-right"><span data-i18n="footer.designOnly">Design:</span> <a href="https://tevwebstudio.it" target="_blank">T&V Web Studio</a></span>
+    <span class="footer-bottom-right">Teseo Passarani · Via Velinia 20b, 02100 Rieti (RI) · P.IVA IT01282110574</span>
   </div>
 </footer>
 </div><!-- end page-wrap -->
@@ -594,7 +614,7 @@ const I18N={
     'apt.tileCondName':'Terms','apt.tileCondHint':'Discover →',
     'apt.tilePlanHint':'Floor plan + photos →',
     'apt.ctaTitle':'Interested in this place?','apt.ctaText':'Get in touch directly. No agencies, same-day reply.','apt.ctaBtn':'Message us →',
-    'apt.available':'Available','apt.taken':'Taken',
+    'apt.available':'Available','apt.taken':'Taken','apt.underPreparation':'Under preparation','apt.locked':'This room will stay locked','apt.otherRooms':'Other rooms (floor plan not yet available):','apt.roomInProgress':'Room under preparation',
     'apt.startingFrom':'from €','apt.singola':'single','apt.doppia':'double','apt.persone':'people','apt.perPerson':'per person',
     'apt.condRoomsTitle':'Renting by room','apt.condInteroTitle':'Whole apartment rental','apt.availableFrom':'Available from','apt.interoUnavailable':'Option not available at the moment.',
     'apt.condNote':'Condominium fees and Wi-Fi subscription are included in the rent.',
@@ -605,6 +625,7 @@ const I18N={
     'apt.otherPhotos':'Other photos','apt.charsTitle':'Features','apt.serviziTitle':'Nearby',
     'apt.planComingSoon':'Floor plan coming soon','apt.photosPending':'Photos coming soon',
     'apt.contactTitle':'Contact','apt.contactText':'Interested? Message us directly.','apt.contactLink':'Go to the Contact page →',
+    'apt.backSolutions':'Back to Solutions',
   },
   it:{
     'nav.home':'Homepage','nav.solutions':'Soluzioni','nav.services':'I Nostri Servizi','nav.about':'Chi Siamo','nav.contact':'Contatti','nav.owners':'Proprietari',
@@ -614,7 +635,7 @@ const I18N={
     'apt.tileCondName':'Condizioni','apt.tileCondHint':'Scopri →',
     'apt.tilePlanHint':'Planimetria + foto →',
     'apt.ctaTitle':'Ti interessa questa soluzione?','apt.ctaText':'Contattaci direttamente. Nessuna agenzia, risposta in giornata.','apt.ctaBtn':'Scrivici ora →',
-    'apt.available':'Disponibile','apt.taken':'Occupato',
+    'apt.available':'Disponibile','apt.taken':'Occupato','apt.underPreparation':'In allestimento','apt.locked':'Questa camera rimarrà sempre chiusa','apt.otherRooms':'Altre camere (planimetria non ancora disponibile):','apt.roomInProgress':'Camera in allestimento',
     'apt.startingFrom':'da €','apt.singola':'singola','apt.doppia':'doppia','apt.persone':'persone','apt.perPerson':'a persona',
     'apt.condRoomsTitle':'Affitto a camere','apt.condInteroTitle':'Affitto intero appartamento','apt.availableFrom':'Disponibile da','apt.interoUnavailable':'Opzione non disponibile al momento.',
     'apt.condNote':"Le spese condominiali e l'abbonamento Wi-Fi sono inclusi nel canone.",
@@ -625,6 +646,7 @@ const I18N={
     'apt.otherPhotos':'Altre foto','apt.charsTitle':'Caratteristiche','apt.serviziTitle':'Nei dintorni',
     'apt.planComingSoon':'Planimetria in arrivo','apt.photosPending':'Foto in arrivo',
     'apt.contactTitle':'Contatta','apt.contactText':'Sei interessato? Scrivici direttamente.','apt.contactLink':'Vai alla pagina Contatti →',
+    'apt.backSolutions':'Torna a Soluzioni',
   }
 };
 
@@ -640,6 +662,15 @@ function isRoomAvailable(availableFromISO){
   threshold.setMonth(threshold.getMonth()-2);
   return new Date()>=threshold;
 }
+function getRoomStatus(availableFromISO){
+  if(availableFromISO==='allestimento')return 'progress';
+  if(availableFromISO==='locked')return 'locked';
+  if(!availableFromISO)return 'available';
+  const target=new Date(availableFromISO+'T00:00:00');
+  const threshold=new Date(target);
+  threshold.setMonth(threshold.getMonth()-2);
+  return new Date()>=threshold?'available':'taken';
+}
 function formatAvailableFrom(availableFromISO,lang){
   if(!availableFromISO)return '';
   const d=new Date(availableFromISO+'T00:00:00');
@@ -647,7 +678,7 @@ function formatAvailableFrom(availableFromISO,lang){
 }
 
 function renderApartmentData(){
-  const lang=window.__tcdLang||'en';
+  const lang=window.__tcdLang||'it';
   document.title=`${APT.name[lang]} — The College Dropout | Rieti`;
   document.getElementById('hdr-zone').textContent=APT.zone[lang];
   document.getElementById('hdr-name').textContent=APT.name[lang];
@@ -695,8 +726,8 @@ function setLang(lang){
   }
 }
 (function initLang(){
-  let lang='en';
-  try{lang=localStorage.getItem('tcd_lang')||'en'}catch(e){}
+  let lang='it';
+  try{lang=localStorage.getItem('tcd_lang')||'it'}catch(e){}
   setLang(lang);
 })();
 
@@ -730,7 +761,7 @@ function closeTileOverlay(){document.getElementById('tile-overlay').classList.re
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeTileOverlay();closeLightbox()}});
 
 function openTile(key){
-  const A=APT,lang=window.__tcdLang||'en';
+  const A=APT,lang=window.__tcdLang||'it';
   window.__tcdOpenTile=key;
   switch(key){
     case 'descrizione':{
@@ -751,7 +782,7 @@ function openTile(key){
 /* ══ PLAN & PICS — planimetria interattiva ══ */
 /* ══ CONDIZIONI ══ */
 function renderCondizioni(){
-  const A=APT,lang=window.__tcdLang||'en';
+  const A=APT,lang=window.__tcdLang||'it';
   let roomsHtml='';
   if(A.rooms&&A.rooms.length){
     roomsHtml=`<div class="cond-rooms">${A.rooms.map(r=>{
@@ -794,32 +825,32 @@ function renderCondizioni(){
   return sideImg?`<div class="tov-split"><div class="tov-text">${testo}</div><div class="tov-photo"><img src="${sideImg}" alt="${A.name[lang]}" loading="lazy"/></div></div>`:testo;
 }
 
+var fpFloorIdx=0;
 function renderPlanPics(){
-  const A=APT,lang=window.__tcdLang||'en';
+  const A=APT,lang=window.__tcdLang||'it';
+  const isMultiFloor=Array.isArray(A.floorplan);
+  fpFloorIdx=isMultiFloor?(A.floorplanDefault||0):0;
   const hasRooms=A.rooms&&A.rooms.length;
   const hasFloorplan=!!(A.floorplan||A.floorplanSVG);
-  const roomsWithHotspot=hasRooms?A.rooms.filter(r=>r.hotspot):[];
-  const hotspots=roomsWithHotspot.map((r,i)=>`<button class="fp-hotspot ${isRoomAvailable(r.availableFrom)?'available':'taken'}" style="left:${r.hotspot.x}%;top:${r.hotspot.y}%" onclick="selectRoom('${r.id}')" data-room="${r.id}"><span>${r.legendNum||(i+1)}</span></button>`).join('');
-  const overlays=hasRooms?A.rooms.filter(r=>r.overlayPoly).map(r=>{
-    const avail=isRoomAvailable(r.availableFrom);
-    const color=avail?'#39ff14':'var(--magenta)';
-    const cls=avail?'available':'taken';
-    const pts=r.overlayPoly.map(p=>p.join(',')).join(' ');
-    return `<polygon class="fp-room-poly ${cls}" data-room="${r.id}" points="${pts}" fill="${color}" fill-opacity=".14" stroke="${color}" stroke-width=".7" stroke-opacity=".95"/>`;
-  }).join(''):'';
 
-  /* Planimetria non ancora disponibile: elenco camere cliccabile al posto dei coni ottici */
   const roomListFallback=(!hasFloorplan&&hasRooms)?`<div class="fp-room-list">${A.rooms.map(r=>{
-    const avail=isRoomAvailable(r.availableFrom);
-    return `<button class="fp-room-chip ${avail?'available':'taken'}" onclick="selectRoom('${r.id}')" data-room="${r.id}">${r.name[lang]}</button>`;
+    const status=getRoomStatus(r.availableFrom);
+    return `<button class="fp-room-chip ${status}" onclick="selectRoom('${r.id}')" data-room="${r.id}">${r.name[lang]}</button>`;
+  }).join('')}</div>`:'';
+
+  const unmappedRooms=(isMultiFloor&&hasRooms)?A.rooms.filter(r=>r.floorIndex==null||r.floorIndex>=A.floorplan.length):[];
+  const unmappedFallback=unmappedRooms.length?`<div class="fp-room-list fp-room-list-unmapped"><span class="fp-unmapped-label">${I18N[lang]['apt.otherRooms']}</span>${unmappedRooms.map(r=>{
+    const status=getRoomStatus(r.availableFrom);
+    return `<button class="fp-room-chip ${status}" onclick="selectRoom('${r.id}')" data-room="${r.id}">${r.name[lang]}</button>`;
   }).join('')}</div>`:'';
 
   return `
     <div class="fp-wrap">
-      <div class="fp-image-wrap">
-        ${hasFloorplan?`${A.floorplan?`<img src="${A.floorplan}" alt="Floor plan" style="width:100%;display:block"/>`:A.floorplanSVG}${overlays?`<svg class="fp-room-overlay" viewBox="0 0 100 100" preserveAspectRatio="none">${overlays}</svg>`:''}${hotspots}`:`<div class="fp-noplan"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 15l4-4a2 2 0 013 0l5 5"/><path d="M14 13l1-1a2 2 0 013 0l3 3"/><circle cx="8.5" cy="8.5" r="1.5"/></svg><span>${I18N[lang]['apt.planComingSoon']}</span></div>`}
+      <div class="fp-image-wrap" id="fp-image-wrap">
+        ${renderFpFloorContent()}
       </div>
       ${roomListFallback}
+      ${unmappedFallback}
       <div class="fp-detail" id="fp-detail">
         <p class="fp-hint">${hasRooms?I18N[lang]['apt.planHint']:I18N[lang]['apt.planNoRooms']}</p>
       </div>
@@ -827,18 +858,53 @@ function renderPlanPics(){
     </div>
   `;
 }
+function renderFpFloorContent(){
+  const A=APT,lang=window.__tcdLang||'it';
+  const isMultiFloor=Array.isArray(A.floorplan);
+  const hasRooms=A.rooms&&A.rooms.length;
+  const hasFloorplan=!!(A.floorplan||A.floorplanSVG);
+  const floorImg=isMultiFloor?A.floorplan[fpFloorIdx].img:A.floorplan;
+  const floorLabel=isMultiFloor?A.floorplan[fpFloorIdx].label[lang]:null;
+  const roomsOnFloor=hasRooms?A.rooms.filter(r=>!isMultiFloor||r.floorIndex===fpFloorIdx):[];
+  const roomsWithHotspot=roomsOnFloor.filter(r=>r.hotspot);
+  const hotspots=roomsWithHotspot.map((r,i)=>`<button class="fp-hotspot ${getRoomStatus(r.availableFrom)}" style="left:${r.hotspot.x}%;top:${r.hotspot.y}%" onclick="selectRoom('${r.id}')" data-room="${r.id}"><span>${r.legendNum||(i+1)}</span></button>`).join('');
+  const overlays=roomsOnFloor.filter(r=>r.overlayPoly).map(r=>{
+    const status=getRoomStatus(r.availableFrom);
+    const color=status==='available'?'#39ff14':(status==='progress'?'#f0c419':(status==='locked'?'#888888':'var(--magenta)'));
+    const pts=r.overlayPoly.map(p=>p.join(',')).join(' ');
+    return `<polygon class="fp-room-poly ${status}" data-room="${r.id}" points="${pts}" fill="${color}" fill-opacity=".14" stroke="${color}" stroke-width=".7" stroke-opacity=".95"/>`;
+  }).join('');
+  const floorNav=isMultiFloor?`
+    <button class="fp-floor-nav fp-floor-prev" onclick="changeFpFloor(-1)" ${fpFloorIdx<=0?'disabled':''} aria-label="Piano inferiore">‹</button>
+    <button class="fp-floor-nav fp-floor-next" onclick="changeFpFloor(1)" ${fpFloorIdx>=A.floorplan.length-1?'disabled':''} aria-label="Piano superiore">›</button>
+    <span class="fp-floor-label">${floorLabel}</span>
+  `:'';
+  return `${hasFloorplan?`${floorImg?`<img src="${floorImg}" alt="Floor plan" style="width:100%;display:block"/>`:A.floorplanSVG}${overlays?`<svg class="fp-room-overlay" viewBox="0 0 100 100" preserveAspectRatio="none">${overlays}</svg>`:''}${hotspots}${floorNav}`:`<div class="fp-noplan"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 15l4-4a2 2 0 013 0l5 5"/><path d="M14 13l1-1a2 2 0 013 0l3 3"/><circle cx="8.5" cy="8.5" r="1.5"/></svg><span>${I18N[lang]['apt.planComingSoon']}</span></div>`}`;
+}
+function changeFpFloor(delta){
+  const A=APT;
+  if(!Array.isArray(A.floorplan))return;
+  const next=fpFloorIdx+delta;
+  if(next<0||next>=A.floorplan.length)return;
+  fpFloorIdx=next;
+  document.getElementById('fp-image-wrap').innerHTML=renderFpFloorContent();
+  const lang=window.__tcdLang||'it';
+  document.getElementById('fp-detail').innerHTML=`<p class="fp-hint">${A.rooms&&A.rooms.length?I18N[lang]['apt.planHint']:I18N[lang]['apt.planNoRooms']}</p>`;
+}
 function selectRoom(id){
-  const A=APT,lang=window.__tcdLang||'en';
+  const A=APT,lang=window.__tcdLang||'it';
   const r=A.rooms.find(x=>x.id===id);
   if(!r)return;
   document.querySelectorAll('.fp-hotspot').forEach(h=>h.classList.toggle('active',h.dataset.room===id));
   document.querySelectorAll('.fp-room-poly').forEach(p=>p.classList.toggle('dim',p.dataset.room!==id));
   document.querySelectorAll('.fp-room-chip').forEach(c=>c.classList.toggle('active',c.dataset.room===id));
-  const badge=isRoomAvailable(r.availableFrom)?`<span class="apt-badge free">${I18N[lang]['apt.available']}</span>`:`<span class="apt-badge taken">${I18N[lang]['apt.taken']}</span>`;
+  const roomStatus=getRoomStatus(r.availableFrom);
+  const badge=roomStatus==='available'?`<span class="apt-badge free">${I18N[lang]['apt.available']}</span>`:(roomStatus==='progress'?`<span class="apt-badge progress">${I18N[lang]['apt.underPreparation']}</span>`:(roomStatus==='locked'?`<span class="apt-badge locked">${I18N[lang]['apt.locked']}</span>`:`<span class="apt-badge taken">${I18N[lang]['apt.taken']}</span>`));
+  const featsHtml=roomStatus==='locked'?`<p class="fp-locked-note">${I18N[lang]['apt.locked']}</p>`:`<div class="fp-room-feats">${r.features.map(f=>`<span class="fp-feat">${f[lang]}</span>`).join('')}${r.sqm?`<span class="fp-feat">${r.sqm} m²</span>`:''}</div>`;
   document.getElementById('fp-detail').innerHTML=`
-    <div class="fp-room-photos">${r.photos.length?r.photos.map((p,i)=>`<img src="${p}" loading="lazy" alt="${r.name[lang]}" onclick="openLightbox(${i},APARTMENTS[${A.id}].rooms.find(x=>x.id==='${r.id}').photos)"/>`).join(''):`<div class="fp-photos-pending">${I18N[lang]['apt.photosPending']}</div>`}</div>
+    <div class="fp-room-photos">${r.photos.length?r.photos.map((p,i)=>`<img src="${p}" loading="lazy" alt="${r.name[lang]}" onclick="openLightbox(${i},APARTMENTS[${A.id}].rooms.find(x=>x.id==='${r.id}').photos)"/>`).join(''):`<div class="fp-photos-pending">${roomStatus==='progress'?I18N[lang]['apt.roomInProgress']:I18N[lang]['apt.photosPending']}</div>`}</div>
     <div class="fp-room-head"><h3>${r.name[lang]}</h3>${badge}</div>
-    <div class="fp-room-feats">${r.features.map(f=>`<span class="fp-feat">${f[lang]}</span>`).join('')}${r.sqm?`<span class="fp-feat">${r.sqm} m²</span>`:''}</div>
+    ${featsHtml}
   `;
 }
 

@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Chi Siamo — The College Dropout | Rieti</title>
-  <meta name="description" content="Chi è The College Dropout e chi è Ing. Teseo Passarani. Gestione professionale di appartamenti a Rieti per studenti e proprietari."/>
-  <link rel="canonical" href="https://collegedropoutmanagement.com/chi-siamo"/>
-  <meta property="og:title" content="Chi Siamo — The College Dropout"/>
-  <meta property="og:description" content="La storia di TCD, come lavoriamo, i nostri servizi a Rieti."/>
+  <title>Rieti — Guida alla città | The College Dropout</title>
+  <meta name="description" content="Rieti vista da chi ci vive: centro storico a misura d'uomo, natura a due passi, poli universitari in crescita ed eventi come la Fiera del Peperoncino."/>
+  <link rel="canonical" href="https://collegedropoutmanagement.com/rieti-guida"/>
+  <meta property="og:title" content="Rieti — Guida alla città"/>
+  <meta property="og:description" content="Una piccola guida a Rieti per chi sta pensando di viverci: centro storico, natura, università, eventi."/>
   <meta property="og:type" content="website"/>
   <meta property="og:locale" content="it_IT"/>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Person","name":"Teseo Passarani","jobTitle":"Fondatore","worksFor":{"@type":"LocalBusiness","name":"The College Dropout","address":{"@type":"PostalAddress","addressLocality":"Rieti","addressCountry":"IT"}}}
+  {"@context":"https://schema.org","@type":"WebPage","name":"Rieti — Guida alla città","about":{"@type":"City","name":"Rieti","addressCountry":"IT"}}
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -320,6 +320,47 @@
     .rv{opacity:0;transform:translateY(22px);transition:opacity .65s cubic-bezier(.16,1,.3,1),transform .65s cubic-bezier(.16,1,.3,1)}
     .rv.in{opacity:1;transform:translateY(0)}
     @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+
+    /* ── RIETI GUIDE ── */
+    .rg-section{padding:56px 0;border-bottom:1px solid var(--border)}
+    .rg-section:last-of-type{border-bottom:none}
+    .rg-grid{display:grid;grid-template-columns:1fr;gap:32px;align-items:center}
+    @media(min-width:800px){.rg-grid{grid-template-columns:1.1fr .9fr;gap:56px}}
+    .rg-grid.rg-rev{direction:rtl}
+    .rg-grid.rg-rev>*{direction:ltr}
+    .rg-eyebrow{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--magenta);margin-bottom:14px;display:block}
+    .rg-heading{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.7rem,4vw,2.5rem);letter-spacing:.02em;line-height:1.05;margin-bottom:18px}
+    .rg-text p{font-family:'Space Grotesk',sans-serif;font-size:.95rem;line-height:1.7;color:var(--off);font-weight:300}
+    .rg-text p+p{margin-top:14px}
+    .rg-text strong{color:var(--white);font-weight:600}
+    .rg-text a{color:var(--magenta);text-decoration:none;border-bottom:1px solid rgba(200,24,92,.4);transition:border-color .2s}
+    .rg-text a:hover{border-color:var(--magenta)}
+    .rg-img-placeholder{position:relative;aspect-ratio:4/3;border-radius:2px;border:1px solid var(--border);background:linear-gradient(135deg,rgba(200,24,92,.06),rgba(240,237,232,.02));display:flex;flex-direction:column;overflow:hidden}
+    .rg-img-placeholder img{width:100%;flex:1;object-fit:cover;display:block;min-height:0}
+    .rg-img-cap{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.06em;color:var(--gray);padding:8px 10px;border-top:1px solid var(--border);background:rgba(10,10,10,.4)}
+    .rg-img-caption{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);text-align:center;padding:16px}
+    .rg-intro{font-family:'Space Grotesk',sans-serif;font-weight:300;font-size:1.05rem;line-height:1.75;color:var(--off);max-width:700px}
+    .rg-intro strong{color:var(--white);font-weight:600}
+    .rg-linkcard{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 20px;border:1px solid var(--border);border-radius:2px;margin-top:14px;text-decoration:none;transition:border-color .2s,background .2s}
+    .rg-linkcard:hover{border-color:var(--magenta);background:rgba(200,24,92,.06)}
+    .rg-linkcard-label{font-family:'Space Grotesk',sans-serif;font-size:.9rem;color:var(--white);font-weight:500}
+    .rg-linkcard-arrow{color:var(--magenta);font-family:'DM Mono',monospace;font-size:.85rem;flex-shrink:0}
+
+    /* ── RIETI GUIDE: CHIUSURA ── */
+    .rg-closing{padding:64px 0;text-align:center;border-top:1px solid var(--border)}
+    .rg-closing-text{font-family:'Space Grotesk',sans-serif;font-weight:300;font-size:1.05rem;line-height:1.7;color:var(--off);max-width:600px;margin:0 auto 26px}
+    .rg-closing-text strong{color:var(--white);font-weight:600}
+    .rg-closing-cta{display:inline-flex;align-items:center;gap:10px;font-family:'DM Mono',monospace;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--black);background:var(--magenta);padding:14px 28px;border-radius:2px;text-decoration:none;transition:filter .2s}
+    .rg-closing-cta:hover{filter:brightness(1.12)}
+
+    /* ── RIETI GUIDE: GALLERIA ── */
+    .rg-gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    @media(min-width:800px){.rg-gallery{grid-template-columns:repeat(3,1fr)}}
+    .rg-gallery-item{border-radius:2px;overflow:hidden;border:1px solid var(--border)}
+    .rg-gallery-item-img{aspect-ratio:1/1;overflow:hidden}
+    .rg-gallery-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
+    .rg-gallery-item:hover img{transform:scale(1.06)}
+    .rg-gallery-cap{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.05em;color:var(--gray);padding:8px 10px}
   </style>
 </head>
 <body>
@@ -354,7 +395,7 @@
     <a href="index.html" data-i18n="nav.home">Homepage</a>
     <a href="soluzioni.html" data-i18n="nav.solutions">Soluzioni</a>
     <a href="servizi.html" data-i18n="nav.services">I Nostri Servizi</a>
-    <a href="chi-siamo.html" class="current" data-i18n="nav.about">Chi Siamo</a>
+    <a href="chi-siamo.html" data-i18n="nav.about">Chi Siamo</a>
     <a href="contatti.html" data-i18n="nav.contact">Contatti</a>
     <a href="proprietari.html" data-i18n="nav.owners">Proprietari</a>
   </div>
@@ -373,49 +414,161 @@
   <!-- ════ HERO ════ -->
   <section class="hero">
     <div class="container">
-      <span class="hero-label drop-in" data-delay="0" data-i18n="cs.heroLabel">The College Dropout · Rieti</span>
-      <h1 class="hero-title drop-in" data-delay="120" data-i18n="cs.heroTitle">Chi<br>Siamo</h1>
-      <p class="hero-sub drop-in" data-delay="260" data-i18n="cs.heroSub">Ing. Teseo Passarani &amp; Arch. Gulnaz Turgaliyeva · Est. 2024</p>
+      <span class="hero-label drop-in" data-delay="0" data-i18n="rg.heroLabel">The College Dropout · Guida alla città</span>
+      <h1 class="hero-title drop-in" data-delay="120">Rieti</h1>
+      <p class="hero-sub drop-in" data-delay="260" data-i18n="rg.heroSub">Centro Italia · Provincia di Rieti · Lazio</p>
     </div>
-    <div class="hero-ghost" aria-hidden="true">TCD</div>
+    <div class="hero-ghost" aria-hidden="true">RI</div>
   </section>
 
-  <!-- ════ STORIA ════ -->
-  <section class="storia">
+  <!-- ════ INTRO ════ -->
+  <section class="rg-section">
     <div class="container">
-      <div class="storia-grid">
+      <p class="rg-intro rv" data-i18n="rg.intro">Giungendo a Rieti per la prima volta, sicuramente salterà agli occhi di un buon osservatore come Rieti sia una città <strong>a misura d'uomo</strong>: il centro storico si attraversa a piedi in venti minuti, le distanze si misurano in passi più che in km, e la sicurezza e la tranquillità delle vie fanno da cornice a un ambiente naturale che in pochi capoluoghi italiani è ancora possibile trovare. È un posto ideale per chi vuole concentrarsi sullo studio senza rinunciare a vivere una città vera.</p>
+    </div>
+  </section>
 
-        <!-- Lettera -->
-        <div class="storia-text rv">
-          <div class="storia-quote" aria-hidden="true">"</div>
-          <div class="storia-body">
-            <p data-i18n="cs.p1">TCD nasce nel 2024 da un'idea di Teseo Passarani. Nel corso degli anni ha ripetutamente cercato di creare un movimento universitario reatino vero e proprio, che potesse fare da cornice al crescente afflusso di studenti internazionali e non nel capoluogo Sabino, cimentandosi più volte nell'organizzazione di eventi sportivi e sociali — riscuotendo alle volte discreto successo, alle volte fallendo miseramente.</p>
-            <p data-i18n="cs.p2">Questa presenza nel mondo universitario reatino ha portato alcuni conoscenti a chiedergli consigli e aiuto nella gestione dei loro appartamenti, intenzionati com'erano ad offrire la proprietà in affitto agli studenti. In poco tempo si è reso conto di quanto questo ambito sia delicato, intricato e di difficile interpretazione — e ha trovato da subito un buon feeling con quest'attività, tanto che altre persone hanno iniziato a rivolgersi a lui per lo stesso motivo.</p>
-            <p data-i18n="cs.p3">Con il crescere della richiesta, ha deciso di strutturare la cosa e organizzarsi, trasformando questo hobby in una vera e propria attività gestionale.</p>
-            <p data-i18n="cs.p4"><strong>Oggi TCD è composto da Teseo e Gulnaz</strong>, compagni nella vita e nel lavoro: lui ingegnere, lei architetto e interior designer. Insieme uniscono la gestione quotidiana degli immobili alle competenze tecniche e progettuali necessarie a seguirli in ogni fase — dalle pratiche edilizie alla scelta dell'arredo.</p>
-            <p data-i18n="cs.p5">Le sfide non mancano, ma la possibilità di conoscere moltissime persone, culture e situazioni con cui altrimenti non avrebbero mai avuto a che fare ha affinato le loro <strong>capacità relazionali</strong> e contribuito alla crescita del fenomeno universitario nella nostra città.</p>
-            <p data-i18n="cs.p6">Ad oggi, a distanza di due anni dall'inizio della prima collaborazione, TCD gestisce <strong>oltre 20 soluzioni abitative</strong> sul territorio, ponendo al primo posto il benessere degli studenti, la tranquillità dei proprietari e la crescita del movimento universitario reatino.</p>
-          </div>
-          <div class="storia-firma">
-            <span class="firma-name">THE COLLEGE DROPOUT</span>
-            <span class="firma-role" data-i18n="cs.galleryLabel">Fotogallery</span>
-          </div>
+  <!-- ════ CATTEDRALE / CENTRO STORICO ════ -->
+  <section class="rg-section">
+    <div class="container">
+      <div class="rg-grid">
+        <div class="rg-text rv">
+          <span class="rg-eyebrow" data-i18n="rg.s1eyebrow">Centro storico</span>
+          <h2 class="rg-heading" data-i18n="rg.s1heading">La Cattedrale di Santa Maria</h2>
+          <p data-i18n="rg.s1p1">Affacciata su Piazza Cesare Battisti, la Cattedrale di Santa Maria Assunta è il cuore simbolico della città: fondata nel XII secolo, fu più volte sede papale nel corso del Medioevo. Il suo campanile romanico, alto quasi 40 metri, si vede da gran parte del centro storico ed è uno dei primi punti di riferimento per chiunque arrivi a Rieti per la prima volta.</p>
+          <p data-i18n="rg.s1p2">Intorno, un reticolo di vicoli, piazze e portici che si percorre interamente a piedi — università, biblioteche, bar e negozi sono quasi sempre a pochi minuti da qualunque alloggio in centro.</p>
         </div>
-
-        <!-- Galleria foto -->
-        <div class="foto-gallery">
-          <img src="images/chi-siamo/foto-01.jpg" alt="The College Dropout" loading="lazy">
-          <img src="images/chi-siamo/foto-02.jpg" alt="The College Dropout" loading="lazy">
-          <img src="images/chi-siamo/foto-04.jpg" alt="The College Dropout" loading="lazy">
-          <img src="images/chi-siamo/foto-05.jpg" alt="The College Dropout" loading="lazy">
-          <img src="images/chi-siamo/foto-06.jpg" alt="The College Dropout" loading="lazy">
-          <img src="images/chi-siamo/foto-07.jpg" alt="The College Dropout" loading="lazy">
-          <img src="images/chi-siamo/foto-08.jpg" alt="The College Dropout" loading="lazy">
-          <img src="images/chi-siamo/foto-09.jpg" alt="The College Dropout" loading="lazy">
-          <img src="images/chi-siamo/foto-10.jpg" alt="The College Dropout" loading="lazy">
+        <div class="rg-img-placeholder rv">
+          <img src="images/rieti-guida/cattedrale-esterno.jpg" alt="Cattedrale di Santa Maria Assunta, Rieti" loading="lazy"/>
+          <span class="rg-img-cap" data-i18n="rg.s1imgcap">Il campanile romanico della Cattedrale, visto da Piazza Cesare Battisti</span>
         </div>
-
       </div>
+    </div>
+  </section>
+
+  <!-- ════ TERMINILLO / VELINO ════ -->
+  <section class="rg-section">
+    <div class="container">
+      <div class="rg-grid rg-rev">
+        <div class="rg-text rv">
+          <span class="rg-eyebrow" data-i18n="rg.s2eyebrow">Natura a due passi</span>
+          <h2 class="rg-heading" data-i18n="rg.s2heading">Tra il Terminillo e il fiume Velino</h2>
+          <p data-i18n="rg.s2p1">Il Monte Terminillo, la "montagna di Roma", è a meno di mezz'ora d'auto dal centro: sci d'inverno, escursioni e aria fresca d'estate, senza dover pianificare un viaggio. Il fiume Velino attraversa invece la città stessa, con le sue anse che si affacciano sulle case del centro storico — una presenza costante che rende Rieti particolarmente verde per una città di queste dimensioni.</p>
+          <p data-i18n="rg.s2p2">Parchi pubblici, piste ciclabili e percorsi lungo il fiume sono stati oggetto negli ultimi anni di importanti interventi di riqualificazione, molti dei quali finanziati con i fondi del <strong>PNRR</strong>: strade, edifici pubblici ed aree verdi rinnovate hanno dato al centro un volto più moderno, senza intaccarne il carattere.</p>
+        </div>
+        <div class="rg-img-placeholder rv">
+          <img src="images/rieti-guida/terminillo-1.jpg" alt="Monte Terminillo, Rieti" loading="lazy"/>
+          <span class="rg-img-cap" data-i18n="rg.s2imgcap">La cresta del Terminillo, la "montagna di Roma", a mezz'ora dal centro</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ UNIVERSITÀ ════ -->
+  <section class="rg-section">
+    <div class="container">
+      <div class="rg-grid rg-rev">
+        <div class="rg-text rv">
+          <span class="rg-eyebrow" data-i18n="rg.s3eyebrow">Una città sempre più universitaria</span>
+          <h2 class="rg-heading" data-i18n="rg.s3heading">I poli universitari di Rieti</h2>
+          <p data-i18n="rg.s3p1">Negli ultimi anni Rieti ha visto crescere costantemente la propria vocazione universitaria. Attraverso <strong>Sabina Universitas</strong>, il consorzio che coordina il polo universitario cittadino, sono presenti in città sedi distaccate dell'<strong>Università degli Studi di Roma "La Sapienza"</strong> e dell'<strong>Università degli Studi della Tuscia</strong>. Una presenza in espansione che porta ogni anno più studenti — italiani e internazionali — a scegliere Rieti come città in cui vivere e studiare.</p>
+        </div>
+        <div class="rg-img-placeholder rv">
+          <img src="images/rieti-guida/palazzo-comunale-piazza.jpg" alt="Piazza Vittorio Emanuele, Rieti" loading="lazy"/>
+          <span class="rg-img-cap" data-i18n="rg.s3imgcap">Piazza Vittorio Emanuele e Palazzo Comunale, cuore civico della città</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ EVENTI & SPORT ════ -->
+  <section class="rg-section">
+    <div class="container">
+      <div class="rg-grid">
+        <div class="rg-text rv">
+          <span class="rg-eyebrow" data-i18n="rg.s4eyebrow1">Eventi</span>
+          <h2 class="rg-heading" data-i18n="rg.s4heading1">La Fiera del Peperoncino</h2>
+          <p data-i18n="rg.s4p1">Ogni fine agosto il centro storico si trasforma per la <strong>Fiera Mondiale Campionaria del Peperoncino</strong>: dieci giorni di stand gastronomici, centinaia di varietà di peperoncino da tutto il mondo, musica e spettacoli, con centinaia di migliaia di visitatori. Uno degli appuntamenti più attesi dell'anno in città.</p>
+          <a class="rg-linkcard" href="https://www.fieramondialedelpeperoncino.com/" target="_blank" rel="noopener noreferrer">
+            <span class="rg-linkcard-label">fieramondialedelpeperoncino.com</span>
+            <span class="rg-linkcard-arrow">↗</span>
+          </a>
+          <h2 class="rg-heading" style="margin-top:32px" data-i18n="rg.s4heading2">La Festa del Sole</h2>
+          <p data-i18n="rg.s4p2">Ogni metà luglio il fiume Velino diventa protagonista della <strong>Festa del Sole</strong>: da oltre cinquant'anni i rioni storici di Rieti si sfidano lungo il corso d'acqua in una serie di gare — dal duello con la pertica alla corsa in bicicletta sull'acqua — che culminano nel celebre Palio della Tinozza, dove un concorrente per rione avanza a colpi di remo dentro una tinozza di legno. Sfilate in costume, musica dal vivo e stand gastronomici lungo le rive accompagnano l'intera manifestazione, che richiama ogni anno migliaia di spettatori sui ponti e sulle sponde della città.</p>
+          <a class="rg-linkcard" href="https://www.visitrieti.com/project/festa-del-sole/" target="_blank" rel="noopener noreferrer">
+            <span class="rg-linkcard-label">visitrieti.com</span>
+            <span class="rg-linkcard-arrow">↗</span>
+          </a>
+          <span class="rg-eyebrow" style="margin-top:32px;display:block" data-i18n="rg.s4eyebrow2">Sport</span>
+          <h2 class="rg-heading" data-i18n="rg.s4heading3">Capitale italiana dell'atletica</h2>
+          <p data-i18n="rg.s4p3">Rieti è casa della <strong>Atletica Studentesca Rieti "Andrea Milardi"</strong>, la società più titolata della storia dell'atletica leggera italiana. Lo stadio Raul Guidobaldi ospita regolarmente competizioni nazionali e internazionali di primo livello, e la città viene definita ogni anno tra le prime in Italia per indice di sportività.</p>
+          <a class="rg-linkcard" href="https://www.studentescamilardi.it/" target="_blank" rel="noopener noreferrer">
+            <span class="rg-linkcard-label">studentescamilardi.it</span>
+            <span class="rg-linkcard-arrow">↗</span>
+          </a>
+        </div>
+        <div class="rg-img-placeholder rv">
+          <img src="images/rieti-guida/stadio-guidobaldi-2.jpg" alt="Stadio Raul Guidobaldi, Rieti" loading="lazy"/>
+          <span class="rg-img-cap" data-i18n="rg.s4imgcap">Lo stadio Raul Guidobaldi al tramonto, pista di atletica</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ GALLERIA ════ -->
+  <section class="rg-section">
+    <div class="container">
+      <span class="rg-eyebrow rv" data-i18n="rg.galleryEyebrow">Uno sguardo alla città</span>
+      <div class="rg-gallery rv">
+        <div class="rg-gallery-item">
+          <div class="rg-gallery-item-img"><img src="images/rieti-guida/cattedrale-interno-1.jpg" alt="Interno della Cattedrale di Santa Maria, Rieti" loading="lazy"/></div>
+          <span class="rg-gallery-cap" data-i18n="rg.g1">Interno della Cattedrale di Santa Maria Assunta</span>
+        </div>
+        <div class="rg-gallery-item">
+          <div class="rg-gallery-item-img"><img src="images/rieti-guida/cattedrale-interno-2.jpg" alt="Cappella di Santa Barbara, Cattedrale di Rieti" loading="lazy"/></div>
+          <span class="rg-gallery-cap" data-i18n="rg.g2">La cappella barocca all'interno della Cattedrale</span>
+        </div>
+        <div class="rg-gallery-item">
+          <div class="rg-gallery-item-img"><img src="images/rieti-guida/ponte-romano-velino.jpg" alt="Ponte Romano sul fiume Velino, Rieti" loading="lazy"/></div>
+          <span class="rg-gallery-cap" data-i18n="rg.g3">Il Ponte Romano sul fiume Velino, nel cuore della città</span>
+        </div>
+        <div class="rg-gallery-item">
+          <div class="rg-gallery-item-img"><img src="images/rieti-guida/fiume-velino.jpg" alt="Fiume Velino, Rieti" loading="lazy"/></div>
+          <span class="rg-gallery-cap" data-i18n="rg.g4">Il fiume Velino tra le case del centro storico</span>
+        </div>
+        <div class="rg-gallery-item">
+          <div class="rg-gallery-item-img"><img src="images/rieti-guida/velino-natalizio.jpg" alt="Fiume Velino con addobbi natalizi, Rieti" loading="lazy"/></div>
+          <span class="rg-gallery-cap" data-i18n="rg.g5">Il Velino illuminato durante le festività natalizie</span>
+        </div>
+        <div class="rg-gallery-item">
+          <div class="rg-gallery-item-img"><img src="images/rieti-guida/terminillo-2.jpg" alt="Monte Terminillo, Rieti" loading="lazy"/></div>
+          <span class="rg-gallery-cap" data-i18n="rg.g6">Un altro scorcio delle vette del Terminillo</span>
+        </div>
+        <div class="rg-gallery-item">
+          <div class="rg-gallery-item-img"><img src="images/rieti-guida/stadio-guidobaldi-1.jpg" alt="Stadio Raul Guidobaldi, Rieti" loading="lazy"/></div>
+          <span class="rg-gallery-cap" data-i18n="rg.g7">La pista e la tribuna dello stadio Raul Guidobaldi</span>
+        </div>
+        <div class="rg-gallery-item">
+          <div class="rg-gallery-item-img"><img src="images/rieti-guida/peperoncino-1.jpg" alt="Fiera del Peperoncino, Rieti" loading="lazy"/></div>
+          <span class="rg-gallery-cap" data-i18n="rg.g8">L'esposizione internazionale di peperoncini nel Chiostro di Sant'Agostino</span>
+        </div>
+        <div class="rg-gallery-item">
+          <div class="rg-gallery-item-img"><img src="images/rieti-guida/festa-del-sole-1.jpg" alt="Festa del Sole, Rieti" loading="lazy"/></div>
+          <span class="rg-gallery-cap" data-i18n="rg.g9">Il Palio della Tinozza sulle acque del Velino</span>
+        </div>
+        <div class="rg-gallery-item">
+          <div class="rg-gallery-item-img"><img src="images/rieti-guida/festa-del-sole-2.jpg" alt="Festa del Sole, sfilata dei rioni, Rieti" loading="lazy"/></div>
+          <span class="rg-gallery-cap" data-i18n="rg.g10">La sfilata dei rioni durante la Festa del Sole</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ CHIUSURA ════ -->
+  <section class="rg-closing">
+    <div class="container">
+      <p class="rg-closing-text rv" data-i18n="rg.closingText">Arrivare per la prima volta in una città nuova non è mai scontato. <strong>Noi di TCD siamo a completa disposizione</strong> per orientare gli studenti che scelgono Rieti, sia per l'accompagnamento nella ricerca della soluzione abitativa più adatta, che per qualsiasi consiglio pratico per vivere al meglio la città.</p>
+      <a class="rg-closing-cta rv" href="contatti.html" data-i18n="rg.closingCta">Scrivici →</a>
     </div>
   </section>
 
@@ -458,7 +611,7 @@
 </div><!-- end page-wrap -->
 
 <script>
-/* ══════════════════════════════════════════════════
+/* ═════════════════════════════════════════════════
    CANVAS BG — Particle Network
    Points drift slowly, connect when close enough.
    Some nodes are magenta, most are dim white.
@@ -551,24 +704,6 @@ try{
 
 /* ══ I18N ══ */
 const I18N={
-  en:{
-    'nav.home':'Homepage','nav.solutions':'Solutions','nav.services':'Our Services','nav.about':'About Us','nav.contact':'Contact','nav.owners':'Property Owners',
-    'footer.copyright':'The College Dropout © 2026','footer.privacy':'Privacy',
-    'footer.tagline':'Housing solutions in Rieti — for students and more · Est. 2024','footer.navLabel':'Navigation',
-    'footer.studentsLabel':'For students','footer.findSolution':'Find a place','footer.housingMap':'Housing map','footer.cityGuide':'Rieti — city guide','footer.erasmus':'Rieti - Study Programs',
-    'footer.ownersLabel':'For property owners','footer.ourServices':'Our services','footer.writeUs':'Get in touch','footer.faq':'FAQ',
-    'footer.location':'Rieti, Italy',
-    'cs.heroLabel':'The College Dropout · Rieti',
-    'cs.heroTitle':'About<br>Us',
-    'cs.heroSub':'Eng. Teseo Passarani &amp; Arch. Gulnaz Turgaliyeva · Est. 2024',
-    'cs.p1':"TCD was born in 2024 from an idea by Teseo Passarani. Over the years he repeatedly tried to build a genuine university movement in Rieti, one that could give shape to the growing influx of international and Italian students into the Sabine capital, taking on the organisation of sports and social events more than once — sometimes with decent success, sometimes failing miserably.",
-    'cs.p2':"This presence in Rieti's university scene led some acquaintances to ask him for advice and help managing their apartments, as they intended to rent the property out to students. He quickly realised how delicate, intricate and hard to navigate this field is — and found a good fit with the work right away, so much so that other people started coming to him for the same reason.",
-    'cs.p3':"As demand grew, he decided to structure things and get organised, turning this hobby into a proper management business.",
-    'cs.p4':"<strong>Today TCD is made up of Teseo and Gulnaz</strong>, partners in life and work: he an engineer, she an architect and interior designer. Together they combine the day-to-day management of properties with the technical and design skills needed to follow them through every stage — from building permits to choosing the furniture.",
-    'cs.p5':"There's no shortage of challenges, but the chance to meet so many people, cultures and situations they'd otherwise never have encountered has sharpened their <strong>people skills</strong> and contributed to the growth of the university movement in our city.",
-    'cs.p6':"Today, two years on from the start of the first collaboration, TCD manages <strong>over 20 housing solutions</strong> across the area, putting students' wellbeing, owners' peace of mind, and the growth of Rieti's university movement first.",
-    'cs.galleryLabel':'Photo gallery',
-  },
   it:{
     'nav.home':'Homepage','nav.solutions':'Soluzioni','nav.services':'I Nostri Servizi','nav.about':'Chi Siamo','nav.contact':'Contatti','nav.owners':'Proprietari',
     'footer.copyright':'The College Dropout © 2026','footer.privacy':'Privacy',
@@ -576,16 +711,92 @@ const I18N={
     'footer.studentsLabel':'Per gli studenti','footer.findSolution':'Trova una soluzione','footer.housingMap':'Mappa degli alloggi','footer.cityGuide':'Rieti — guida alla città','footer.erasmus':'Rieti - Offerta Formativa',
     'footer.ownersLabel':'Per i proprietari','footer.ourServices':'I nostri servizi','footer.writeUs':'Scrivici','footer.faq':'FAQ',
     'footer.location':'Rieti, Italia',
-    'cs.heroLabel':'The College Dropout · Rieti',
-    'cs.heroTitle':'Chi<br>Siamo',
-    'cs.heroSub':'Ing. Teseo Passarani &amp; Arch. Gulnaz Turgaliyeva · Est. 2024',
-    'cs.p1':"TCD nasce nel 2024 da un'idea di Teseo Passarani. Nel corso degli anni ha ripetutamente cercato di creare un movimento universitario reatino vero e proprio, che potesse fare da cornice al crescente afflusso di studenti internazionali e non nel capoluogo Sabino, cimentandosi più volte nell'organizzazione di eventi sportivi e sociali — riscuotendo alle volte discreto successo, alle volte fallendo miseramente.",
-    'cs.p2':"Questa presenza nel mondo universitario reatino ha portato alcuni conoscenti a chiedergli consigli e aiuto nella gestione dei loro appartamenti, intenzionati com'erano ad offrire la proprietà in affitto agli studenti. In poco tempo si è reso conto di quanto questo ambito sia delicato, intricato e di difficile interpretazione — e ha trovato da subito un buon feeling con quest'attività, tanto che altre persone hanno iniziato a rivolgersi a lui per lo stesso motivo.",
-    'cs.p3':"Con il crescere della richiesta, ha deciso di strutturare la cosa e organizzarsi, trasformando questo hobby in una vera e propria attività gestionale.",
-    'cs.p4':"<strong>Oggi TCD è composto da Teseo e Gulnaz</strong>, compagni nella vita e nel lavoro: lui ingegnere, lei architetto e interior designer. Insieme uniscono la gestione quotidiana degli immobili alle competenze tecniche e progettuali necessarie a seguirli in ogni fase — dalle pratiche edilizie alla scelta dell'arredo.",
-    'cs.p5':"Le sfide non mancano, ma la possibilità di conoscere moltissime persone, culture e situazioni con cui altrimenti non avrebbero mai avuto a che fare ha affinato le loro <strong>capacità relazionali</strong> e contribuito alla crescita del fenomeno universitario nella nostra città.",
-    'cs.p6':"Ad oggi, a distanza di due anni dall'inizio della prima collaborazione, TCD gestisce <strong>oltre 20 soluzioni abitative</strong> sul territorio, ponendo al primo posto il benessere degli studenti, la tranquillità dei proprietari e la crescita del movimento universitario reatino.",
-    'cs.galleryLabel':'Fotogallery',
+    'rg.heroLabel':'The College Dropout · Guida alla città',
+    'rg.heroSub':'Centro Italia · Provincia di Rieti · Lazio',
+    'rg.intro':'Giungendo a Rieti per la prima volta, sicuramente salterà agli occhi di un buon osservatore come Rieti sia una città <strong>a misura d\'uomo</strong>: il centro storico si attraversa a piedi in venti minuti, le distanze si misurano in passi più che in km, e la sicurezza e la tranquillità delle vie fanno da cornice a un ambiente naturale che in pochi capoluoghi italiani è ancora possibile trovare. È un posto ideale per chi vuole concentrarsi sullo studio senza rinunciare a vivere una città vera.',
+    'rg.s1eyebrow':'Centro storico',
+    'rg.s1heading':'La Cattedrale di Santa Maria',
+    'rg.s1p1':'Affacciata su Piazza Cesare Battisti, la Cattedrale di Santa Maria Assunta è il cuore simbolico della città: fondata nel XII secolo, fu più volte sede papale nel corso del Medioevo. Il suo campanile romanico, alto quasi 40 metri, si vede da gran parte del centro storico ed è uno dei primi punti di riferimento per chiunque arrivi a Rieti per la prima volta.',
+    'rg.s1p2':'Intorno, un reticolo di vicoli, piazze e portici che si percorre interamente a piedi — università, biblioteche, bar e negozi sono quasi sempre a pochi minuti da qualunque alloggio in centro.',
+    'rg.s1imgcap':'Il campanile romanico della Cattedrale, visto da Piazza Cesare Battisti',
+    'rg.s2eyebrow':'Natura a due passi',
+    'rg.s2heading':'Tra il Terminillo e il fiume Velino',
+    'rg.s2p1':'Il Monte Terminillo, la "montagna di Roma", è a meno di mezz\'ora d\'auto dal centro: sci d\'inverno, escursioni e aria fresca d\'estate, senza dover pianificare un viaggio. Il fiume Velino attraversa invece la città stessa, con le sue anse che si affacciano sulle case del centro storico — una presenza costante che rende Rieti particolarmente verde per una città di queste dimensioni.',
+    'rg.s2p2':'Parchi pubblici, piste ciclabili e percorsi lungo il fiume sono stati oggetto negli ultimi anni di importanti interventi di riqualificazione, molti dei quali finanziati con i fondi del <strong>PNRR</strong>: strade, edifici pubblici ed aree verdi rinnovate hanno dato al centro un volto più moderno, senza intaccarne il carattere.',
+    'rg.s2imgcap':'La cresta del Terminillo, la "montagna di Roma", a mezz\'ora dal centro',
+    'rg.s3eyebrow':'Una città sempre più universitaria',
+    'rg.s3heading':'I poli universitari di Rieti',
+    'rg.s3p1':'Negli ultimi anni Rieti ha visto crescere costantemente la propria vocazione universitaria. Attraverso <strong>Sabina Universitas</strong>, il consorzio che coordina il polo universitario cittadino, sono presenti in città sedi distaccate dell\'<strong>Università degli Studi di Roma "La Sapienza"</strong> e dell\'<strong>Università degli Studi della Tuscia</strong>. Una presenza in espansione che porta ogni anno più studenti — italiani e internazionali — a scegliere Rieti come città in cui vivere e studiare.',
+    'rg.s3imgcap':'Piazza Vittorio Emanuele e Palazzo Comunale, cuore civico della città',
+    'rg.s4eyebrow1':'Eventi',
+    'rg.s4heading1':'La Fiera del Peperoncino',
+    'rg.s4p1':'Ogni fine agosto il centro storico si trasforma per la <strong>Fiera Mondiale Campionaria del Peperoncino</strong>: dieci giorni di stand gastronomici, centinaia di varietà di peperoncino da tutto il mondo, musica e spettacoli, con centinaia di migliaia di visitatori. Uno degli appuntamenti più attesi dell\'anno in città.',
+    'rg.s4heading2':'La Festa del Sole',
+    'rg.s4p2':'Ogni metà luglio il fiume Velino diventa protagonista della <strong>Festa del Sole</strong>: da oltre cinquant\'anni i rioni storici di Rieti si sfidano lungo il corso d\'acqua in una serie di gare — dal duello con la pertica alla corsa in bicicletta sull\'acqua — che culminano nel celebre Palio della Tinozza, dove un concorrente per rione avanza a colpi di remo dentro una tinozza di legno. Sfilate in costume, musica dal vivo e stand gastronomici lungo le rive accompagnano l\'intera manifestazione, che richiama ogni anno migliaia di spettatori sui ponti e sulle sponde della città.',
+    'rg.s4eyebrow2':'Sport',
+    'rg.s4heading3':'Capitale italiana dell\'atletica',
+    'rg.s4p3':'Rieti è casa della <strong>Atletica Studentesca Rieti "Andrea Milardi"</strong>, la società più titolata della storia dell\'atletica leggera italiana. Lo stadio Raul Guidobaldi ospita regolarmente competizioni nazionali e internazionali di primo livello, e la città viene definita ogni anno tra le prime in Italia per indice di sportività.',
+    'rg.s4imgcap':'Lo stadio Raul Guidobaldi al tramonto, pista di atletica',
+    'rg.galleryEyebrow':'Uno sguardo alla città',
+    'rg.g1':'Interno della Cattedrale di Santa Maria Assunta',
+    'rg.g2':'La cappella barocca all\'interno della Cattedrale',
+    'rg.g3':'Il Ponte Romano sul fiume Velino, nel cuore della città',
+    'rg.g4':'Il fiume Velino tra le case del centro storico',
+    'rg.g5':'Il Velino illuminato durante le festività natalizie',
+    'rg.g6':'Un altro scorcio delle vette del Terminillo',
+    'rg.g7':'La pista e la tribuna dello stadio Raul Guidobaldi',
+    'rg.g8':'L\'esposizione internazionale di peperoncini nel Chiostro di Sant\'Agostino',
+    'rg.g9':'Il Palio della Tinozza sulle acque del Velino',
+    'rg.g10':'La sfilata dei rioni durante la Festa del Sole',
+    'rg.closingText':'Arrivare per la prima volta in una città nuova non è mai scontato. <strong>Noi di TCD siamo a completa disposizione</strong> per orientare gli studenti che scelgono Rieti, sia per l\'accompagnamento nella ricerca della soluzione abitativa più adatta, che per qualsiasi consiglio pratico per vivere al meglio la città.',
+    'rg.closingCta':'Scrivici →',
+  },
+  en:{
+    'nav.home':'Homepage','nav.solutions':'Solutions','nav.services':'Our Services','nav.about':'About Us','nav.contact':'Contact','nav.owners':'Property Owners',
+    'footer.copyright':'The College Dropout © 2026','footer.privacy':'Privacy',
+    'footer.tagline':'Housing solutions in Rieti — for students and more · Est. 2024','footer.navLabel':'Navigation',
+    'footer.studentsLabel':'For students','footer.findSolution':'Find a place','footer.housingMap':'Housing map','footer.cityGuide':'Rieti — city guide','footer.erasmus':'Rieti - Study Programs',
+    'footer.ownersLabel':'For property owners','footer.ourServices':'Our services','footer.writeUs':'Get in touch','footer.faq':'FAQ',
+    'footer.location':'Rieti, Italy',
+    'rg.heroLabel':'The College Dropout · City guide',
+    'rg.heroSub':'Central Italy · Province of Rieti · Lazio',
+    'rg.intro':'Arriving in Rieti for the first time, a keen observer will immediately notice how Rieti is a city <strong>on a human scale</strong>: the historic centre can be crossed on foot in twenty minutes, distances are measured in steps rather than kilometres, and the safety and calm of the streets frame a natural environment that few Italian provincial capitals still have. It\'s an ideal place for anyone who wants to focus on their studies without giving up life in a real city.',
+    'rg.s1eyebrow':'Historic centre',
+    'rg.s1heading':'The Cathedral of Santa Maria',
+    'rg.s1p1':'Overlooking Piazza Cesare Battisti, the Cathedral of Santa Maria Assunta is the symbolic heart of the city: founded in the 12th century, it served as a papal seat several times during the Middle Ages. Its Romanesque bell tower, almost 40 metres tall, is visible from much of the historic centre and is one of the first landmarks for anyone arriving in Rieti for the first time.',
+    'rg.s1p2':'Around it, a network of alleys, squares and porticoes you can cover entirely on foot — universities, libraries, bars and shops are almost always a few minutes from any place to live in the centre.',
+    'rg.s1imgcap':'The Cathedral\'s Romanesque bell tower, seen from Piazza Cesare Battisti',
+    'rg.s2eyebrow':'Nature close by',
+    'rg.s2heading':'Between the Terminillo and the Velino river',
+    'rg.s2p1':'Monte Terminillo, "Rome\'s mountain", is less than half an hour by car from the centre: winter skiing, hiking and cool summer air, with no need to plan a trip. The Velino river, meanwhile, runs right through the city itself, its bends overlooking the houses of the historic centre — a constant presence that makes Rieti unusually green for a city of this size.',
+    'rg.s2p2':'Public parks, cycle paths and riverside routes have been the focus of major redevelopment work in recent years, much of it funded by <strong>PNRR</strong> (Italy\'s recovery plan) money: renovated streets, public buildings and green areas have given the centre a more modern face without eroding its character.',
+    'rg.s2imgcap':'The Terminillo ridge, "Rome\'s mountain", half an hour from the centre',
+    'rg.s3eyebrow':'An increasingly university city',
+    'rg.s3heading':'Rieti\'s university campuses',
+    'rg.s3p1':'In recent years Rieti has seen its university presence grow steadily. Through <strong>Sabina Universitas</strong>, the consortium coordinating the city\'s university hub, satellite campuses of the <strong>Sapienza University of Rome</strong> and the <strong>University of Tuscia</strong> are both present in the city. A growing presence that brings more students — Italian and international — to choose Rieti as a place to live and study every year.',
+    'rg.s3imgcap':'Piazza Vittorio Emanuele and the Palazzo Comunale, the city\'s civic heart',
+    'rg.s4eyebrow1':'Events',
+    'rg.s4heading1':'The Chilli Pepper Fair',
+    'rg.s4p1':'Every year, at the end of August, the historic centre is transformed for the <strong>World Chilli Pepper Fair</strong>: ten days of food stalls, hundreds of chilli varieties from around the world, music and shows, drawing hundreds of thousands of visitors. One of the most anticipated events of the year in the city.',
+    'rg.s4heading2':'Festa del Sole (Feast of the Sun)',
+    'rg.s4p2':'Every year, in mid-July, the Velino river becomes the stage for the <strong>Festa del Sole</strong>: for over fifty years, Rieti\'s historic districts have competed along the waterway in a series of races — from pole duels to water bicycle races — culminating in the famous Palio della Tinozza, where one competitor per district races forward paddling inside a wooden tub. Costumed parades, live music and food stalls along the banks accompany the whole event, which draws thousands of spectators to the city\'s bridges and riverbanks every year.',
+    'rg.s4eyebrow2':'Sport',
+    'rg.s4heading3':'Italy\'s athletics capital',
+    'rg.s4p3':'Rieti is home to <strong>Atletica Studentesca Rieti "Andrea Milardi"</strong>, the most decorated club in the history of Italian track and field. The Raul Guidobaldi stadium regularly hosts top-level national and international competitions, and the city is named among Italy\'s most sports-active every year.',
+    'rg.s4imgcap':'The Raul Guidobaldi stadium at sunset, athletics track',
+    'rg.galleryEyebrow':'A look at the city',
+    'rg.g1':'Interior of the Cathedral of Santa Maria Assunta',
+    'rg.g2':'The baroque chapel inside the Cathedral',
+    'rg.g3':'The Roman Bridge over the Velino river, in the heart of the city',
+    'rg.g4':'The Velino river among the houses of the historic centre',
+    'rg.g5':'The Velino lit up during the Christmas season',
+    'rg.g6':'Another view of the Terminillo peaks',
+    'rg.g7':'The track and stands of the Raul Guidobaldi stadium',
+    'rg.g8':'The international chilli pepper exhibition in the Sant\'Agostino cloister',
+    'rg.g9':'The Palio della Tinozza on the waters of the Velino',
+    'rg.g10':'The district parade during the Festa del Sole',
+    'rg.closingText':'Arriving in a new city for the first time is never easy. <strong>We at TCD are fully available</strong> to guide students who choose Rieti, both in finding the housing solution that suits them best and with any practical advice for making the most of the city.',
+    'rg.closingCta':'Get in touch →',
   }
 };
 function setLang(lang){
@@ -600,7 +811,7 @@ function setLang(lang){
   if(enBtn)enBtn.classList.toggle('active',lang==='en');
   try{localStorage.setItem('tcd_lang',lang)}catch(e){}
   window.__tcdLang=lang;
-  document.title=lang==='it'?'Chi Siamo — The College Dropout | Rieti':'About Us — The College Dropout | Rieti';
+  document.title=lang==='it'?'Rieti — Guida alla città | The College Dropout':'Rieti — City Guide | The College Dropout';
 }
 (function initLang(){
   let lang='it';
@@ -632,7 +843,7 @@ function toggleAcc(btn){
   const isOpen=item.classList.contains('open');
   document.querySelectorAll('.acc-item.open').forEach(el=>{
     el.classList.remove('open');
-    el.querySelector('.acc-trigger').setAttribute('aria-expanded','false');
+  el.querySelector('.acc-trigger').setAttribute('aria-expanded','false');
   });
   if(!isOpen){
     item.classList.add('open');
@@ -648,7 +859,7 @@ const rvObs=new IntersectionObserver(entries=>{
 /* ═════════════════════════════════════════════════
    CURTAIN ENTRY ANIMATION
    A vertical magenta curtain slides in from left,
-   holds with "CHI SIAMO" typed in the center,
+   holds with "RIETI" typed in the center,
    then exits to the right revealing the page.
    Total: ~1400ms.
 ══════════════════════════════════════════════════ */
@@ -688,7 +899,7 @@ function drawCurtain(progress,phase){
     // Full black screen + text
     cCtx.fillStyle='#0a0a0a';cCtx.fillRect(0,0,W,H);
 
-    // "CHI SIAMO" text
+    // "RIETI" text
     const fs=Math.round(Math.min(W*.14,110));
     cCtx.font=`${fs}px 'Bebas Neue',sans-serif`;
     cCtx.fillStyle='rgba(240,237,232,.9)';
@@ -697,15 +908,15 @@ function drawCurtain(progress,phase){
     const glitch=Math.sin(progress*12)*3;
     cCtx.globalAlpha=0.18;
     cCtx.fillStyle='rgba(0,255,255,1)';
-    cCtx.fillText('CHI SIAMO',W/2-4+glitch,H/2);
+    cCtx.fillText('RIETI',W/2-4+glitch,H/2);
     cCtx.fillStyle='rgba(200,24,92,1)';
-    cCtx.fillText('CHI SIAMO',W/2+4-glitch,H/2);
+    cCtx.fillText('RIETI',W/2+4-glitch,H/2);
     cCtx.globalAlpha=1;
     cCtx.fillStyle='rgba(240,237,232,1)';
-    cCtx.fillText('CHI SIAMO',W/2,H/2);
+    cCtx.fillText('RIETI',W/2,H/2);
 
     // Magenta underline
-    const tw=cCtx.measureText('CHI SIAMO').width;
+    const tw=cCtx.measureText('RIETI').width;
     cCtx.fillStyle='rgba(200,24,92,0.8)';
     cCtx.fillRect(W/2-tw/2,H/2+fs*.6,tw,2);
 
