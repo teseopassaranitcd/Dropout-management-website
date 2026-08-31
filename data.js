@@ -81,7 +81,7 @@ window.APARTMENTS = {
           'images/via-garibaldi-188/piccola-03.jpg'
         ],
         hotspot:{x:66,y:16},
-        overlayPoly:[[60.3,5.9],[72.4,6.1],[72.7,25.4],[60.3,25.2]]
+        overlayPoly:[[59.4,6],[72.4,6.2],[73.1,25.9],[59.4,25.6]]
       },
       {
         id:'grande',name:{it:'Camera Grande',en:'Large Bedroom'},priceSingola:320,priceDoppia:380,sqm:21.0,legendNum:2,availableFrom:'2026-10-01',
@@ -90,8 +90,8 @@ window.APARTMENTS = {
           'images/via-garibaldi-188/grande-01.jpg',
           'images/via-garibaldi-188/grande-03.jpg'
         ],
-        hotspot:{x:39.5,y:16},
-        overlayPoly:[[32.3,5.9],[46.8,5.9],[46.8,25.8],[32.3,25.8]]
+        hotspot:{x:39.6,y:16},
+        overlayPoly:[[32.2,6],[47,5.8],[47,26],[32.2,26.3]]
       }
     ]
   },
@@ -836,16 +836,16 @@ window.APARTMENTS = {
         availableFrom:'2026-08-01',
         features:[{it:'Letto singolo',en:'Single bed'},{it:'Scrivania',en:'Desk'},{it:'Armadio grande',en:'Large wardrobe'}],
         photos:[],
-        hotspot:{x:30.02,y:44.07},
-        overlayPoly:[[19.24,35.71],[40.8,35.71],[40.8,52.43],[19.24,52.43]]
+        hotspot:{x:29.6,y:44.4},
+        overlayPoly:[[18.9,37],[40.4,37],[40.4,51.7],[18.9,51.7]]
       },
       {
         id:'camera2',name:{it:'Camera singola 2',en:'Camera singola 2'},priceSingola:270,priceDoppia:null,sqm:13,
         availableFrom:'2026-12-01',
         features:[{it:'Letto singolo',en:'Single bed'},{it:'Scrivania',en:'Desk'},{it:'Armadio grande',en:'Large wardrobe'},{it:'Balcone',en:'Balcony'}],
         photos:[],
-        hotspot:{x:29.6,y:68.5},
-        overlayPoly:[[19.24,60.4],[39.99,60.4],[39.99,76.6],[28.81,76.6],[28.81,87.57],[18.63,87.57],[18.63,78.04]]
+        hotspot:{x:26.7,y:70.6},
+        overlayPoly:[[18.9,63],[34.6,63],[34.6,78.2],[18.9,78.2]]
       },
       {
         id:'camera3',name:{it:'Camera singola 3',en:'Camera singola 3'},priceSingola:260,priceDoppia:null,sqm:13,
@@ -855,8 +855,8 @@ window.APARTMENTS = {
           'images/largo-dacquisto-14/foto-04.jpg',
           'images/largo-dacquisto-14/foto-08.jpg'
         ],
-        hotspot:{x:47.8,y:67.0},
-        overlayPoly:[[40.29,57.27],[55.31,57.27],[55.31,76.73],[40.29,76.73]]
+        hotspot:{x:48.5,y:68.2},
+        overlayPoly:[[40.9,58.4],[56.1,58.4],[56.1,78],[40.9,78]]
       }
     ]
   },
@@ -1174,8 +1174,8 @@ window.APARTMENTS = {
           'images/via-fratelli-cervi-2/foto-03.jpg'
         ],
         floorIndex:2,
-        hotspot:{x:76.98,y:28.76},
-        overlayPoly:[[57.22,5.1],[57.33,42.96],[96.73,42.54],[96.63,4.93]]
+        hotspot:{x:64.5,y:25},
+        overlayPoly:[[51,6.5],[77.9,6.5],[77.9,43.5],[51,43.5]]
       },
       {
         id:'camera2',name:{it:'Camera singola 2 - Primo piano',en:'Camera singola 2 - Primo piano'},priceSingola:280,priceDoppia:null,sqm:18,
@@ -1188,8 +1188,8 @@ window.APARTMENTS = {
           'images/via-fratelli-cervi-2/foto-10.jpg'
         ],
         floorIndex:2,
-        hotspot:{x:24.19,y:60.47},
-        overlayPoly:[[5.59,40.05],[6.05,83.01],[48.82,81.49],[48.83,44.54],[18.03,44.52],[17.8,39.91]]
+        hotspot:{x:32.7,y:63.6},
+        overlayPoly:[[18.6,44.7],[46.8,44.7],[46.8,82.5],[18.6,82.5]]
       },
       {
         id:'camera3',name:{it:'Mansarda doppia - Secondo piano',en:'Mansarda doppia - Secondo piano'},priceSingola:null,priceDoppia:500,sqm:50,
@@ -1206,8 +1206,8 @@ window.APARTMENTS = {
           'images/via-fratelli-cervi-2/foto-19.jpg'
         ],
         floorIndex:3,
-        hotspot:{x:67.8,y:44.83},
-        overlayPoly:[[94.03,17.63],[83.57,17.42],[83.4,9.38],[8.81,9.56],[8.74,87.52],[84.6,86.04],[85.0,65.63],[94.27,65.43]]
+        hotspot:{x:51.8,y:25},
+        overlayPoly:[[25.5,6.5],[78,6.5],[78,43.5],[25.5,43.5]]
       },
       {
         id:'camera4',name:{it:'Camera della proprietaria',en:"Owner's room"},priceSingola:null,priceDoppia:null,sqm:null,
@@ -1215,8 +1215,8 @@ window.APARTMENTS = {
         features:[],
         photos:[],
         floorIndex:2,
-        hotspot:{x:41.02,y:28.8},
-        overlayPoly:[[56.43,4.96],[25.61,4.98],[25.61,42.8],[56.43,42.95]]
+        hotspot:{x:33.4,y:24.3},
+        overlayPoly:[[18.9,6.5],[47.9,6.5],[47.9,42.1],[18.9,42.1]]
       }
     ]
   },
@@ -1364,8 +1364,8 @@ window.APARTMENTS = {
           'images/via-garibaldi-89-secondo/foto-10.jpg',
           'images/via-garibaldi-89-secondo/foto-14.jpg'
         ],
-        hotspot:{x:59.28,y:34.36},
-        overlayPoly:[[52.41,29.67],[52.29,38.99],[65.19,39.17],[67.21,29.63]]
+        hotspot:{x:62.5,y:37.9},
+        overlayPoly:[[56.6,33.3],[68.3,33.3],[68.3,42.5],[56.6,42.5]]
       },
       {
         id:'camera2',name:{it:'Camera singola 2',en:'Camera singola 2'},priceSingola:275,priceDoppia:null,sqm:14,
@@ -1376,16 +1376,16 @@ window.APARTMENTS = {
           'images/via-garibaldi-89-secondo/foto-05.jpg',
           'images/via-garibaldi-89-secondo/foto-13.jpg'
         ],
-        hotspot:{x:59.72,y:22.85},
-        overlayPoly:[[67.19,17.69],[50.8,18.58],[52.88,27.36],[68.0,27.77]]
+        hotspot:{x:63.4,y:27.1},
+        overlayPoly:[[57,22.5],[69.7,22.5],[69.7,31.8],[57,31.8]]
       },
       {
         id:'camera3',name:{it:'Suite doppia',en:'Suite doppia'},priceSingola:450,priceDoppia:500,sqm:40,
         availableFrom:'allestimento',
         features:[{it:'Due letti singoli',en:'Two single beds'},{it:'Armadio grande',en:'Large wardrobe'},{it:'Scrivania',en:'Desk'},{it:'Ampia metratura',en:'Spacious'},{it:'Bagno privato con vasca idromassaggio',en:'Private bathroom with whirlpool tub'}],
         photos:[],
-        hotspot:{x:46.9,y:77.25},
-        overlayPoly:[[58.05,67.41],[37.73,67.96],[35.29,87.43],[56.53,86.19]]
+        hotspot:{x:53.2,y:82.5},
+        overlayPoly:[[39.3,70],[67.2,70],[67.2,95],[39.3,95]]
       }
     ]
   },
