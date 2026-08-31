@@ -504,6 +504,17 @@ function startExit(){
 }
 
 /* ══ LEAFLET ══ */
+let map;
+let mapIntroFlown=false;
+function flyInToRieti(){
+  if(typeof map==='undefined')return;
+  const sec=document.getElementById('mapSection');
+  if(!sec||sec.style.display==='none')return; /* mai flyTo mentre la mappa è nascosta */
+  map.invalidateSize(); /* dà a Leaflet le dimensioni corrette ora che il container è visibile */
+  if(mapIntroFlown)return;
+  mapIntroFlown=true;
+  map.flyTo(RIETI,14,{animate:true,duration:2.2,easeLinearity:0.35});
+}
 if(typeof L==='undefined'){
   console.error('Leaflet non disponibile: la libreria della mappa non si è caricata.');
   const mapEl=document.getElementById('map');
@@ -511,8 +522,8 @@ if(typeof L==='undefined'){
   setTimeout(()=>mapCont.classList.add('land'),800);
   setTimeout(()=>titleBar.classList.add('open'),1200);
 }else{
-const map=L.map('map',{center:LAZIO,zoom:8,zoomControl:true,scrollWheelZoom:false,dragging:true});
-L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{maxZoom:19}).addTo(map);
+map=L.map('map',{center:LAZIO,zoom:8,zoomControl:true,scrollWheelZoom:false,dragging:true});
+L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png?key=cb1_2mga_1_7c71145c1eb62a94078f74fb',{maxZoom:19}).addTo(map);
 
 const mapBox=document.getElementById('map-container');
 
@@ -551,7 +562,7 @@ mapBox.addEventListener('click',()=>{map.scrollWheelZoom.enable();mapBox.classLi
 mapBox.addEventListener('mouseleave',()=>{map.scrollWheelZoom.disable();mapBox.classList.remove('focused')});
 
 setTimeout(()=>mapCont.classList.add('land'),2300);
-setTimeout(()=>map.flyTo(RIETI,14,{animate:true,duration:2.2,easeLinearity:0.35}),2500);
+setTimeout(flyInToRieti,2500);
 setTimeout(()=>titleBar.classList.add('open'),3100);
 
 function createPinIcon(available){
@@ -666,7 +677,7 @@ function setView(view){
     mapSection.style.display='';
     btnMappa.classList.add('active');
     btnElenco.classList.remove('active');
-    if(typeof map!=='undefined')setTimeout(()=>map.invalidateSize(),50);
+    if(typeof map!=='undefined')setTimeout(flyInToRieti,50);
   }
 }
 btnMappa.addEventListener('click',()=>setView('mappa'));
@@ -709,7 +720,7 @@ function revealSoluzioni(){
     pageWrap.classList.add('visible');
     navTrigger.classList.add('visible');
     setTimeout(()=>mapCont.classList.add('land'),300);
-    if(typeof map!=='undefined')setTimeout(()=>map.flyTo(RIETI,14,{animate:true,duration:2.2,easeLinearity:0.35}),500);
+    if(typeof map!=='undefined')setTimeout(flyInToRieti,500);
     setTimeout(()=>titleBar.classList.add('open'),1300);
   } else {
     logoEl.classList.add('show');
