@@ -80,8 +80,8 @@ window.APARTMENTS = {
           'images/via-garibaldi-188/piccola-02.jpg',
           'images/via-garibaldi-188/piccola-03.jpg'
         ],
-        hotspot:{x:66,y:20},
-        overlayPoly:[[59.55,5.94],[74.14,7.24],[70.73,24.82],[58.3,24.0]]
+        hotspot:{x:66,y:16},
+        overlayPoly:[[60.3,5.9],[72.4,6.1],[72.7,25.4],[60.3,25.2]]
       },
       {
         id:'grande',name:{it:'Camera Grande',en:'Large Bedroom'},priceSingola:320,priceDoppia:380,sqm:21.0,legendNum:2,availableFrom:'2026-10-01',
@@ -90,8 +90,8 @@ window.APARTMENTS = {
           'images/via-garibaldi-188/grande-01.jpg',
           'images/via-garibaldi-188/grande-03.jpg'
         ],
-        hotspot:{x:40,y:20},
-        overlayPoly:[[32.55,5.88],[49.45,5.12],[48.23,25.47],[32.86,25.59]]
+        hotspot:{x:39.5,y:16},
+        overlayPoly:[[32.3,5.9],[46.8,5.9],[46.8,25.8],[32.3,25.8]]
       }
     ]
   },
@@ -412,7 +412,7 @@ window.APARTMENTS = {
     rentalMode:'entrambi',
     deposito:1,
     interoPricing:[{persone:3,prezzo:700}],
-    floorplan:null,
+    floorplan:'images/via-maderno-10/planimetria.jpg',
     rooms:[
       {
         id:'camera1',name:{it:'Camera singola con bagno privato',en:'Camera singola con bagno privato'},priceSingola:300,priceDoppia:null,sqm:22,
@@ -737,7 +737,7 @@ window.APARTMENTS = {
     rentalMode:'camere',
     deposito:1,
     interoPricing:[],
-    floorplan:null,
+    floorplan:'images/via-boschi-29/planimetria.jpg',
     rooms:[
       {
         id:'camera1',name:{it:'Camera doppia',en:'Camera doppia'},priceSingola:420,priceDoppia:480,sqm:28,
@@ -829,7 +829,7 @@ window.APARTMENTS = {
     rentalMode:'entrambi',
     deposito:1,
     interoPricing:[{persone:3,prezzo:750}],
-    floorplan:null,
+    floorplan:'images/largo-dacquisto-14/planimetria.jpg',
     rooms:[
       {
         id:'camera1',name:{it:'Camera singola 1',en:'Camera singola 1'},priceSingola:260,priceDoppia:null,sqm:12,
@@ -1156,7 +1156,13 @@ window.APARTMENTS = {
     rentalMode:'camere',
     deposito:1,
     interoPricing:[],
-    floorplan:null,
+    floorplan:[
+      {img:'images/via-fratelli-cervi-2/planimetria-seminterrato.jpg',label:{it:'Seminterrato',en:'Basement'}},
+      {img:'images/via-fratelli-cervi-2/planimetria-terra.jpg',label:{it:'Piano Terra',en:'Ground floor'}},
+      {img:'images/via-fratelli-cervi-2/planimetria-primo.jpg',label:{it:'Primo piano',en:'First floor'}},
+      {img:'images/via-fratelli-cervi-2/planimetria-mansarda.jpg',label:{it:'Mansarda',en:'Attic'}}
+    ],
+    floorplanDefault:2,
     rooms:[
       {
         id:'camera1',name:{it:'Camera singola 1 - Primo piano',en:'Camera singola 1 - Primo piano'},priceSingola:280,priceDoppia:null,sqm:20,
@@ -1346,7 +1352,7 @@ window.APARTMENTS = {
     rentalMode:'entrambi',
     interoPricing:[{persone:3,prezzo:950},{persone:4,prezzo:1000}],
     deposito:1,
-    floorplan:null,
+    floorplan:'images/via-garibaldi-89-secondo/planimetria.jpg',
     rooms:[
       {
         id:'camera1',name:{it:'Camera singola 1',en:'Camera singola 1'},priceSingola:275,priceDoppia:null,sqm:14,
