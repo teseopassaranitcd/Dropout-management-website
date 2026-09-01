@@ -470,6 +470,16 @@ function isApartmentAvailable(apt){
   if(apt.roomDates&&apt.roomDates.length)return apt.roomDates.some(isRoomAvailable);
   return !!apt.available;
 }
+/* Prezzo "a partire da": minimo tra priceSingola e priceDoppia/2 di tutte
+   le camere dell'appartamento; fallback al price statico di SOLUZIONI_LIST */
+function startingPrice(apt){
+  const full=(window.APARTMENTS||{})[apt.id];
+  if(full&&full.rooms&&full.rooms.length){
+    const prices=full.rooms.flatMap(r=>[r.priceSingola,r.priceDoppia!=null?r.priceDoppia/2:null]).filter(p=>p!=null);
+    if(prices.length)return Math.round(Math.min(...prices));
+  }
+  return apt.price;
+}
 
 const apartments=window.SOLUZIONI_LIST;
 
@@ -581,7 +591,7 @@ function createPinIcon(available){
 }
 
 /* Popup CTA links to appartamento.html?id=N — wormhole triggered via click handler below */
-function buildPopup(apt){const badge=isApartmentAvailable(apt)?`<span class="apt-badge free">Disponibile</span>`:`<span class="apt-badge taken">Occupato</span>`;return `<div class="apt-card"><img class="apt-card-img" src="${apt.img}" alt="${apt.name}" loading="lazy"/><div class="apt-card-body"><p class="apt-card-zone">${apt.zone}</p><h3 class="apt-card-name">${apt.name}</h3><div class="apt-card-row"><p class="apt-card-price"><span>A partire da</span> €${apt.price}<span>/mese</span></p>${badge}</div><div class="apt-card-details"><div class="apt-detail"><strong>${apt.rooms}</strong>camere</div><div class="apt-detail"><strong>${apt.sqm} m²</strong>superficie</div></div><a href="appartamento.html?id=${apt.id}" class="apt-card-cta wormhole-link">Scopri →</a></div></div>`}
+function buildPopup(apt){const badge=isApartmentAvailable(apt)?`<span class="apt-badge free">Disponibile</span>`:`<span class="apt-badge taken">Occupato</span>`;return `<div class="apt-card"><img class="apt-card-img" src="${apt.img}" alt="${apt.name}" loading="lazy"/><div class="apt-card-body"><p class="apt-card-zone">${apt.zone}</p><h3 class="apt-card-name">${apt.name}</h3><div class="apt-card-row"><p class="apt-card-price"><span>A partire da</span> €${startingPrice(apt)}<span>/mese</span></p>${badge}</div><div class="apt-card-details"><div class="apt-detail"><strong>${apt.rooms}</strong>camere</div><div class="apt-detail"><strong>${apt.sqm} m²</strong>superficie</div></div><a href="appartamento.html?id=${apt.id}" class="apt-card-cta wormhole-link">Scopri →</a></div></div>`}
 function triggerPinFlash(){pinFlash.classList.remove('flash');void pinFlash.offsetWidth;pinFlash.classList.add('flash');pinFlash.addEventListener('animationend',()=>pinFlash.classList.remove('flash'),{once:true})}
 
 apartments.forEach((apt,i)=>{
@@ -646,7 +656,7 @@ apartments.forEach(apt=>{
       <p class="h-apt-zone">${apt.zone}</p>
       <h3 class="h-apt-name">${apt.name}</h3>
       <div class="h-apt-row">
-        <p class="h-apt-price"><span>${t['sol.startingFrom']}</span> €${apt.price}<span>${t['sol.perMonth']}</span></p>${badge}
+        <p class="h-apt-price"><span>${t['sol.startingFrom']}</span> €${startingPrice(apt)}<span>${t['sol.perMonth']}</span></p>${badge}
       </div>
       <div class="h-apt-meta">
         <div class="h-apt-meta-item"><strong>${apt.rooms}</strong>${t['sol.rooms']}</div>

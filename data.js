@@ -166,7 +166,7 @@ window.APARTMENTS = {
     floorplanDefault:2,
     rooms:[
       {
-        id:'camera1',name:{it:'Camera doppia - Piano primo',en:'Camera doppia - Piano primo'},priceSingola:350,priceDoppia:400,sqm:29,
+        id:'camera1',name:{it:'Camera doppia - Piano primo',en:'Camera doppia - Piano primo'},priceSingola:350,priceDoppia:440,sqm:29,
         availableFrom:'2026-10-01',
         features:[{it:'Due letti singoli',en:'Two single beds'},{it:'Armadio',en:'Wardrobe'},{it:'Schermo HD',en:'HD screen'},{it:'Scrivanie',en:'Desks'}],
         photos:[
