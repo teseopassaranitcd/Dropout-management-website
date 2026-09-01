@@ -835,7 +835,10 @@ window.APARTMENTS = {
         id:'camera1',name:{it:'Camera singola 1',en:'Camera singola 1'},priceSingola:260,priceDoppia:null,sqm:12,
         availableFrom:'2026-08-01',
         features:[{it:'Letto singolo',en:'Single bed'},{it:'Scrivania',en:'Desk'},{it:'Armadio grande',en:'Large wardrobe'}],
-        photos:[],
+        photos:[
+          'images/largo-dacquisto-14/camera1-01.jpg',
+          'images/largo-dacquisto-14/camera1-02.jpg'
+        ],
         hotspot:{x:31.77,y:45.72},
         overlayPoly:[[19.4,35.9],[40.34,36.07],[40.34,49.57],[35.6,49.66],[35.53,51.5],[19.4,51.59]]
       },
@@ -843,7 +846,11 @@ window.APARTMENTS = {
         id:'camera2',name:{it:'Camera singola 2',en:'Camera singola 2'},priceSingola:270,priceDoppia:null,sqm:13,
         availableFrom:'2026-12-01',
         features:[{it:'Letto singolo',en:'Single bed'},{it:'Scrivania',en:'Desk'},{it:'Armadio grande',en:'Large wardrobe'},{it:'Balcone',en:'Balcony'}],
-        photos:[],
+        photos:[
+          'images/largo-dacquisto-14/camera2-01.jpg',
+          'images/largo-dacquisto-14/camera2-02.jpg',
+          'images/largo-dacquisto-14/camera2-03.jpg'
+        ],
         hotspot:{x:47.78,y:66.89},
         overlayPoly:[[40.47,57.64],[54.91,57.64],[55.11,76.14],[40.61,76.14]]
       },
