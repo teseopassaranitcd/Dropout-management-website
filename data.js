@@ -23,6 +23,7 @@ window.APARTMENTS = {
     available:true,
     lat:42.4030,lng:12.8615,
     cover:'images/via-garibaldi-188/terrazza-01.jpg',
+    sideImg:'images/via-garibaldi-188/terrazza-03.jpg',
     gallery:[
       'images/via-garibaldi-188/cucina-01.jpg',
       'images/via-garibaldi-188/cucina-02.jpg',
@@ -102,7 +103,7 @@ window.APARTMENTS = {
     available:true,
     lat:42.403857,lng:12.8652,
     cover:'images/via-san-leopardo-1/foto-01.jpg',
-    sideImg:'images/via-san-leopardo-1/planimetria-p0.jpg',
+    sideImg:'images/via-san-leopardo-1/foto-36.jpg',
     gallery:[
       'images/via-san-leopardo-1/foto-02.jpg',
       'images/via-san-leopardo-1/foto-04.jpg',
@@ -230,7 +231,7 @@ window.APARTMENTS = {
     availableFrom:'2027-10-01',
     lat:42.404762,lng:12.870206,
     cover:'images/via-garibaldi-33/foto-01.jpg',
-    sideImg:'images/via-garibaldi-33/foto-01.jpg',
+    sideImg:'images/via-garibaldi-33/foto-15.jpg',
     gallery:[
       'images/via-garibaldi-33/foto-02.jpg',
       'images/via-garibaldi-33/foto-03.jpg',
@@ -375,6 +376,7 @@ window.APARTMENTS = {
     available:true,
     lat:42.41854,lng:12.855783,
     cover:'images/via-maderno-10/foto-01.jpg',
+    sideImg:'images/via-maderno-10/foto-09.jpg',
     gallery:[
       'images/via-maderno-10/foto-02.jpg',
       'images/via-maderno-10/foto-03.jpg',
@@ -451,7 +453,7 @@ window.APARTMENTS = {
     availableFrom:'2027-08-01',
     lat:42.404778,lng:12.865834,
     cover:'images/via-nuova-115-piano-1/foto-01.jpg',
-    sideImg:'images/via-nuova-115-piano-1/foto-01.jpg',
+    sideImg:'images/via-nuova-115-piano-1/foto-10.jpg',
     gallery:[
       'images/via-nuova-115-piano-1/foto-02.jpg',
       'images/via-nuova-115-piano-1/foto-03.jpg',
@@ -518,7 +520,7 @@ window.APARTMENTS = {
     available:true,
     lat:42.404778,lng:12.865834,
     cover:'images/via-nuova-115-piano-2/foto-01.jpg',
-    sideImg:'images/via-nuova-115-piano-2/foto-01.jpg',
+    sideImg:'images/via-nuova-115-piano-2/foto-11.jpg',
     gallery:[
       'images/via-nuova-115-piano-2/foto-02.jpg',
       'images/via-nuova-115-piano-2/foto-03.jpg',
@@ -597,7 +599,7 @@ window.APARTMENTS = {
     available:true,
     lat:42.404778,lng:12.865834,
     cover:'images/via-nuova-115-piano-3/foto-01.jpg',
-    sideImg:'images/via-nuova-115-piano-3/foto-01.jpg',
+    sideImg:'images/via-nuova-115-piano-3/foto-06.jpg',
     gallery:[
       'images/via-nuova-115-piano-3/foto-02.jpg',
       'images/via-nuova-115-piano-3/foto-03.jpg',
@@ -673,6 +675,7 @@ window.APARTMENTS = {
     available:true,
     lat:42.398305,lng:12.860369,
     cover:'',
+    sideImg:'images/placeholder-apt.jpg',
     gallery:[],
     descrizione:{it:'<p><em>Pagina in fase di allestimento. Il materiale (foto, planimetria, descrizione dettagliata) sarà inserito appena disponibile.</em></p>',en:'<p><em>Page under construction. Photos, floor plan and full description will be added as soon as available.</em></p>'},
     caratteristiche:[
@@ -697,6 +700,7 @@ window.APARTMENTS = {
     available:true,
     lat:42.407603,lng:12.853169,
     cover:'images/via-boschi-29/foto-01.jpg',
+    sideImg:'images/via-boschi-29/foto-20.jpg',
     gallery:[
       'images/via-boschi-29/foto-02.jpg',
       'images/via-boschi-29/foto-03.jpg',
@@ -793,6 +797,7 @@ window.APARTMENTS = {
     available:true,
     lat:42.41629,lng:12.859835,
     cover:'images/largo-dacquisto-14/foto-01.jpg',
+    sideImg:'images/largo-dacquisto-14/foto-07.jpg',
     gallery:[
       'images/largo-dacquisto-14/foto-02.jpg',
       'images/largo-dacquisto-14/foto-03.jpg',
@@ -874,7 +879,7 @@ window.APARTMENTS = {
     available:true,
     lat:42.405201,lng:12.8646,
     cover:'images/via-morroni-20/foto-01.jpg',
-    sideImg:'images/via-morroni-20/foto-01.jpg',
+    sideImg:'images/via-morroni-20/foto-11.jpg',
     gallery:[
       'images/via-morroni-20/foto-02.jpg',
       'images/via-morroni-20/foto-03.jpg',
@@ -945,7 +950,7 @@ window.APARTMENTS = {
     available:true,
     lat:42.404539,lng:12.865605,
     cover:'images/via-ripresa-73/foto-01.jpg',
-    sideImg:'images/via-ripresa-73/foto-01.jpg',
+    sideImg:'images/via-ripresa-73/foto-03.jpg',
     gallery:[
       'images/via-ripresa-73/foto-02.jpg',
       'images/via-ripresa-73/foto-03.jpg',
@@ -1036,7 +1041,7 @@ window.APARTMENTS = {
     available:true,
     lat:42.402504,lng:12.854594,
     cover:'images/via-tigli-14/foto-01.jpg',
-    sideImg:'images/via-tigli-14/foto-01.jpg',
+    sideImg:'images/via-tigli-14/foto-14.jpg',
     gallery:[
       'images/via-tigli-14/foto-02.jpg',
       'images/via-tigli-14/foto-03.jpg',
@@ -1123,7 +1128,7 @@ window.APARTMENTS = {
     available:true,
     lat:42.404743,lng:12.848819,
     cover:'images/via-fratelli-cervi-2/foto-01.jpg',
-    sideImg:'images/via-fratelli-cervi-2/foto-01.jpg',
+    sideImg:'images/via-fratelli-cervi-2/foto-08.jpg',
     gallery:[
       'images/via-fratelli-cervi-2/foto-02.jpg',
       'images/via-fratelli-cervi-2/foto-03.jpg',
@@ -1321,7 +1326,7 @@ window.APARTMENTS = {
     available:true,
     lat:42.404495,lng:12.868609,
     cover:'images/via-garibaldi-89-secondo/foto-01.jpg',
-    sideImg:'images/via-garibaldi-89-secondo/foto-01.jpg',
+    sideImg:'images/via-garibaldi-89-secondo/foto-06.jpg',
     gallery:[
       'images/via-garibaldi-89-secondo/foto-02.jpg',
       'images/via-garibaldi-89-secondo/foto-03.jpg',
@@ -1403,7 +1408,7 @@ window.APARTMENTS = {
     available:true,
     lat:42.404495,lng:12.868609,
     cover:'images/via-garibaldi-89-secondo-rialzato/foto-01.jpg',
-    sideImg:'images/via-garibaldi-89-secondo-rialzato/foto-01.jpg',
+    sideImg:'images/via-garibaldi-89-secondo-rialzato/foto-07.jpg',
     gallery:[
       'images/via-garibaldi-89-secondo-rialzato/foto-02.jpg',
       'images/via-garibaldi-89-secondo-rialzato/foto-03.jpg',
@@ -1447,7 +1452,7 @@ window.APARTMENTS = {
     available:true,
     lat:42.406339,lng:12.858418,
     cover:'images/via-contigliano-12/foto-01.jpg',
-    sideImg:'images/via-contigliano-12/foto-01.jpg',
+    sideImg:'images/via-contigliano-12/foto-18.jpg',
     gallery:[
       'images/via-contigliano-12/foto-02.jpg',
       'images/via-contigliano-12/foto-03.jpg',
