@@ -829,7 +829,7 @@ window.APARTMENTS = {
     rentalMode:'entrambi',
     deposito:1,
     interoPricing:[{persone:3,prezzo:750}],
-    floorplan:'images/largo-dacquisto-14/planimetria.jpg',
+    floorplan:'images/largo-dacquisto-14/planimetria-largo-dacquisto.jpg',
     rooms:[
       {
         id:'camera1',name:{it:'Camera singola 1',en:'Camera singola 1'},priceSingola:260,priceDoppia:null,sqm:12,
