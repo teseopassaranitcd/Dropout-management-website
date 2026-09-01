@@ -129,9 +129,9 @@
     .page-wrap{position:relative;z-index:2;min-height:100vh}
 
     /* ══ NAV DRAWER ══ */
-    .lang-bar{position:fixed;top:0;right:0;z-index:900;display:flex;flex-direction:row;background:rgba(10,10,10,.92);border-left:1px solid var(--border);border-bottom:1px solid var(--border)}
-    .lang-bar a{display:flex;align-items:center;gap:7px;padding:10px 14px;color:var(--white);text-decoration:none;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;font-family:'DM Mono',monospace;border-right:1px solid var(--border);transition:background .2s}
-    .lang-bar a:last-child{border-right:none}
+    .lang-bar{position:fixed;top:0;right:0;z-index:900;display:flex;flex-direction:column;background:rgba(10,10,10,.92);border-left:1px solid var(--border);border-bottom:1px solid var(--border)}
+    .lang-bar a{display:flex;align-items:center;gap:7px;padding:10px 14px;color:var(--white);text-decoration:none;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;font-family:'DM Mono',monospace;border-bottom:1px solid var(--border);transition:background .2s}
+    .lang-bar a:last-child{border-bottom:none}
     .lang-bar a:hover{background:rgba(200,24,92,.22)}
     .lang-bar a.active{color:var(--magenta)}
     .lang-bar .flag{font-size:1.1rem}
@@ -157,7 +157,7 @@
     /* ── TOP BAR ── */
     .top-bar{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;border-bottom:1px solid var(--border)}
     .top-bar-left,.top-bar-right{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gray);font-family:'DM Mono',monospace}
-    .top-bar-right{padding-right:90px}
+    .top-bar-right{padding-right:100px}
     #live-counter{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--magenta)}
 
     /* ── HERO GRID ── */
