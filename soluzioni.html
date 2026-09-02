@@ -483,6 +483,11 @@ function isApartmentAvailable(apt){
   if(apt.roomDates&&apt.roomDates.length)return apt.roomDates.some(isRoomAvailable);
   return !!apt.available;
 }
+/* URL pulita per-appartamento (/<slug>); fallback alla vecchia ?id=N */
+function aptHref(apt){
+  const full=(window.APARTMENTS||{})[apt.id];
+  return (full&&full.slug)?`/${full.slug}`:`appartamento.html?id=${apt.id}`;
+}
 /* Prezzo "a partire da": minimo tra priceSingola e priceDoppia/2 di tutte
    le camere dell'appartamento; fallback al price statico di SOLUZIONI_LIST */
 function startingPrice(apt){
@@ -604,7 +609,7 @@ function createPinIcon(available){
 }
 
 /* Popup CTA links to appartamento.html?id=N — wormhole triggered via click handler below */
-function buildPopup(apt){const badge=isApartmentAvailable(apt)?`<span class="apt-badge free">Disponibile</span>`:`<span class="apt-badge taken">Occupato</span>`;return `<div class="apt-card"><img class="apt-card-img" src="${apt.img}" alt="${apt.name}" loading="lazy"/><div class="apt-card-body"><p class="apt-card-zone">${apt.zone}</p><h3 class="apt-card-name">${apt.name}</h3><div class="apt-card-row"><p class="apt-card-price"><span>A partire da</span> €${startingPrice(apt)}<span>/mese</span></p>${badge}</div><div class="apt-card-details"><div class="apt-detail"><strong>${apt.rooms}</strong>camere</div><div class="apt-detail"><strong>${apt.sqm} m²</strong>superficie</div></div><a href="appartamento.html?id=${apt.id}" class="apt-card-cta wormhole-link">Scopri →</a></div></div>`}
+function buildPopup(apt){const badge=isApartmentAvailable(apt)?`<span class="apt-badge free">Disponibile</span>`:`<span class="apt-badge taken">Occupato</span>`;return `<div class="apt-card"><img class="apt-card-img" src="${apt.img}" alt="${apt.name}" loading="lazy"/><div class="apt-card-body"><p class="apt-card-zone">${apt.zone}</p><h3 class="apt-card-name">${apt.name}</h3><div class="apt-card-row"><p class="apt-card-price"><span>A partire da</span> €${startingPrice(apt)}<span>/mese</span></p>${badge}</div><div class="apt-card-details"><div class="apt-detail"><strong>${apt.rooms}</strong>camere</div><div class="apt-detail"><strong>${apt.sqm} m²</strong>superficie</div></div><a href="${aptHref(apt)}" class="apt-card-cta wormhole-link">Scopri →</a></div></div>`}
 function triggerPinFlash(){pinFlash.classList.remove('flash');void pinFlash.offsetWidth;pinFlash.classList.add('flash');pinFlash.addEventListener('animationend',()=>pinFlash.classList.remove('flash'),{once:true})}
 
 apartments.forEach((apt,i)=>{
@@ -675,7 +680,7 @@ apartments.forEach(apt=>{
         <div class="h-apt-meta-item"><strong>${apt.rooms}</strong>${t['sol.rooms']}</div>
         <div class="h-apt-meta-item"><strong>${apt.sqm} m²</strong>${t['sol.surface']}</div>
       </div>
-      <a href="appartamento.html?id=${apt.id}" class="h-apt-cta wormhole-link">${t['sol.discover']}</a>
+      <a href="${aptHref(apt)}" class="h-apt-cta wormhole-link">${t['sol.discover']}</a>
     </div>`;
   grid.appendChild(card);
 });
@@ -686,11 +691,11 @@ if(aptCountEl)aptCountEl.textContent=apartments.length;
 /* ══ SEO: dati strutturati ItemList delle soluzioni ══ */
 (function injectSolutionsJsonLd(){
   try{
-    const items=apartments.map((apt,i)=>({
-      "@type":"ListItem","position":i+1,
-      "url":`https://collegedropoutmanagement.com/appartamento?id=${apt.id}`,
-      "name":apt.name
-    }));
+    const items=apartments.map((apt,i)=>{
+      const full=(window.APARTMENTS||{})[apt.id];
+      const u=full&&full.slug?`https://collegedropoutmanagement.com/${full.slug}`:`https://collegedropoutmanagement.com/appartamento?id=${apt.id}`;
+      return {"@type":"ListItem","position":i+1,"url":u,"name":apt.name};
+    });
     const ld={"@context":"https://schema.org","@type":"CollectionPage",
       "name":"Camere e appartamenti in affitto per studenti a Rieti",
       "url":"https://collegedropoutmanagement.com/soluzioni",

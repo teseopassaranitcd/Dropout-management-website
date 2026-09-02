@@ -18,6 +18,7 @@
 window.APARTMENTS = {
   1:{
     id:1,
+    slug:'via-garibaldi-188',
     name:{it:'Via Garibaldi n.188',en:'Via Garibaldi n.188'},
     zone:{it:'Centro Storico',en:'Historic Centre'},
     available:true,
@@ -98,6 +99,7 @@ window.APARTMENTS = {
   },
   2:{
     id:2,
+    slug:'via-san-leopardo-1',
     name:{it:'Via San Leopardo n.1',en:'Via San Leopardo n.1'},
     zone:{it:'Centro Storico',en:'Historic Centre'},
     available:true,
@@ -225,6 +227,7 @@ window.APARTMENTS = {
   },
   3:{
     id:3,
+    slug:'via-garibaldi-33',
     name:{it:'Via G. Garibaldi n.33',en:'Via G. Garibaldi n.33'},
     zone:{it:'Centro Storico',en:'Historic Centre'},
     available:false,
@@ -293,6 +296,7 @@ window.APARTMENTS = {
   },
   4:{
     id:4,
+    slug:'via-delle-ortensie-8',
     name:{it:'Via delle Ortensie n.8',en:'Via delle Ortensie n.8'},
     zone:{it:'Città Giardino',en:'Città Giardino'},
     available:true,
@@ -371,6 +375,7 @@ window.APARTMENTS = {
   },
   5:{
     id:5,
+    slug:'via-maderno-10',
     name:{it:'Via C. Maderno n.10',en:'Via C. Maderno n.10'},
     zone:{it:'Micioccoli',en:'Micioccoli'},
     available:true,
@@ -447,6 +452,7 @@ window.APARTMENTS = {
   },
   6:{
     id:6,
+    slug:'via-nuova-115-piano-1',
     name:{it:'Via Nuova n.115 - Piano I',en:'Via Nuova n.115 - Piano I'},
     zone:{it:'Centro Storico',en:'Historic Centre'},
     available:true,
@@ -515,6 +521,7 @@ window.APARTMENTS = {
   },
   7:{
     id:7,
+    slug:'via-nuova-115-piano-2',
     name:{it:'Via Nuova n.115 - Piano II',en:'Via Nuova n.115 - Piano II'},
     zone:{it:'Centro Storico',en:'Historic Centre'},
     available:true,
@@ -594,6 +601,7 @@ window.APARTMENTS = {
   },
   8:{
     id:8,
+    slug:'via-nuova-115-piano-3',
     name:{it:'Via Nuova n.115 - Piano III',en:'Via Nuova n.115 - Piano III'},
     zone:{it:'Centro Storico',en:'Historic Centre'},
     available:true,
@@ -670,6 +678,7 @@ window.APARTMENTS = {
   },
   9:{
     id:9,
+    slug:'via-porta-romana-22',
     name:{it:'Via Porta Romana n.22',en:'Via Porta Romana n.22'},
     zone:{it:'Porta Romana',en:'Porta Romana'},
     available:false,
@@ -696,6 +705,7 @@ window.APARTMENTS = {
   },
   10:{
     id:10,
+    slug:'via-boschi-29',
     name:{it:'Via P. Boschi n.29',en:'Via P. Boschi n.29'},
     zone:{it:'Regina Pacis',en:'Regina Pacis'},
     available:true,
@@ -793,6 +803,7 @@ window.APARTMENTS = {
   },
   11:{
     id:11,
+    slug:'largo-dacquisto-14',
     name:{it:'Largo S. D\'Acquisto n.14',en:'Largo S. D\'Acquisto n.14'},
     zone:{it:'Micioccoli',en:'Micioccoli'},
     available:true,
@@ -875,6 +886,7 @@ window.APARTMENTS = {
   },
   12:{
     id:12,
+    slug:'via-morroni-20',
     name:{it:'Viale T. Morroni n.20',en:'Viale T. Morroni n.20'},
     zone:{it:'Viale Morroni',en:'Viale Morroni'},
     available:true,
@@ -946,6 +958,7 @@ window.APARTMENTS = {
   },
   13:{
     id:13,
+    slug:'via-ripresa-73',
     name:{it:'Via della Ripresa n.73',en:'Via della Ripresa n.73'},
     zone:{it:'Centro Storico',en:'Historic Centre'},
     available:true,
@@ -1037,6 +1050,7 @@ window.APARTMENTS = {
   },
   14:{
     id:14,
+    slug:'via-tigli-14',
     name:{it:'Via dei Tigli n.14',en:'Via dei Tigli n.14'},
     zone:{it:'Viale Matteucci',en:'Viale Matteucci'},
     available:true,
@@ -1124,6 +1138,7 @@ window.APARTMENTS = {
   },
   15:{
     id:15,
+    slug:'via-fratelli-cervi-2',
     name:{it:'Via fratelli Cervi n.2',en:'Via fratelli Cervi n.2'},
     zone:{it:'Molino della Salce',en:'Molino della Salce'},
     available:true,
@@ -1235,6 +1250,7 @@ window.APARTMENTS = {
   },
   16:{
     id:16,
+    slug:'via-san-bernardino-27',
     name:{it:'Vicolo San Bernardino n.27',en:'Vicolo San Bernardino n.27'},
     zone:{it:'Centro Storico',en:'Historic Centre'},
     available:true,
@@ -1322,6 +1338,7 @@ window.APARTMENTS = {
   },
   17:{
     id:17,
+    slug:'via-garibaldi-89-secondo',
     name:{it:'Via G. Garibaldi n.89',en:'Via G. Garibaldi n.89'},
     zone:{it:'Centro Storico',en:'Historic Centre'},
     available:true,
@@ -1404,6 +1421,7 @@ window.APARTMENTS = {
   },
   18:{
     id:18,
+    slug:'via-garibaldi-89-secondo-rialzato',
     name:{it:'Via G. Garibaldi n.89 - Secondo rialzato',en:'Via G. Garibaldi n.89 - Secondo rialzato'},
     zone:{it:'Centro Storico',en:'Historic Centre'},
     available:true,
@@ -1449,6 +1467,7 @@ window.APARTMENTS = {
   },
   19:{
     id:19,
+    slug:'via-contigliano-12',
     name:{it:'Via Contigliano n.12',en:'Via Contigliano n.12'},
     zone:{it:'Viale Maraini',en:'Viale Maraini'},
     available:true,
