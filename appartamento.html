@@ -671,9 +671,23 @@ function getRoomStatus(availableFromISO){
   threshold.setMonth(threshold.getMonth()-2);
   return new Date()>=threshold?'available':'taken';
 }
+/* Stato disponibilità dell'intero appartamento, coerente con soluzioni.html:
+   - affitto a camere: disponibile se almeno una camera lo è ora
+   - affitto intero con data: disponibile in base alla data
+   - altrimenti fallback al booleano statico */
+function isApartmentAvailableNow(A){
+  if((A.rentalMode==='camere'||A.rentalMode==='entrambi')&&A.rooms&&A.rooms.length){
+    return A.rooms.some(r=>getRoomStatus(r.availableFrom)==='available');
+  }
+  if(A.rentalMode==='intero'&&A.availableFrom){
+    return getRoomStatus(A.availableFrom)==='available';
+  }
+  return !!A.available;
+}
 function formatAvailableFrom(availableFromISO,lang){
-  if(!availableFromISO)return '';
+  if(!availableFromISO||availableFromISO==='locked'||availableFromISO==='allestimento')return '';
   const d=new Date(availableFromISO+'T00:00:00');
+  if(isNaN(d.getTime()))return '';
   return new Intl.DateTimeFormat(lang==='it'?'it-IT':'en-GB',{month:'long',year:'numeric'}).format(d);
 }
 
@@ -683,7 +697,7 @@ function renderApartmentData(){
   document.getElementById('hdr-zone').textContent=APT.zone[lang];
   document.getElementById('hdr-name').textContent=APT.name[lang];
   if((APT.rentalMode==='camere'||APT.rentalMode==='entrambi')&&APT.rooms&&APT.rooms.length){
-    const allPrices=APT.rooms.flatMap(r=>[r.priceSingola, r.priceDoppia!=null?r.priceDoppia/2:null]).filter(p=>p!=null);
+    const allPrices=APT.rooms.flatMap(r=>[r.priceSingola, r.priceDoppia!=null?(r.pricePerPerson!=null?r.pricePerPerson:r.priceDoppia/2):null]).filter(p=>p!=null);
     const minPrice=allPrices.length?Math.round(Math.min(...allPrices)):0;
     document.getElementById('hdr-price').innerHTML=`${I18N[lang]['apt.startingFrom']}${minPrice}<span>${I18N[lang]['apt.perMonth']}</span>`;
   }else{
@@ -691,12 +705,14 @@ function renderApartmentData(){
   }
   document.getElementById('hdr-zone2').textContent=APT.zone[lang];
   const badge=document.getElementById('hdr-badge');
-  badge.textContent=APT.available?I18N[lang]['apt.available']:I18N[lang]['apt.taken'];
-  badge.className='apt-badge '+(APT.available?'free':'taken');
+  const aptAvail=isApartmentAvailableNow(APT);
+  badge.textContent=aptAvail?I18N[lang]['apt.available']:I18N[lang]['apt.taken'];
+  badge.className='apt-badge '+(aptAvail?'free':'taken');
   const coverEl=document.getElementById('cover-photo');
   const coverWrap=document.getElementById('panel-photo');
   if(APT.cover){
-    coverEl.src=APT.cover;
+    /* la foto centrale deve coincidere con la thumbnail (sideImg = img di SOLUZIONI_LIST) */
+    coverEl.src=APT.sideImg||APT.cover;
     coverEl.alt=APT.name[lang];
     coverEl.style.display='';
     coverWrap.classList.remove('no-cover');
@@ -784,19 +800,24 @@ function openTile(key){
 function renderCondizioni(){
   const A=APT,lang=window.__tcdLang||'it';
   let roomsHtml='';
-  if(A.rooms&&A.rooms.length){
+  if((A.rentalMode==='camere'||A.rentalMode==='entrambi')&&A.rooms&&A.rooms.length){
     roomsHtml=`<div class="cond-rooms">${A.rooms.map(r=>{
-      const avail=isRoomAvailable(r.availableFrom);
-      const statusClass=avail?'is-available':'is-taken';
+      const status=getRoomStatus(r.availableFrom);
+      const statusClass=status==='available'?'is-available':'is-taken';
+      const isDate=r.availableFrom&&r.availableFrom!=='locked'&&r.availableFrom!=='allestimento';
+      let availLabel='';
+      if(status==='locked')availLabel=I18N[lang]['apt.locked'];
+      else if(status==='progress')availLabel=I18N[lang]['apt.underPreparation'];
+      else if(isDate)availLabel=`${I18N[lang]['apt.availableFrom']} ${formatAvailableFrom(r.availableFrom,lang)}`;
       return `
       <div class="cond-room-row">
         <div class="cond-room-info">
           <span class="cond-room-name ${statusClass}">${r.name[lang]}</span>
-          ${r.availableFrom?`<span class="cond-room-avail ${statusClass}">${I18N[lang]['apt.availableFrom']} ${formatAvailableFrom(r.availableFrom,lang)}</span>`:''}
+          ${availLabel?`<span class="cond-room-avail ${statusClass}">${availLabel}</span>`:''}
         </div>
         <div class="cond-room-prices">
           ${r.priceSingola!=null?`<div class="fp-price-tag"><strong>€${r.priceSingola}</strong><span>${I18N[lang]['apt.singola']}</span></div>`:''}
-          ${r.priceDoppia!=null?`<div class="fp-price-tag"><strong>€${r.priceDoppia}</strong><span>${I18N[lang]['apt.doppia']}</span></div><div class="fp-price-tag"><strong>€${Math.round(r.priceDoppia/2)}</strong><span>${I18N[lang]['apt.perPerson']}</span></div>`:''}
+          ${r.priceDoppia!=null?`<div class="fp-price-tag"><strong>€${r.priceDoppia}</strong><span>${I18N[lang]['apt.doppia']}</span></div><div class="fp-price-tag"><strong>€${r.pricePerPerson!=null?r.pricePerPerson:Math.round(r.priceDoppia/2)}</strong><span>${I18N[lang]['apt.perPerson']}</span></div>`:''}
         </div>
       </div>`;
     }).join('')}</div>`;
@@ -810,6 +831,15 @@ function renderCondizioni(){
       const allAvailable=A.rooms.every(r=>isRoomAvailable(r.availableFrom));
       statusClass=allAvailable?'is-available':'is-taken';
       if(!allAvailable)body=`<p class="cond-intero-unavailable">${I18N[lang]['apt.interoUnavailable']}</p>`;
+    }else if(A.rentalMode==='intero'&&A.availableFrom){
+      const st=getRoomStatus(A.availableFrom);
+      statusClass=st==='available'?'is-available':'is-taken';
+      const lbl=formatAvailableFrom(A.availableFrom,lang);
+      if(st!=='available'){
+        body=`<p class="cond-intero-unavailable">${lbl?`${I18N[lang]['apt.availableFrom']} ${lbl}`:I18N[lang]['apt.interoUnavailable']}</p>`;
+      }else if(lbl){
+        body+=`<p class="cond-room-avail ${statusClass}" style="margin-top:8px">${I18N[lang]['apt.availableFrom']} ${lbl}</p>`;
+      }
     }
     interoHtml=`<h4 class="cond-subtitle ${statusClass}">${I18N[lang]['apt.condInteroTitle']}</h4>${body}`;
   }

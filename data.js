@@ -167,7 +167,7 @@ window.APARTMENTS = {
     rooms:[
       {
         id:'camera1',name:{it:'Camera doppia - Piano primo',en:'Camera doppia - Piano primo'},priceSingola:350,priceDoppia:440,sqm:29,
-        availableFrom:'2026-10-01',
+        availableFrom:'2026-09-01',
         features:[{it:'Due letti singoli',en:'Two single beds'},{it:'Armadio',en:'Wardrobe'},{it:'Schermo HD',en:'HD screen'},{it:'Scrivanie',en:'Desks'}],
         photos:[
           'images/via-san-leopardo-1/foto-02.jpg',
@@ -183,7 +183,7 @@ window.APARTMENTS = {
       },
       {
         id:'camera2',name:{it:'Camera singola 1 - Secondo piano',en:'Camera singola 1 - Secondo piano'},priceSingola:300,priceDoppia:null,sqm:18,
-        availableFrom:'2026-09-01',
+        availableFrom:'2027-09-01',
         features:[{it:'Letto matrimoniale',en:'Double bed'},{it:'Armadio grande',en:'Large wardrobe'},{it:'Scrivania',en:'Desk'}],
         photos:[
           'images/via-san-leopardo-1/foto-11.jpg',
@@ -197,7 +197,7 @@ window.APARTMENTS = {
       },
       {
         id:'camera3',name:{it:'Camera singola 2 - Secondo piano',en:'Camera singola 2 - Secondo piano'},priceSingola:300,priceDoppia:null,sqm:16,
-        availableFrom:'2026-08-01',
+        availableFrom:'2027-03-01',
         features:[{it:'Letto matrimoniale',en:'Double bed'},{it:'Armadio grande',en:'Large wardrobe'},{it:'Scrivania',en:'Desk'}],
         photos:[
           'images/via-san-leopardo-1/foto-41.jpg',
@@ -210,7 +210,7 @@ window.APARTMENTS = {
       },
       {
         id:'camera4',name:{it:'Camera singola 3 - Secondo piano',en:'Camera singola 3 - Secondo piano'},priceSingola:300,priceDoppia:null,sqm:14,
-        availableFrom:'2026-10-01',
+        availableFrom:'2027-08-01',
         features:[{it:'Letto matrimoniale',en:'Double bed'},{it:'Armadio grande',en:'Large wardrobe'},{it:'Scrivania',en:'Desk'}],
         photos:[
           'images/via-san-leopardo-1/foto-34.jpg',
@@ -227,7 +227,7 @@ window.APARTMENTS = {
     id:3,
     name:{it:'Via G. Garibaldi n.33',en:'Via G. Garibaldi n.33'},
     zone:{it:'Centro Storico',en:'Historic Centre'},
-    available:true,
+    available:false,
     availableFrom:'2027-10-01',
     lat:42.404762,lng:12.870206,
     cover:'images/via-garibaldi-33/foto-01.jpg',
@@ -433,7 +433,7 @@ window.APARTMENTS = {
       },
       {
         id:'camera2',name:{it:'Camera doppia',en:'Camera doppia'},priceSingola:null,priceDoppia:400,sqm:16,
-        availableFrom:'2026-10-01',
+        availableFrom:'2027-05-01',
         features:[{it:'Due letti singoli',en:'Two single beds'},{it:'Armadio grande',en:'Large wardrobe'},{it:'Scrivanie',en:'Desks'}],
         photos:[
           'images/via-maderno-10/foto-02.jpg',
@@ -551,14 +551,14 @@ window.APARTMENTS = {
       {name:{it:'Sede Università La Sapienza',en:'La Sapienza University campus'},dist:{it:'nelle vicinanze',en:'nearby'}},
       {name:{it:'Sede Università della Tuscia',en:'Tuscia University campus'},dist:{it:'nelle vicinanze',en:'nearby'}},
     ],
-    rentalMode:'intero',
+    rentalMode:'entrambi',
     interoPricing:[{persone:3,prezzo:750}],
     deposito:1,
     floorplan:'images/via-nuova-115-piano-2/planimetria.jpg',
     rooms:[
       {
-        id:'camera1',name:{it:'Camera 1',en:'Camera 1'},priceSingola:null,priceDoppia:null,sqm:null,
-        availableFrom:null,
+        id:'camera1',name:{it:'Camera 1',en:'Camera 1'},priceSingola:230,priceDoppia:null,sqm:null,
+        availableFrom:'2027-03-01',
         features:[],
         photos:[
           'images/via-nuova-115-piano-2/foto-05.jpg',
@@ -568,8 +568,8 @@ window.APARTMENTS = {
         overlayPoly:[[47.75,64.44],[48.15,84.98],[73.15,86.3],[73.02,64.63]]
       },
       {
-        id:'camera2',name:{it:'Camera 2',en:'Camera 2'},priceSingola:null,priceDoppia:null,sqm:null,
-        availableFrom:null,
+        id:'camera2',name:{it:'Camera 2',en:'Camera 2'},priceSingola:260,priceDoppia:null,sqm:null,
+        availableFrom:'2027-08-01',
         features:[],
         photos:[
           'images/via-nuova-115-piano-2/foto-10.jpg',
@@ -579,8 +579,8 @@ window.APARTMENTS = {
         overlayPoly:[[21.89,52.17],[22.44,83.86],[47.05,84.98],[46.52,51.8]]
       },
       {
-        id:'camera3',name:{it:'Camera 3',en:'Camera 3'},priceSingola:null,priceDoppia:null,sqm:null,
-        availableFrom:null,
+        id:'camera3',name:{it:'Camera 3',en:'Camera 3'},priceSingola:260,priceDoppia:null,sqm:null,
+        availableFrom:'2027-08-01',
         features:[],
         photos:[
           'images/via-nuova-115-piano-2/foto-07.jpg',
@@ -629,14 +629,14 @@ window.APARTMENTS = {
       {name:{it:'Sede Università La Sapienza',en:'La Sapienza University campus'},dist:{it:'nelle vicinanze',en:'nearby'}},
       {name:{it:'Sede Università della Tuscia',en:'Tuscia University campus'},dist:{it:'nelle vicinanze',en:'nearby'}},
     ],
-    rentalMode:'intero',
+    rentalMode:'entrambi',
     interoPricing:[{persone:3,prezzo:780}],
     deposito:1,
     floorplan:'images/via-nuova-115-piano-3/planimetria.jpg',
     rooms:[
       {
-        id:'camera1',name:{it:'Camera 1',en:'Camera 1'},priceSingola:null,priceDoppia:null,sqm:null,
-        availableFrom:null,
+        id:'camera1',name:{it:'Camera singola 1',en:'Camera singola 1'},priceSingola:250,priceDoppia:null,sqm:null,
+        availableFrom:'2027-10-01',
         features:[],
         photos:[
           'images/via-nuova-115-piano-3/foto-10.jpg',
@@ -646,8 +646,8 @@ window.APARTMENTS = {
         overlayPoly:[[30.86,16.21],[30.76,52.37],[51.23,52.53],[51.12,17.61]]
       },
       {
-        id:'camera2',name:{it:'Camera 2',en:'Camera 2'},priceSingola:null,priceDoppia:null,sqm:null,
-        availableFrom:null,
+        id:'camera2',name:{it:'Camera singola 2',en:'Camera singola 2'},priceSingola:260,priceDoppia:null,sqm:null,
+        availableFrom:'2027-09-01',
         features:[],
         photos:[
           'images/via-nuova-115-piano-3/foto-03.jpg'
@@ -656,8 +656,8 @@ window.APARTMENTS = {
         overlayPoly:[[51.82,17.61],[51.83,52.38],[81.43,52.11],[79.3,18.86]]
       },
       {
-        id:'camera3',name:{it:'Camera 3',en:'Camera 3'},priceSingola:null,priceDoppia:null,sqm:null,
-        availableFrom:null,
+        id:'camera3',name:{it:'Camera singola 3',en:'Camera singola 3'},priceSingola:260,priceDoppia:null,sqm:null,
+        availableFrom:'2027-09-01',
         features:[],
         photos:[
           'images/via-nuova-115-piano-3/foto-04.jpg',
@@ -672,7 +672,8 @@ window.APARTMENTS = {
     id:9,
     name:{it:'Via Porta Romana n.22',en:'Via Porta Romana n.22'},
     zone:{it:'Porta Romana',en:'Porta Romana'},
-    available:true,
+    available:false,
+    availableFrom:'2026-12-01',
     lat:42.398305,lng:12.860369,
     cover:'',
     sideImg:'images/placeholder-apt.jpg',
@@ -757,7 +758,7 @@ window.APARTMENTS = {
       },
       {
         id:'camera2',name:{it:'Camera singola 1',en:'Camera singola 1'},priceSingola:280,priceDoppia:null,sqm:12,
-        availableFrom:'2026-08-01',
+        availableFrom:'2027-09-01',
         features:[{it:'Letto singolo',en:'Single bed'},{it:'Armadio',en:'Wardrobe'},{it:'Scrivania',en:'Desk'},{it:'Balcone',en:'Balcony'}],
         photos:[
           'images/via-boschi-29/foto-10.jpg',
@@ -838,7 +839,7 @@ window.APARTMENTS = {
     rooms:[
       {
         id:'camera1',name:{it:'Camera singola 1',en:'Camera singola 1'},priceSingola:260,priceDoppia:null,sqm:12,
-        availableFrom:'2026-08-01',
+        availableFrom:'2026-09-01',
         features:[{it:'Letto singolo',en:'Single bed'},{it:'Scrivania',en:'Desk'},{it:'Armadio grande',en:'Large wardrobe'}],
         photos:[
           'images/largo-dacquisto-14/camera1-01.jpg',
@@ -849,7 +850,7 @@ window.APARTMENTS = {
       },
       {
         id:'camera2',name:{it:'Camera singola 2',en:'Camera singola 2'},priceSingola:270,priceDoppia:null,sqm:13,
-        availableFrom:'2026-12-01',
+        availableFrom:'2027-08-01',
         features:[{it:'Letto singolo',en:'Single bed'},{it:'Scrivania',en:'Desk'},{it:'Armadio grande',en:'Large wardrobe'},{it:'Balcone',en:'Balcony'}],
         photos:[
           'images/largo-dacquisto-14/camera2-01.jpg',
@@ -861,7 +862,7 @@ window.APARTMENTS = {
       },
       {
         id:'camera3',name:{it:'Camera singola 3',en:'Camera singola 3'},priceSingola:260,priceDoppia:null,sqm:13,
-        availableFrom:'2026-08-01',
+        availableFrom:'2027-01-01',
         features:[{it:'Letto singolo',en:'Single bed'},{it:'Scrivania',en:'Desk'},{it:'Armadio grande',en:'Large wardrobe'}],
         photos:[
           'images/largo-dacquisto-14/foto-04.jpg',
@@ -920,7 +921,7 @@ window.APARTMENTS = {
     rooms:[
       {
         id:'camera1',name:{it:'Camera doppia 1',en:'Camera doppia 1'},priceSingola:null,priceDoppia:450,sqm:24,
-        availableFrom:'2026-08-01',
+        availableFrom:'2026-09-01',
         features:[{it:'Due letti singoli',en:'Two single beds'},{it:'Armadio grande',en:'Large wardrobe'},{it:'Scrivanie',en:'Desks'},{it:'Vista sul centro storico',en:'Historic centre view'}],
         photos:[
           'images/via-morroni-20/foto-05.jpg',
@@ -1177,8 +1178,8 @@ window.APARTMENTS = {
     floorplanDefault:2,
     rooms:[
       {
-        id:'camera1',name:{it:'Camera singola 1 - Primo piano',en:'Camera singola 1 - Primo piano'},priceSingola:280,priceDoppia:null,sqm:20,
-        availableFrom:'2026-08-01',
+        id:'camera1',name:{it:'Camera singola 1 - Primo piano',en:'Camera singola 1 - Primo piano'},priceSingola:300,priceDoppia:null,sqm:20,
+        availableFrom:'2027-08-01',
         features:[{it:'Letto matrimoniale',en:'Double bed'},{it:'Armadio grande',en:'Large wardrobe'},{it:'Scrivania',en:'Desk'},{it:'Balcone',en:'Balcony'}],
         photos:[
           'images/via-fratelli-cervi-2/foto-01.jpg',
@@ -1191,7 +1192,7 @@ window.APARTMENTS = {
       },
       {
         id:'camera2',name:{it:'Camera singola 2 - Primo piano',en:'Camera singola 2 - Primo piano'},priceSingola:280,priceDoppia:null,sqm:18,
-        availableFrom:'2026-10-01',
+        availableFrom:'2027-03-01',
         features:[{it:'Letto matrimoniale',en:'Double bed'},{it:'Armadio grande',en:'Large wardrobe'},{it:'Scrivania',en:'Desk'},{it:'Balcone',en:'Balcony'}],
         photos:[
           'images/via-fratelli-cervi-2/foto-06.jpg',
@@ -1205,7 +1206,7 @@ window.APARTMENTS = {
       },
       {
         id:'camera3',name:{it:'Mansarda doppia - Secondo piano',en:'Mansarda doppia - Secondo piano'},priceSingola:null,priceDoppia:500,sqm:50,
-        availableFrom:'2026-08-01',
+        availableFrom:'2026-10-01',
         features:[{it:'Bagno privato',en:'Private bathroom'},{it:'Due letti singoli',en:'Two single beds'},{it:'Scrivanie',en:'Desks'}],
         photos:[
           'images/via-fratelli-cervi-2/foto-12.jpg',
@@ -1368,7 +1369,7 @@ window.APARTMENTS = {
     rooms:[
       {
         id:'camera1',name:{it:'Camera singola 1',en:'Camera singola 1'},priceSingola:275,priceDoppia:null,sqm:14,
-        availableFrom:'2027-09-01',
+        availableFrom:'2026-11-01',
         features:[{it:'Letto singolo',en:'Single bed'},{it:'Scrivania',en:'Desk'},{it:'Lucernaio',en:'Skylight'},{it:'Armadio grande',en:'Large wardrobe'}],
         photos:[
           'images/via-garibaldi-89-secondo/foto-01.jpg',
@@ -1381,7 +1382,7 @@ window.APARTMENTS = {
       },
       {
         id:'camera2',name:{it:'Camera singola 2',en:'Camera singola 2'},priceSingola:275,priceDoppia:null,sqm:14,
-        availableFrom:'2026-12-01',
+        availableFrom:'2027-10-01',
         features:[{it:'Letto matrimoniale',en:'Double bed'},{it:'Affaccio panoramico',en:'Panoramic view'},{it:'Scrivania',en:'Desk'},{it:'Armadio a muro',en:'Built-in wardrobe'},{it:'Bagno in camera',en:'En-suite bathroom'}],
         photos:[
           'images/via-garibaldi-89-secondo/foto-02.jpg',
@@ -1392,8 +1393,8 @@ window.APARTMENTS = {
         overlayPoly:[[55.38,22.48],[69.81,21.42],[70.76,30.76],[57.28,30.47]]
       },
       {
-        id:'camera3',name:{it:'Suite doppia',en:'Suite doppia'},priceSingola:450,priceDoppia:500,sqm:40,
-        availableFrom:'allestimento',
+        id:'camera3',name:{it:'Suite doppia',en:'Suite doppia'},priceSingola:450,priceDoppia:480,pricePerPerson:250,sqm:40,
+        availableFrom:'2026-10-01',
         features:[{it:'Due letti singoli',en:'Two single beds'},{it:'Armadio grande',en:'Large wardrobe'},{it:'Scrivania',en:'Desk'},{it:'Ampia metratura',en:'Spacious'},{it:'Bagno privato con vasca idromassaggio',en:'Private bathroom with whirlpool tub'}],
         photos:[],
         hotspot:{x:51.43,y:76.67},
@@ -1406,6 +1407,7 @@ window.APARTMENTS = {
     name:{it:'Via G. Garibaldi n.89 - Secondo rialzato',en:'Via G. Garibaldi n.89 - Secondo rialzato'},
     zone:{it:'Centro Storico',en:'Historic Centre'},
     available:true,
+    availableFrom:'2026-10-01',
     lat:42.404495,lng:12.868609,
     cover:'images/via-garibaldi-89-secondo-rialzato/foto-01.jpg',
     sideImg:'images/via-garibaldi-89-secondo-rialzato/foto-07.jpg',
@@ -1559,22 +1561,22 @@ window.APARTMENTS = {
 
 window.SOLUZIONI_LIST = [
   {id:1,name:"Soluzione Via Garibaldi",    zone:"Centro Storico",  price:300,rooms:2,sqm:117,roomDates:["2026-10-01","2026-10-01"], lat:42.4034304,lng:12.8652728,img:"images/via-garibaldi-188/terrazza-03.jpg"},
-  {id:2,name:"Via San Leopardo",zone:"Centro Storico",price:300,rooms:4,sqm:200,roomDates:['2026-10-01','2026-09-01','2026-08-01','2026-10-01'], lat:42.403857,lng:12.8652,img:"images/via-san-leopardo-1/foto-36.jpg"},
-  {id:3,name:"Via G. Garibaldi n.33",zone:"Centro Storico",price:650,rooms:1,sqm:80,available:true, lat:42.404762,lng:12.870206,img:"images/via-garibaldi-33/foto-15.jpg"},
-  {id:4,name:"Via delle Ortensie n.8",zone:"Città Giardino",price:280,rooms:2,sqm:110,roomDates:['2026-12-01','2026-06-01'], lat:42.399983,lng:12.856886,img:"images/via-delle-ortensie-8/foto-01.jpg"},
-  {id:5,name:"Via C. Maderno n.10",zone:"Micioccoli",price:300,rooms:2,sqm:80,roomDates:['2026-08-01','2026-10-01'], lat:42.41854,lng:12.855783,img:"images/via-maderno-10/foto-09.jpg"},
+  {id:2,name:"Via San Leopardo",zone:"Centro Storico",price:300,rooms:4,sqm:200,roomDates:['2026-09-01','2027-09-01','2027-03-01','2027-08-01'], lat:42.403857,lng:12.8652,img:"images/via-san-leopardo-1/foto-36.jpg"},
+  {id:3,name:"Via G. Garibaldi n.33",zone:"Centro Storico",price:650,rooms:1,sqm:80,available:false, lat:42.404762,lng:12.870206,img:"images/via-garibaldi-33/foto-15.jpg"},
+  {id:4,name:"Via delle Ortensie n.8",zone:"Città Giardino",price:280,rooms:2,sqm:110,roomDates:['2026-12-01','2027-07-01'], lat:42.399983,lng:12.856886,img:"images/via-delle-ortensie-8/foto-01.jpg"},
+  {id:5,name:"Via C. Maderno n.10",zone:"Micioccoli",price:300,rooms:2,sqm:80,roomDates:['2026-08-01','2027-05-01'], lat:42.41854,lng:12.855783,img:"images/via-maderno-10/foto-09.jpg"},
   {id:6,name:"Via Nuova n.115 - Piano I",zone:"Centro Storico",price:520,rooms:1,sqm:55,available:true, lat:42.404778,lng:12.865834,img:"images/via-nuova-115-piano-1/foto-10.jpg"},
-  {id:7,name:"Via Nuova n.155 - Piano II",zone:"Centro Storico",price:750,rooms:1,sqm:70,available:true, lat:42.404778,lng:12.865834,img:"images/via-nuova-115-piano-2/foto-11.jpg"},
-  {id:8,name:"Via Nuova n.115 - Piano III",zone:"Centro Storico",price:780,rooms:1,sqm:78,available:true, lat:42.404778,lng:12.865834,img:"images/via-nuova-115-piano-3/foto-06.jpg"},
-  {id:9,name:"Via Porta Romana n.22",zone:"Porta Romana",price:600,rooms:1,sqm:50,available:true, lat:42.398305,lng:12.860369,img:"images/placeholder-apt.jpg"},
-  {id:10,name:"Via P. Boschi n.29",zone:"Regina Pacis",price:280,rooms:4,sqm:130,roomDates:['2027-09-01','2026-08-01','2027-09-01','2027-01-01'], lat:42.407603,lng:12.853169,img:"images/via-boschi-29/foto-20.jpg"},
-  {id:11,name:"Largo S. D\'Acquisto n.14",zone:"Micioccoli",price:260,rooms:3,sqm:90,roomDates:['2026-08-01','2026-12-01','2026-08-01'], lat:42.41629,lng:12.859835,img:"images/largo-dacquisto-14/foto-07.jpg"},
-  {id:12,name:"Viale T. Morroni n.20",zone:"Viale Morroni",price:450,rooms:2,sqm:85,roomDates:['2026-08-01','2026-09-01'], lat:42.405201,lng:12.8646,img:"images/via-morroni-20/foto-11.jpg"},
+  {id:7,name:"Via Nuova n.155 - Piano II",zone:"Centro Storico",price:750,rooms:3,sqm:70,roomDates:['2027-03-01','2027-08-01','2027-08-01'], lat:42.404778,lng:12.865834,img:"images/via-nuova-115-piano-2/foto-11.jpg"},
+  {id:8,name:"Via Nuova n.115 - Piano III",zone:"Centro Storico",price:780,rooms:3,sqm:78,roomDates:['2027-10-01','2027-09-01','2027-09-01'], lat:42.404778,lng:12.865834,img:"images/via-nuova-115-piano-3/foto-06.jpg"},
+  {id:9,name:"Via Porta Romana n.22",zone:"Porta Romana",price:600,rooms:1,sqm:50,available:false, lat:42.398305,lng:12.860369,img:"images/placeholder-apt.jpg"},
+  {id:10,name:"Via P. Boschi n.29",zone:"Regina Pacis",price:280,rooms:4,sqm:130,roomDates:['2027-09-01','2027-09-01','2027-09-01','2027-01-01'], lat:42.407603,lng:12.853169,img:"images/via-boschi-29/foto-20.jpg"},
+  {id:11,name:"Largo S. D\'Acquisto n.14",zone:"Micioccoli",price:260,rooms:3,sqm:90,roomDates:['2026-09-01','2027-08-01','2027-01-01'], lat:42.41629,lng:12.859835,img:"images/largo-dacquisto-14/foto-07.jpg"},
+  {id:12,name:"Viale T. Morroni n.20",zone:"Viale Morroni",price:450,rooms:2,sqm:85,roomDates:['2026-09-01','2026-09-01'], lat:42.405201,lng:12.8646,img:"images/via-morroni-20/foto-11.jpg"},
   {id:13,name:"Via della Ripresa n.73",zone:"Centro Storico",price:250,rooms:4,sqm:90,roomDates:['2027-09-01','2027-06-01','2027-01-01','2027-09-01'], lat:42.404539,lng:12.865605,img:"images/via-ripresa-73/foto-03.jpg"},
   {id:14,name:"Via dei Tigli n.14",zone:"Viale Matteucci",price:300,rooms:3,sqm:110,roomDates:['2027-09-01','2027-09-01','2027-09-01'], lat:42.402504,lng:12.854594,img:"images/via-tigli-14/foto-14.jpg"},
-  {id:15,name:"Via fratelli Cervi n.2",zone:"Molino della Salce",price:280,rooms:3,sqm:300,roomDates:['2026-08-01','2026-10-01','2026-08-01'], lat:42.404743,lng:12.848819,img:"images/via-fratelli-cervi-2/foto-08.jpg"},
+  {id:15,name:"Via fratelli Cervi n.2",zone:"Molino della Salce",price:280,rooms:3,sqm:300,roomDates:['2027-08-01','2027-03-01','2026-10-01'], lat:42.404743,lng:12.848819,img:"images/via-fratelli-cervi-2/foto-08.jpg"},
   {id:16,name:"Vicolo San Bernardino n.27",zone:"Centro Storico",price:280,rooms:3,sqm:90,roomDates:['2027-09-01','2027-09-01','2027-09-01'], lat:42.401559,lng:12.86289,img:"images/via-san-bernardino-27/foto-01.jpg"},
-  {id:17,name:"Via G. Garibaldi n.89 - Secondo",zone:"Centro Storico",price:275,rooms:3,sqm:300,roomDates:['2027-09-01','2026-12-01'], lat:42.404495,lng:12.868609,img:"images/via-garibaldi-89-secondo/foto-06.jpg"},
+  {id:17,name:"Via G. Garibaldi n.89 - Secondo",zone:"Centro Storico",price:275,rooms:3,sqm:300,roomDates:['2026-11-01','2027-10-01','2026-10-01'], lat:42.404495,lng:12.868609,img:"images/via-garibaldi-89-secondo/foto-06.jpg"},
   {id:18,name:"Via G. Garibaldi n.89 - Secondo rialzato",zone:"Centro Storico",price:475,rooms:1,sqm:45,available:true, lat:42.404495,lng:12.868609,img:"images/via-garibaldi-89-secondo-rialzato/foto-07.jpg"},
   {id:19,name:"Via Contigliano n.12",zone:"Viale Maraini",price:300,rooms:3,sqm:120,roomDates:['2026-10-01','2027-03-01','2027-03-01'], lat:42.406339,lng:12.858418,img:"images/via-contigliano-12/foto-18.jpg"}
 ];
