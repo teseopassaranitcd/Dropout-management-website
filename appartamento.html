@@ -3,8 +3,15 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Appartamento — The College Dropout | Rieti</title>
-  <meta name="description" content="Dettagli soluzione su The College Dropout Rieti."/>
+  <title>Camere e appartamenti in affitto per studenti a Rieti — The College Dropout</title>
+  <meta name="description" content="Foto, planimetria, prezzi e disponibilità di camere e appartamenti in affitto per studenti universitari a Rieti. The College Dropout: contatto diretto, senza agenzia."/>
+  <meta name="robots" content="index,follow,max-image-preview:large"/>
+  <meta name="geo.region" content="IT-RI"/>
+  <meta name="geo.placename" content="Rieti"/>
+  <meta property="og:site_name" content="The College Dropout"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:locale" content="it_IT"/>
+  <meta name="twitter:card" content="summary_large_image"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Bebas+Neue&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
@@ -691,9 +698,49 @@ function formatAvailableFrom(availableFromISO,lang){
   return new Intl.DateTimeFormat(lang==='it'?'it-IT':'en-GB',{month:'long',year:'numeric'}).format(d);
 }
 
+/* ══ SEO: meta + dati strutturati per il singolo appartamento ══ */
+function apartmentMinPrice(A){
+  if((A.rentalMode==='camere'||A.rentalMode==='entrambi')&&A.rooms&&A.rooms.length){
+    const p=A.rooms.flatMap(r=>[r.priceSingola,r.priceDoppia!=null?(r.pricePerPerson!=null?r.pricePerPerson:r.priceDoppia/2):null]).filter(x=>x!=null);
+    if(p.length)return Math.round(Math.min(...p));
+  }
+  return A.price||0;
+}
+function updateApartmentSeo(lang){
+  const A=APT,name=A.name[lang],zone=A.zone&&A.zone[lang]?A.zone[lang]:'Rieti';
+  const min=apartmentMinPrice(A);
+  const url=`https://collegedropoutmanagement.com/appartamento?id=${A.id}`;
+  document.title=`${name} — affitto per studenti a Rieti | The College Dropout`;
+  const desc=lang==='en'
+    ? `${name}, ${zone} (Rieti). Rooms / apartment for rent to university students${min?` from €${min}/month`:''}: photos, floor plan and live availability. Direct contact with The College Dropout, no agency.`
+    : `${name}, ${zone} (Rieti). Camere / appartamento in affitto per studenti universitari${min?` da €${min}/mese`:''}: foto, planimetria e disponibilità aggiornata. Contatto diretto con The College Dropout, senza agenzia.`;
+  const set=(sel,attr,val)=>{let el=document.head.querySelector(sel);if(!el){el=document.createElement('meta');const m=sel.match(/\[(name|property)="([^"]+)"\]/);if(m)el.setAttribute(m[1],m[2]);document.head.appendChild(el);}el.setAttribute(attr,val);};
+  set('meta[name="description"]','content',desc);
+  set('meta[property="og:title"]','content',document.title);
+  set('meta[property="og:description"]','content',desc);
+  set('meta[property="og:url"]','content',url);
+  set('meta[property="og:image"]','content',`https://collegedropoutmanagement.com/${A.sideImg||A.cover||'images/bear-logo.png'}`);
+  set('meta[name="twitter:image"]','content',`https://collegedropoutmanagement.com/${A.sideImg||A.cover||'images/bear-logo.png'}`);
+  let canon=document.head.querySelector('link[rel="canonical"]');
+  if(!canon){canon=document.createElement('link');canon.rel='canonical';document.head.appendChild(canon);}
+  canon.href=url;
+  const ld={"@context":"https://schema.org","@type":"Apartment","name":name,"url":url,
+    "numberOfRooms":A.rooms?A.rooms.length:undefined,
+    "address":{"@type":"PostalAddress","addressLocality":"Rieti","addressRegion":"RI","addressCountry":"IT"},
+    "containedInPlace":{"@type":"City","name":"Rieti"}};
+  if(A.lat&&A.lng)ld.geo={"@type":"GeoCoordinates","latitude":A.lat,"longitude":A.lng};
+  const imgs=[A.cover,A.sideImg].concat(A.gallery||[]).filter(Boolean).slice(0,6)
+    .map(p=>`https://collegedropoutmanagement.com/${p}`);
+  if(imgs.length)ld.image=imgs;
+  if(min)ld.potentialAction={"@type":"RentAction","priceSpecification":{"@type":"PriceSpecification","price":min,"priceCurrency":"EUR","unitText":"MONTH"}};
+  let s=document.getElementById('apt-jsonld');
+  if(!s){s=document.createElement('script');s.type='application/ld+json';s.id='apt-jsonld';document.head.appendChild(s);}
+  s.textContent=JSON.stringify(ld);
+}
+
 function renderApartmentData(){
   const lang=window.__tcdLang||'it';
-  document.title=`${APT.name[lang]} — The College Dropout | Rieti`;
+  updateApartmentSeo(lang);
   document.getElementById('hdr-zone').textContent=APT.zone[lang];
   document.getElementById('hdr-name').textContent=APT.name[lang];
   if((APT.rentalMode==='camere'||APT.rentalMode==='entrambi')&&APT.rooms&&APT.rooms.length){

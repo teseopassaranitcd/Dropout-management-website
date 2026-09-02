@@ -3,15 +3,27 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Soluzioni — The College Dropout | Appartamenti a Rieti</title>
-  <meta name="description" content="Esplora le soluzioni disponibili a Rieti con The College Dropout."/>
+  <title>Camere e appartamenti in affitto per studenti a Rieti — The College Dropout</title>
+  <meta name="description" content="Tutte le camere e gli appartamenti in affitto per studenti a Rieti: singole e doppie, prezzi, disponibilità, foto e mappa. Elenco aggiornato in tempo reale da The College Dropout."/>
   <link rel="canonical" href="https://collegedropoutmanagement.com/soluzioni"/>
+  <meta name="robots" content="index,follow,max-image-preview:large"/>
+  <meta name="geo.region" content="IT-RI"/>
+  <meta name="geo.placename" content="Rieti"/>
+  <meta property="og:site_name" content="The College Dropout"/>
+  <meta property="og:title" content="Camere e appartamenti in affitto per studenti a Rieti"/>
+  <meta property="og:description" content="Singole e doppie, prezzi e disponibilità aggiornati, con mappa. The College Dropout, Rieti."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:locale" content="it_IT"/>
+  <meta property="og:url" content="https://collegedropoutmanagement.com/soluzioni"/>
+  <meta property="og:image" content="https://collegedropoutmanagement.com/images/bear-logo.png"/>
+  <meta name="twitter:card" content="summary_large_image"/>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Bebas+Neue&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
     :root{
       --black:#0a0a0a;--magenta:#c8185c;--white:#f0ede8;
@@ -361,6 +373,7 @@
 
   <!-- LIST VIEW -->
   <section class="list-section" id="listSection" style="display:block" aria-label="Elenco soluzioni disponibili">
+    <h1 class="sr-only">Camere e appartamenti in affitto per studenti a Rieti</h1>
     <div class="list-header">
       <span class="h-scroll-label" data-i18n="sol.allSolutions">— Tutte le soluzioni</span>
       <span class="h-scroll-count" id="listCount">0 soluzioni</span>
@@ -669,6 +682,27 @@ apartments.forEach(apt=>{
 listCount.textContent=`${apartments.length} ${window.__tcdI18N['sol.count']}`;
 const aptCountEl=document.getElementById('apt-count');
 if(aptCountEl)aptCountEl.textContent=apartments.length;
+
+/* ══ SEO: dati strutturati ItemList delle soluzioni ══ */
+(function injectSolutionsJsonLd(){
+  try{
+    const items=apartments.map((apt,i)=>({
+      "@type":"ListItem","position":i+1,
+      "url":`https://collegedropoutmanagement.com/appartamento?id=${apt.id}`,
+      "name":apt.name
+    }));
+    const ld={"@context":"https://schema.org","@type":"CollectionPage",
+      "name":"Camere e appartamenti in affitto per studenti a Rieti",
+      "url":"https://collegedropoutmanagement.com/soluzioni",
+      "inLanguage":"it",
+      "about":{"@type":"City","name":"Rieti"},
+      "mainEntity":{"@type":"ItemList","numberOfItems":items.length,"itemListElement":items}};
+    const s=document.createElement('script');
+    s.type='application/ld+json';
+    s.textContent=JSON.stringify(ld);
+    document.head.appendChild(s);
+  }catch(e){}
+})();
 
 /* ══ TOGGLE MAPPA / ELENCO (indipendente dalla mappa) ══ */
 const mapSection=document.getElementById('mapSection');
