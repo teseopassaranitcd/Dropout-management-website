@@ -431,7 +431,8 @@ const I18N={
     'footer.location':'Rieti, Italia','footer.designDev':'Design & dev:',
     'sol.viewMap':'Mappa','sol.viewList':'Elenco','sol.mapHint':'Clicca su una soluzione per scoprire di più · Scroll per zoomare','sol.mapHintArrow':'↙ Clicca su una soluzione per scoprire di più',
     'sol.location':'Rieti, Italia','sol.available':'soluzioni disponibili','sol.allSolutions':'— Tutte le soluzioni','sol.pageTitle':'Solu<span>zioni</span>',
-    'sol.available.badge':'Disponibile','sol.taken.badge':'Occupato','sol.rooms':'camere','sol.surface':'superficie','sol.perMonth':'/mese','sol.discover':'Scopri la soluzione →','sol.count':'soluzioni','sol.startingFrom':'A partire da'
+    'sol.available.badge':'Disponibile','sol.taken.badge':'Occupato','sol.rooms':'camere','sol.surface':'superficie','sol.perMonth':'/mese','sol.discover':'Scopri la soluzione →','sol.discoverShort':'Scopri →','sol.count':'soluzioni','sol.startingFrom':'A partire da',
+    'sol.legend.uni':'Università','sol.legend.super':'Supermercato','sol.legend.station':'Stazione / Cotral','sol.mapUnavailable':'Mappa non disponibile al momento.<br>Riprova più tardi.'
   },
   en:{
     'nav.home':'Homepage','nav.solutions':'Solutions','nav.services':'Our Services','nav.about':'About Us','nav.contact':'Contact','nav.owners':'Owners','nav.copyright':'The College Dropout © 2026',
@@ -441,7 +442,8 @@ const I18N={
     'footer.location':'Rieti, Italy','footer.designDev':'Design & dev:',
     'sol.viewMap':'Map','sol.viewList':'List','sol.mapHint':'Click a solution to discover more · Scroll to zoom','sol.mapHintArrow':'↙ Click a solution to discover more',
     'sol.location':'Rieti, Italy','sol.available':'solutions available','sol.allSolutions':'— All solutions','sol.pageTitle':'Solu<span>tions</span>',
-    'sol.available.badge':'Available','sol.taken.badge':'Taken','sol.rooms':'rooms','sol.surface':'surface','sol.perMonth':'/month','sol.discover':'Discover the solution →','sol.count':'solutions','sol.startingFrom':'Starting from'
+    'sol.available.badge':'Available','sol.taken.badge':'Taken','sol.rooms':'rooms','sol.surface':'surface','sol.perMonth':'/month','sol.discover':'Discover the solution →','sol.discoverShort':'Discover →','sol.count':'solutions','sol.startingFrom':'Starting from',
+    'sol.legend.uni':'University','sol.legend.super':'Supermarket','sol.legend.station':'Station / Cotral','sol.mapUnavailable':'Map unavailable right now.<br>Please try again later.'
   }
 };
 function setLang(lang){
@@ -458,6 +460,8 @@ function setLang(lang){
   try{localStorage.setItem('tcd_lang',lang)}catch(e){}
   window.__tcdLang=lang;
   window.__tcdI18N=I18N[lang];
+  /* ridisegna card + popup mappa nella nuova lingua (dopo il primo render) */
+  if(window.__solRendered)renderApartmentUI();
 }
 window.setLang=setLang;
 (function initLang(){
@@ -487,6 +491,12 @@ function isApartmentAvailable(apt){
 function aptHref(apt){
   const full=(window.APARTMENTS||{})[apt.id];
   return (full&&full.slug)?`/${full.slug}`:`appartamento.html?id=${apt.id}`;
+}
+/* Zona tradotta (da APARTMENTS); l'indirizzo (apt.name) resta invariato */
+function aptZone(apt){
+  const full=(window.APARTMENTS||{})[apt.id];
+  const lang=window.__tcdLang||'it';
+  return (full&&full.zone&&full.zone[lang])?full.zone[lang]:apt.zone;
 }
 /* Prezzo "a partire da": minimo tra priceSingola e priceDoppia/2 di tutte
    le camere dell'appartamento; fallback al price statico di SOLUZIONI_LIST */
@@ -534,6 +544,7 @@ function startExit(){
 /* ══ LEAFLET ══ */
 let map;
 let mapIntroFlown=false;
+const aptMarkers=[]; /* {marker,apt} — per riscrivere i popup al cambio lingua */
 function flyInToRieti(){
   if(typeof map==='undefined')return;
   const sec=document.getElementById('mapSection');
@@ -546,7 +557,7 @@ function flyInToRieti(){
 if(typeof L==='undefined'){
   console.error('Leaflet non disponibile: la libreria della mappa non si è caricata.');
   const mapEl=document.getElementById('map');
-  if(mapEl)mapEl.innerHTML='<div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--gray);font-family:\'DM Mono\',monospace;font-size:.8rem;text-align:center;padding:20px">Mappa non disponibile al momento.<br>Riprova più tardi.</div>';
+  if(mapEl)mapEl.innerHTML='<div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--gray);font-family:\'DM Mono\',monospace;font-size:.8rem;text-align:center;padding:20px">'+((window.__tcdI18N||{})['sol.mapUnavailable']||'Mappa non disponibile al momento.<br>Riprova più tardi.')+'</div>';
   setTimeout(()=>mapCont.classList.add('land'),800);
   setTimeout(()=>titleBar.classList.add('open'),1200);
 }else{
@@ -564,28 +575,31 @@ legend.onAdd=function(){
     <div style="display:flex;flex-direction:column;gap:7px">
       <div style="display:flex;align-items:center;gap:8px">
         <div style="width:10px;height:10px;border-radius:50%;background:#39ff14;box-shadow:0 0 6px #39ff14;flex-shrink:0"></div>
-        <span style="font-family:'DM Mono',monospace;font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:#f0ede8">Disponibile</span>
+        <span style="font-family:'DM Mono',monospace;font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:#f0ede8" data-i18n="sol.available.badge">Disponibile</span>
       </div>
       <div style="display:flex;align-items:center;gap:8px">
         <div style="width:10px;height:10px;border-radius:50%;background:#c8185c;box-shadow:0 0 6px #c8185c;flex-shrink:0"></div>
-        <span style="font-family:'DM Mono',monospace;font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:#f0ede8">Occupato</span>
+        <span style="font-family:'DM Mono',monospace;font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:#f0ede8" data-i18n="sol.taken.badge">Occupato</span>
       </div>
       <div style="display:flex;align-items:center;gap:8px">
         <div style="width:10px;height:10px;border-radius:50%;background:#38bdf8;box-shadow:0 0 6px #38bdf855;flex-shrink:0"></div>
-        <span style="font-family:'DM Mono',monospace;font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:#f0ede8">Università</span>
+        <span style="font-family:'DM Mono',monospace;font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:#f0ede8" data-i18n="sol.legend.uni">Università</span>
       </div>
       <div style="display:flex;align-items:center;gap:8px">
         <div style="width:10px;height:10px;border-radius:50%;background:#facc15;box-shadow:0 0 6px #facc1555;flex-shrink:0"></div>
-        <span style="font-family:'DM Mono',monospace;font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:#f0ede8">Supermercato</span>
+        <span style="font-family:'DM Mono',monospace;font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:#f0ede8" data-i18n="sol.legend.super">Supermercato</span>
       </div>
       <div style="display:flex;align-items:center;gap:8px">
         <div style="width:10px;height:10px;border-radius:50%;background:#f0ede8;box-shadow:0 0 6px #f0ede855;flex-shrink:0"></div>
-        <span style="font-family:'DM Mono',monospace;font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:#f0ede8">Stazione / Cotral</span>
+        <span style="font-family:'DM Mono',monospace;font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:#f0ede8" data-i18n="sol.legend.station">Stazione / Cotral</span>
       </div>
     </div>`;
   return d;
 };
 legend.addTo(map);
+/* la legenda nasce dopo initLang: traducila subito nella lingua attiva
+   (gli switch successivi sono già coperti da setLang che scandisce [data-i18n]) */
+(function(){const c=legend.getContainer&&legend.getContainer();if(!c||!window.__tcdI18N)return;c.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(window.__tcdI18N[k]!==undefined)el.innerHTML=window.__tcdI18N[k];});})();
 mapBox.addEventListener('click',()=>{map.scrollWheelZoom.enable();mapBox.classList.add('focused');mapHint.classList.add('hidden')});
 mapBox.addEventListener('mouseleave',()=>{map.scrollWheelZoom.disable();mapBox.classList.remove('focused')});
 
@@ -609,12 +623,17 @@ function createPinIcon(available){
 }
 
 /* Popup CTA links to appartamento.html?id=N — wormhole triggered via click handler below */
-function buildPopup(apt){const badge=isApartmentAvailable(apt)?`<span class="apt-badge free">Disponibile</span>`:`<span class="apt-badge taken">Occupato</span>`;return `<div class="apt-card"><img class="apt-card-img" src="${apt.img}" alt="${apt.name}" loading="lazy"/><div class="apt-card-body"><p class="apt-card-zone">${apt.zone}</p><h3 class="apt-card-name">${apt.name}</h3><div class="apt-card-row"><p class="apt-card-price"><span>A partire da</span> €${startingPrice(apt)}<span>/mese</span></p>${badge}</div><div class="apt-card-details"><div class="apt-detail"><strong>${apt.rooms}</strong>camere</div><div class="apt-detail"><strong>${apt.sqm} m²</strong>superficie</div></div><a href="${aptHref(apt)}" class="apt-card-cta wormhole-link">Scopri →</a></div></div>`}
+function buildPopup(apt){
+  const t=window.__tcdI18N||{};
+  const badge=isApartmentAvailable(apt)?`<span class="apt-badge free">${t['sol.available.badge']}</span>`:`<span class="apt-badge taken">${t['sol.taken.badge']}</span>`;
+  return `<div class="apt-card"><img class="apt-card-img" src="${apt.img}" alt="${apt.name}" loading="lazy"/><div class="apt-card-body"><p class="apt-card-zone">${aptZone(apt)}</p><h3 class="apt-card-name">${apt.name}</h3><div class="apt-card-row"><p class="apt-card-price"><span>${t['sol.startingFrom']}</span> €${startingPrice(apt)}<span>${t['sol.perMonth']}</span></p>${badge}</div><div class="apt-card-details"><div class="apt-detail"><strong>${apt.rooms}</strong>${t['sol.rooms']}</div><div class="apt-detail"><strong>${apt.sqm} m²</strong>${t['sol.surface']}</div></div><a href="${aptHref(apt)}" class="apt-card-cta wormhole-link">${t['sol.discoverShort']}</a></div></div>`;
+}
 function triggerPinFlash(){pinFlash.classList.remove('flash');void pinFlash.offsetWidth;pinFlash.classList.add('flash');pinFlash.addEventListener('animationend',()=>pinFlash.classList.remove('flash'),{once:true})}
 
 apartments.forEach((apt,i)=>{
   const marker=L.marker([apt.lat,apt.lng],{icon:createPinIcon(isApartmentAvailable(apt))}).addTo(map);
   marker.bindPopup(buildPopup(apt),{closeButton:true,maxWidth:300,minWidth:280});
+  aptMarkers.push({marker,apt});
   marker.on('click',triggerPinFlash);
   setTimeout(()=>{const el=marker.getElement();if(!el)return;el.style.opacity='0';el.style.transform=(el.style.transform||'')+' scale(0)';el.style.transition='opacity .4s ease,transform .45s cubic-bezier(.16,1,.3,1)';requestAnimationFrame(()=>{el.style.opacity='1';el.style.transform=el.style.transform.replace('scale(0)','scale(1)')})},4700+i*140);
 });
@@ -663,28 +682,42 @@ POI.forEach(poi=>{
 const grid=document.getElementById('aptGrid');
 const listCount=document.getElementById('listCount');
 
-apartments.forEach(apt=>{
+function renderGrid(){
   const t=window.__tcdI18N;
-  const badge=isApartmentAvailable(apt)?`<span class="apt-badge free">${t['sol.available.badge']}</span>`:`<span class="apt-badge taken">${t['sol.taken.badge']}</span>`;
-  const card=document.createElement('div');
-  card.className='h-apt-card';
-  card.innerHTML=`
-    <img class="h-apt-img" src="${apt.img}" alt="${apt.name}" loading="lazy"/>
-    <div class="h-apt-body">
-      <p class="h-apt-zone">${apt.zone}</p>
-      <h3 class="h-apt-name">${apt.name}</h3>
-      <div class="h-apt-row">
-        <p class="h-apt-price"><span>${t['sol.startingFrom']}</span> €${startingPrice(apt)}<span>${t['sol.perMonth']}</span></p>${badge}
-      </div>
-      <div class="h-apt-meta">
-        <div class="h-apt-meta-item"><strong>${apt.rooms}</strong>${t['sol.rooms']}</div>
-        <div class="h-apt-meta-item"><strong>${apt.sqm} m²</strong>${t['sol.surface']}</div>
-      </div>
-      <a href="${aptHref(apt)}" class="h-apt-cta wormhole-link">${t['sol.discover']}</a>
-    </div>`;
-  grid.appendChild(card);
-});
-listCount.textContent=`${apartments.length} ${window.__tcdI18N['sol.count']}`;
+  grid.innerHTML='';
+  apartments.forEach(apt=>{
+    const badge=isApartmentAvailable(apt)?`<span class="apt-badge free">${t['sol.available.badge']}</span>`:`<span class="apt-badge taken">${t['sol.taken.badge']}</span>`;
+    const card=document.createElement('div');
+    card.className='h-apt-card';
+    card.innerHTML=`
+      <img class="h-apt-img" src="${apt.img}" alt="${apt.name}" loading="lazy"/>
+      <div class="h-apt-body">
+        <p class="h-apt-zone">${aptZone(apt)}</p>
+        <h3 class="h-apt-name">${apt.name}</h3>
+        <div class="h-apt-row">
+          <p class="h-apt-price"><span>${t['sol.startingFrom']}</span> €${startingPrice(apt)}<span>${t['sol.perMonth']}</span></p>${badge}
+        </div>
+        <div class="h-apt-meta">
+          <div class="h-apt-meta-item"><strong>${apt.rooms}</strong>${t['sol.rooms']}</div>
+          <div class="h-apt-meta-item"><strong>${apt.sqm} m²</strong>${t['sol.surface']}</div>
+        </div>
+        <a href="${aptHref(apt)}" class="h-apt-cta wormhole-link">${t['sol.discover']}</a>
+      </div>`;
+    card.addEventListener('mouseenter',()=>document.body.classList.add('ch'));
+    card.addEventListener('mouseleave',()=>document.body.classList.remove('ch'));
+    grid.appendChild(card);
+  });
+}
+
+/* Ridisegna tutta la UI dipendente dai dati appartamento nella lingua corrente */
+function renderApartmentUI(){
+  renderGrid();
+  listCount.textContent=`${apartments.length} ${window.__tcdI18N['sol.count']}`;
+  if(typeof buildPopup==='function')aptMarkers.forEach(({marker,apt})=>marker.setPopupContent(buildPopup(apt)));
+}
+
+renderApartmentUI();
+window.__solRendered=true;
 const aptCountEl=document.getElementById('apt-count');
 if(aptCountEl)aptCountEl.textContent=apartments.length;
 
