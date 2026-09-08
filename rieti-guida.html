@@ -1009,6 +1009,23 @@ if(document.readyState==='complete')safeRunCurtain();
 else window.addEventListener('load',safeRunCurtain);
 setTimeout(safeRunCurtain,1200); /* rete di sicurezza se una risorsa esterna non risponde */
 
+/* ── RETE DI SICUREZZA DURA ──
+   Se l'animazione di intro su canvas si blocca (il requestAnimationFrame puo'
+   essere affamato dallo sfondo animato + filtro noise su alcuni dispositivi),
+   .page-wrap resterebbe a opacity:0 all'infinito e la pagina sembrerebbe vuota.
+   Questo timeout indipendente mostra comunque i contenuti. */
+setTimeout(function(){
+  var pw=document.getElementById('pageWrap');
+  if(pw&&!pw.classList.contains('visible')){
+    try{
+      curtainCanvas.style.pointerEvents='none';
+      curtainCanvas.style.display='none';
+      if(cCtx)cCtx.clearRect(0,0,curtainCanvas.width,curtainCanvas.height);
+    }catch(e){}
+    revealPageNow();
+  }
+},2600);
+
 /* ══ NAVIGATION — direct ══ */
 document.addEventListener('click',e=>{
   const link=e.target.closest('a[href]');
