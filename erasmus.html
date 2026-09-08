@@ -46,7 +46,7 @@
 
     /* ── NOISE ── */
     .noise{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.025;
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px}
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px}
 
     /* ── CURTAIN CANVAS ── */
     #curtain{position:fixed;inset:0;z-index:8000;display:block;pointer-events:none}
@@ -208,6 +208,7 @@
     <a href="chi-siamo.html" data-i18n="nav.about">Chi Siamo</a>
     <a href="contatti.html" data-i18n="nav.contact">Contatti</a>
     <a href="proprietari.html" data-i18n="nav.owners">Proprietari</a>
+    <a href="faq.html" data-i18n="footer.faq">FAQ</a>
   </div>
   <div class="nav-drawer-footer">
     <span data-i18n="footer.copyright">The College Dropout © 2026</span>
@@ -401,8 +402,12 @@ try{
     }
   }
 
-  let t=0;
-  function draw(){
+  let t=0,__lastF=0;
+  function draw(ts){
+    requestAnimationFrame(draw);
+    if(document.hidden)return;                /* niente lavoro se la tab non e' visibile */
+    if(ts&&ts-__lastF<33)return;              /* cap ~30fps: dimezza il carico */
+    __lastF=ts||0;
     ctx.clearRect(0,0,W,H);
     ctx.fillStyle='#0a0a0a';ctx.fillRect(0,0,W,H);
     t+=0.01;
@@ -445,8 +450,6 @@ try{
     const vg=ctx.createRadialGradient(W/2,H/2,H*.15,W/2,H/2,H*.9);
     vg.addColorStop(0,'rgba(0,0,0,0)');vg.addColorStop(1,'rgba(0,0,0,.65)');
     ctx.fillStyle=vg;ctx.fillRect(0,0,W,H);
-
-    requestAnimationFrame(draw);
   }
   window.addEventListener('resize',resize);
   resize();draw();
@@ -708,6 +711,23 @@ function safeRunCurtain(){
 if(document.readyState==='complete')safeRunCurtain();
 else window.addEventListener('load',safeRunCurtain);
 setTimeout(safeRunCurtain,1200);
+
+/* ── RETE DI SICUREZZA DURA ──
+   Se l'animazione di intro su canvas si blocca (il requestAnimationFrame puo'
+   essere affamato dallo sfondo animato + filtro noise su alcuni dispositivi),
+   .page-wrap resterebbe a opacity:0 all'infinito e la pagina sembrerebbe vuota.
+   Questo timeout indipendente mostra comunque i contenuti. */
+setTimeout(function(){
+  var pw=document.getElementById('pageWrap');
+  if(pw&&!pw.classList.contains('visible')){
+    try{
+      curtainCanvas.style.pointerEvents='none';
+      curtainCanvas.style.display='none';
+      if(cCtx)cCtx.clearRect(0,0,curtainCanvas.width,curtainCanvas.height);
+    }catch(e){}
+    revealPageNow();
+  }
+},2600);
 
 /* ══ NAVIGATION — direct ══ */
 document.addEventListener('click',e=>{

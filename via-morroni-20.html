@@ -46,7 +46,7 @@
 
     /* ── NOISE ── */
     .noise{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.022;
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px}
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px}
 
     /* ── TRANSITION CANVAS (top z-index) ── */
     #trans-canvas{position:fixed;inset:0;z-index:99000;display:block;pointer-events:none}
@@ -394,6 +394,7 @@
     <a href="chi-siamo.html" data-i18n="nav.about">Chi Siamo</a>
     <a href="contatti.html" data-i18n="nav.contact">Contatti</a>
     <a href="proprietari.html" data-i18n="nav.owners">Proprietari</a>
+    <a href="faq.html" data-i18n="footer.faq">FAQ</a>
   </div>
   <div class="nav-drawer-footer">
     <span data-i18n="footer.copyright">The College Dropout © 2026</span>
@@ -1149,6 +1150,18 @@ window.addEventListener('load',()=>{
     document.getElementById('pageWrap').classList.add('visible');
   });
 });
+
+/* ── RETE DI SICUREZZA DURA ──
+   L'intro "veneziana" (runBlinds) usa requestAnimationFrame e su alcuni
+   dispositivi puo' bloccarsi: .page-wrap resterebbe a opacity:0 e la pagina
+   sembrerebbe vuota. Questo timeout indipendente la mostra comunque. */
+setTimeout(function(){
+  var pw=document.getElementById('pageWrap');
+  if(pw && !pw.classList.contains('visible')){
+    try{ tCanvas.style.display='none'; if(typeof tCtx!=='undefined'&&tCtx)tCtx.clearRect(0,0,tCanvas.width,tCanvas.height); }catch(e){}
+    pw.classList.add('visible');
+  }
+},3000);
 
 /* ══ NAVIGATION LOGIC ══
    back-btn ("Torna a Soluzioni"):

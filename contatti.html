@@ -51,7 +51,7 @@
 
     /* ── NOISE ── */
     .noise{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.02;
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px}
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px}
 
     /* ── LANG BAR ── */
     .lang-bar{position:fixed;top:0;right:0;z-index:900;display:flex;flex-direction:row;background:rgba(10,10,10,.92);border-left:1px solid var(--border);border-bottom:1px solid var(--border)}
@@ -270,6 +270,7 @@
     <a href="chi-siamo.html" data-i18n="nav.about">Chi Siamo</a>
     <a href="contatti.html" class="current" data-i18n="nav.contact">Contatti</a>
     <a href="proprietari.html" data-i18n="nav.owners">Proprietari</a>
+    <a href="faq.html" data-i18n="footer.faq">FAQ</a>
   </div>
   <div class="nav-drawer-footer">
     <span data-i18n="footer.copyright">The College Dropout © 2026</span>
