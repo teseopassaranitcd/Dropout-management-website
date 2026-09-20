@@ -345,7 +345,12 @@
     .footer-dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--magenta);margin:0 7px;vertical-align:middle;animation:blink 2s ease-in-out infinite}
     @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
     @media(max-width:600px){#tile-overlay{inset:0;border-radius:0}.apt-cta-block{flex-direction:column;text-align:center}}
-  </style>
+  
+    .footer-apts{padding:28px 24px;border-bottom:1px solid var(--border)}
+    .footer-apts-list{display:flex;flex-wrap:wrap;gap:4px 22px}
+    .footer-apts-list a{font-family:'Space Grotesk',sans-serif;font-size:.82rem;color:var(--gray);text-decoration:none;padding:4px 0;border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
+    .footer-apts-list a:hover{color:var(--white);border-color:rgba(240,237,232,.1)}
+    @media(min-width:768px){.footer-apts{padding:28px 40px}}  </style>
 </head>
 <body>
 
@@ -362,7 +367,7 @@
 
 <!-- TOP BAR STRIP -->
 <div class="top-bar-strip">
-  <a href="soluzioni.html" class="back-btn">
+  <a href="/soluzioni" class="back-btn">
     <span class="back-arrow">←</span>
     <span data-i18n="apt.backSolutions">Torna a Soluzioni</span>
   </a>
@@ -388,13 +393,13 @@
     <button class="nav-close" onclick="closeNav()">✕</button>
   </div>
   <div class="nav-links">
-    <a href="index.html" data-i18n="nav.home">Homepage</a>
-    <a href="soluzioni.html" data-i18n="nav.solutions">Soluzioni</a>
-    <a href="servizi.html" data-i18n="nav.services">I Nostri Servizi</a>
-    <a href="chi-siamo.html" data-i18n="nav.about">Chi Siamo</a>
-    <a href="contatti.html" data-i18n="nav.contact">Contatti</a>
-    <a href="proprietari.html" data-i18n="nav.owners">Proprietari</a>
-    <a href="faq.html" data-i18n="footer.faq">FAQ</a>
+    <a href="/" data-i18n="nav.home">Homepage</a>
+    <a href="/soluzioni" data-i18n="nav.solutions">Soluzioni</a>
+    <a href="/servizi" data-i18n="nav.services">I Nostri Servizi</a>
+    <a href="/chi-siamo" data-i18n="nav.about">Chi Siamo</a>
+    <a href="/contatti" data-i18n="nav.contact">Contatti</a>
+    <a href="/proprietari" data-i18n="nav.owners">Proprietari</a>
+    <a href="/faq" data-i18n="footer.faq">FAQ</a>
   </div>
   <div class="nav-drawer-footer">
     <span data-i18n="footer.copyright">The College Dropout © 2026</span>
@@ -433,11 +438,11 @@
 
   <header class="apt-header">
     <div class="apt-breadcrumb">
-      <a href="soluzioni.html" data-i18n="nav.solutions">Soluzioni</a>
+      <a href="/soluzioni" data-i18n="nav.solutions">Soluzioni</a>
       <span class="apt-breadcrumb-sep">›</span>
       <span id="hdr-zone">—</span>
     </div>
-    <h1 class="apt-name" id="hdr-name">—</h1>
+    <h1 class="apt-name" id="hdr-name">Largo S. D&#39;Acquisto n.14</h1>
     <div class="apt-meta-row">
       <span class="apt-price" id="hdr-price">—<span data-i18n="apt.perMonth">/mese</span></span>
       <span class="apt-badge" id="hdr-badge">—</span>
@@ -494,10 +499,34 @@
       <h3 data-i18n="apt.ctaTitle">Ti interessa questa soluzione?</h3>
       <p data-i18n="apt.ctaText">Contattaci direttamente. Nessuna agenzia, risposta in giornata.</p>
     </div>
-    <a href="contatti.html" class="apt-cta-btn" data-i18n="apt.ctaBtn">Scrivici ora →</a>
+    <a href="/contatti" class="apt-cta-btn" data-i18n="apt.ctaBtn">Scrivici ora →</a>
   </div>
 
 </div>
+    <nav class="footer-apts container" aria-label="Camere e appartamenti in affitto a Rieti">
+      <p class="footer-col-label">Camere &amp; appartamenti a Rieti &middot; Rooms &amp; apartments</p>
+      <div class="footer-apts-list">
+      <a href="/via-garibaldi-188">Via Garibaldi n.188</a>
+      <a href="/via-garibaldi-33">Via G. Garibaldi n.33</a>
+      <a href="/via-garibaldi-89-secondo">Via G. Garibaldi n.89</a>
+      <a href="/via-garibaldi-89-secondo-rialzato">Via G. Garibaldi n.89 - Secondo rialzato</a>
+      <a href="/via-san-leopardo-1">Via San Leopardo n.1</a>
+      <a href="/via-delle-ortensie-8">Via delle Ortensie n.8</a>
+      <a href="/via-maderno-10">Via C. Maderno n.10</a>
+      <a href="/via-nuova-115-piano-1">Via Nuova n.115 - Piano I</a>
+      <a href="/via-nuova-115-piano-2">Via Nuova n.115 - Piano II</a>
+      <a href="/via-nuova-115-piano-3">Via Nuova n.115 - Piano III</a>
+      <a href="/via-porta-romana-22">Via Porta Romana n.22</a>
+      <a href="/via-boschi-29">Via P. Boschi n.29</a>
+      <a href="/largo-dacquisto-14">Largo S. D&#39;Acquisto n.14</a>
+      <a href="/via-morroni-20">Viale T. Morroni n.20</a>
+      <a href="/via-ripresa-73">Via della Ripresa n.73</a>
+      <a href="/via-tigli-14">Via dei Tigli n.14</a>
+      <a href="/via-fratelli-cervi-2">Via fratelli Cervi n.2</a>
+      <a href="/via-san-bernardino-27">Vicolo San Bernardino n.27</a>
+      <a href="/via-contigliano-12">Via Contigliano n.12</a>
+      </div>
+    </nav>
 <footer class="site-footer">
   <div class="footer-bottom container">
     <span class="footer-bottom-left">© 2026 The College Dropout<span class="footer-dot"></span><span data-i18n="footer.location">Rieti, Italia</span></span>
@@ -859,7 +888,7 @@ function openTile(key){
     }
     case 'condizioni': openTileOverlay(I18N[lang]['apt.tileCondName'],I18N[lang]['apt.tileCondName'],renderCondizioni());break;
     case 'planpics': openTileOverlay('Plan & Pics','Plan & Pics',renderPlanPics());break;
-    case 'contatti': openTileOverlay(I18N[lang]['apt.contactTitle'],I18N[lang]['apt.contactTitle'],`<p>${I18N[lang]['apt.contactText']}</p><p style="margin-top:16px"><a href="contatti.html" style="color:var(--magenta);font-family:'DM Mono',monospace;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase">${I18N[lang]['apt.contactLink']}</a></p>`);break;
+    case 'contatti': openTileOverlay(I18N[lang]['apt.contactTitle'],I18N[lang]['apt.contactTitle'],`<p>${I18N[lang]['apt.contactText']}</p><p style="margin-top:16px"><a href="/contatti" style="color:var(--magenta);font-family:'DM Mono',monospace;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase">${I18N[lang]['apt.contactLink']}</a></p>`);break;
   }
 }
 
@@ -1165,7 +1194,7 @@ setTimeout(function(){
 
 /* ══ NAVIGATION LOGIC ══
    back-btn ("Torna a Soluzioni"):
-     → Venetian Blind exit + soluzioni.html?from=appartamento
+     → Venetian Blind exit + /soluzioni?from=appartamento
      → soluzioni skips its glitch intro on arrival
 
    All other links (navbar, CTA, footer):

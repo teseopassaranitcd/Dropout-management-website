@@ -334,7 +334,7 @@
 
 <!-- TOP BAR STRIP -->
 <div class="top-bar-strip">
-  <a href="index.html" class="back-btn">
+  <a href="/" class="back-btn">
     <span class="back-arrow">←</span>
     <span data-i18n="ex.backHome">Torna alla Home</span>
   </a>
@@ -360,13 +360,13 @@
     <button class="nav-close" onclick="closeNav()">✕</button>
   </div>
   <div class="nav-links">
-    <a href="index.html" data-i18n="nav.home">Homepage</a>
-    <a href="soluzioni.html" data-i18n="nav.solutions">Soluzioni</a>
-    <a href="servizi.html" data-i18n="nav.services">I Nostri Servizi</a>
-    <a href="chi-siamo.html" data-i18n="nav.about">Chi Siamo</a>
-    <a href="contatti.html" data-i18n="nav.contact">Contatti</a>
-    <a href="proprietari.html" data-i18n="nav.owners">Proprietari</a>
-    <a href="faq.html" data-i18n="footer.faq">FAQ</a>
+    <a href="/" data-i18n="nav.home">Homepage</a>
+    <a href="/soluzioni" data-i18n="nav.solutions">Soluzioni</a>
+    <a href="/servizi" data-i18n="nav.services">I Nostri Servizi</a>
+    <a href="/chi-siamo" data-i18n="nav.about">Chi Siamo</a>
+    <a href="/contatti" data-i18n="nav.contact">Contatti</a>
+    <a href="/proprietari" data-i18n="nav.owners">Proprietari</a>
+    <a href="/faq" data-i18n="footer.faq">FAQ</a>
   </div>
   <div class="nav-drawer-footer">
     <span data-i18n="footer.copyright">The College Dropout © 2026</span>
@@ -384,7 +384,7 @@
   <header class="owner-hero">
     <span class="owner-eyebrow" data-i18n="ex.eyebrow">— Non solo gestione</span>
     <h1 class="owner-title" data-i18n="ex.title">Un immobile da mettere a rendita<br>parte da <span class="accent">un progetto</span>.</h1>
-    <p class="owner-lead" data-i18n="ex.lead">The College Dropout è composto dall'<a href="chi-siamo.html">Ing. Teseo Passarani</a> e dall'<a href="chi-siamo.html">Arch. Gulnaz Turgaliyeva</a>, compagni nella vita e nel lavoro: competenze tecniche dirette per mettere il tuo immobile a rendita. Nessun intermediario, nessuna terza parte.</p>
+    <p class="owner-lead" data-i18n="ex.lead">The College Dropout è composto dall'<a href="/chi-siamo">Ing. Teseo Passarani</a> e dall'<a href="/chi-siamo">Arch. Gulnaz Turgaliyeva</a>, compagni nella vita e nel lavoro: competenze tecniche dirette per mettere il tuo immobile a rendita. Nessun intermediario, nessuna terza parte.</p>
   </header>
 
   <section>
@@ -426,7 +426,7 @@
       <h3 data-i18n="ex.ctaTitle">Il tuo immobile ha bisogno di uno di questi interventi?</h3>
       <p data-i18n="ex.ctaText">Raccontacelo: valutiamo insieme di cosa ha davvero bisogno.</p>
     </div>
-    <a href="contatti.html" class="apt-cta-btn" data-i18n="ex.ctaBtn">Contattaci →</a>
+    <a href="/contatti" class="apt-cta-btn" data-i18n="ex.ctaBtn">Contattaci →</a>
   </div>
 
 </div>
@@ -551,7 +551,7 @@ const I18N={
     'ex.backHome':'Back to Home',
     'ex.eyebrow':'— Not just management',
     'ex.title':'Getting a property rental-ready<br>starts with <span class="accent">a plan</span>.',
-    'ex.lead':"The College Dropout is made up of <a href='chi-siamo.html'>Eng. Teseo Passarani</a> and <a href='chi-siamo.html'>Arch. Gulnaz Turgaliyeva</a>, partners in life and work: direct, hands-on technical expertise to get your property rental-ready. No middlemen, no third parties.",
+    'ex.lead':"The College Dropout is made up of <a href='/chi-siamo'>Eng. Teseo Passarani</a> and <a href='/chi-siamo'>Arch. Gulnaz Turgaliyeva</a>, partners in life and work: direct, hands-on technical expertise to get your property rental-ready. No middlemen, no third parties.",
     'ex.listLabel':'— What we handle',
     'ex.item1Title':'Building permits','ex.item1Text':"We handle the building permits and paperwork needed to bring the property up to code and ready to rent, taking care of the technical and administrative side ourselves.",
     'ex.item2Title':'Design & planning','ex.item2Text':"We assess the layout and, where useful, design changes to optimise the number of rooms or the overall livability of the property for students.",
@@ -567,7 +567,7 @@ const I18N={
     'ex.backHome':'Torna alla Home',
     'ex.eyebrow':'— Non solo gestione',
     'ex.title':'Un immobile da mettere a rendita<br>parte da <span class="accent">un progetto</span>.',
-    'ex.lead':"The College Dropout è composto dall'<a href='chi-siamo.html'>Ing. Teseo Passarani</a> e dall'<a href='chi-siamo.html'>Arch. Gulnaz Turgaliyeva</a>, compagni nella vita e nel lavoro: competenze tecniche dirette per mettere il tuo immobile a rendita. Nessun intermediario, nessuna terza parte.",
+    'ex.lead':"The College Dropout è composto dall'<a href='/chi-siamo'>Ing. Teseo Passarani</a> e dall'<a href='/chi-siamo'>Arch. Gulnaz Turgaliyeva</a>, compagni nella vita e nel lavoro: competenze tecniche dirette per mettere il tuo immobile a rendita. Nessun intermediario, nessuna terza parte.",
     'ex.listLabel':'— Di cosa ci occupiamo',
     'ex.item1Title':'Pratiche edilizie','ex.item1Text':"Seguiamo le pratiche edilizie necessarie a mettere l'immobile a norma e pronto per essere affittato, occupandoci direttamente degli aspetti tecnici e burocratici.",
     'ex.item2Title':'Progettazione','ex.item2Text':"Valutiamo la disposizione degli spazi e, se serve, progettiamo interventi per ottimizzare il numero di camere o la vivibilità dell'immobile per gli studenti.",
@@ -769,7 +769,7 @@ setTimeout(function(){
 
 /* ══ NAVIGATION LOGIC ══
    back-btn ("Torna a Soluzioni"):
-     → Venetian Blind exit + soluzioni.html?from=appartamento
+     → Venetian Blind exit + /soluzioni?from=appartamento
      → soluzioni skips its glitch intro on arrival
 
    All other links (navbar, CTA, footer):

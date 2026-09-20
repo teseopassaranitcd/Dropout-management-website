@@ -298,13 +298,13 @@
     <button class="nav-close" onclick="closeNav()">✕</button>
   </div>
   <div class="nav-links">
-    <a href="index.html" data-i18n="nav.home">Homepage</a>
-    <a href="soluzioni.html" data-i18n="nav.solutions">Soluzioni</a>
-    <a href="servizi.html" class="current" data-i18n="nav.services">I Nostri Servizi</a>
-    <a href="chi-siamo.html" data-i18n="nav.about">Chi Siamo</a>
-    <a href="contatti.html" data-i18n="nav.contact">Contatti</a>
-    <a href="proprietari.html" data-i18n="nav.owners">Proprietari</a>
-    <a href="faq.html" data-i18n="footer.faq">FAQ</a>
+    <a href="/" data-i18n="nav.home">Homepage</a>
+    <a href="/soluzioni" data-i18n="nav.solutions">Soluzioni</a>
+    <a href="/servizi" class="current" data-i18n="nav.services">I Nostri Servizi</a>
+    <a href="/chi-siamo" data-i18n="nav.about">Chi Siamo</a>
+    <a href="/contatti" data-i18n="nav.contact">Contatti</a>
+    <a href="/proprietari" data-i18n="nav.owners">Proprietari</a>
+    <a href="/faq" data-i18n="footer.faq">FAQ</a>
   </div>
   <div class="nav-drawer-footer">
     <span data-i18n="footer.copyright">The College Dropout © 2026</span>
@@ -569,7 +569,7 @@ document.addEventListener('click',e=>{
 
 /* ══ SERVICE DATA ══ */
 const services=[
-  {href:'soluzioni.html',
+  {href:'/soluzioni',
     it:{tag:'01 — Per chi cerca',title:'Soluzioni Abitative',cta:'Guarda le soluzioni disponibili',body:`<p>Hai bisogno di una stanza o di un appartamento a Rieti? Ti mettiamo in
     contatto con la soluzione giusta per te — senza agenzie, senza commissioni,
     senza burocrazia inutile.</p><p>Lavoriamo con studenti italiani, internazionali
@@ -580,7 +580,7 @@ const services=[
     no pointless bureaucracy.</p><p>We work with Italian, international
     and Erasmus students. If you have a budget, a preferred neighbourhood or an arrival date,
     write to us: we'll take care of it.</p>`}},
-  {href:'proprietari.html',
+  {href:'/proprietari',
     it:{tag:'02 — Per chi affitta',title:'Affitta il tuo Immobile',cta:'Scopri la gestione completa',body:`<p>Hai un immobile a Rieti e vuoi affittarlo a studenti? Gestiamo tutto noi
     — dalla valutazione iniziale alla firma del contratto, dalla ricerca
     dell'inquilino giusto alla gestione quotidiana.</p><p>Nessun contratto
@@ -591,7 +591,7 @@ const services=[
     the right tenant to day-to-day management.</p><p>No binding
     contract. No exclusivity. Our fee depends solely
     on the rent you actually collect.</p>`}},
-  {href:'non-solo-gestione.html',
+  {href:'/non-solo-gestione',
     it:{tag:'03 — Oltre la gestione',title:'Non Solo Gestione',cta:'Scopri di più',body:`<p>Oltre alla gestione completa dell'affitto, offriamo supporto su tutto
     ciò che serve a mettere il tuo immobile a rendita nel rispetto delle
     normative fiscali vigenti.</p><p>Ti aiutiamo anche con pratiche catastali,

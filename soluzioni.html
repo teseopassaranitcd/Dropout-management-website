@@ -265,7 +265,7 @@
     }
     .h-scroll-progress-fill{height:100%;background:var(--magenta);width:0%;transition:width .1s linear;border-radius:1px}
 
-    /* ══ PREMIUM FOOTER (identical to index.html) ══ */
+    /* ══ PREMIUM FOOTER (identical to /) ══ */
     .site-footer{border-top:1px solid var(--border);position:relative;overflow:hidden}
     .footer-title-row{padding:48px 24px 32px;border-bottom:1px solid var(--border)}
     .footer-giant{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,14vw,10rem);line-height:.88;letter-spacing:-.02em;color:transparent;-webkit-text-stroke:1px rgba(240,237,232,.18);transition:color .4s ease,-webkit-text-stroke .4s ease;display:block;cursor:none}
@@ -292,7 +292,12 @@
       .footer-col:last-child{border-right:none}
       .footer-title-row,.footer-bottom{padding-left:40px;padding-right:40px}
     }
-  </style>
+  
+    .footer-apts{padding:28px 24px;border-bottom:1px solid var(--border)}
+    .footer-apts-list{display:flex;flex-wrap:wrap;gap:4px 22px}
+    .footer-apts-list a{font-family:'Space Grotesk',sans-serif;font-size:.82rem;color:var(--gray);text-decoration:none;padding:4px 0;border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
+    .footer-apts-list a:hover{color:var(--white);border-color:rgba(240,237,232,.1)}
+    @media(min-width:768px){.footer-apts{padding:28px 40px}}  </style>
 </head>
 <body>
 
@@ -321,13 +326,13 @@
     <button class="nav-close" onclick="closeNav()" aria-label="Chiudi menu">✕</button>
   </div>
   <div class="nav-links">
-    <a href="index.html" data-i18n="nav.home">Homepage</a>
-    <a href="soluzioni.html" class="current" data-i18n="nav.solutions">Soluzioni</a>
-    <a href="servizi.html" data-i18n="nav.services">I Nostri Servizi</a>
-    <a href="chi-siamo.html" data-i18n="nav.about">Chi Siamo</a>
-    <a href="contatti.html" data-i18n="nav.contact">Contatti</a>
-    <a href="proprietari.html" data-i18n="nav.owners">Proprietari</a>
-    <a href="faq.html" data-i18n="footer.faq">FAQ</a>
+    <a href="/" data-i18n="nav.home">Homepage</a>
+    <a href="/soluzioni" class="current" data-i18n="nav.solutions">Soluzioni</a>
+    <a href="/servizi" data-i18n="nav.services">I Nostri Servizi</a>
+    <a href="/chi-siamo" data-i18n="nav.about">Chi Siamo</a>
+    <a href="/contatti" data-i18n="nav.contact">Contatti</a>
+    <a href="/proprietari" data-i18n="nav.owners">Proprietari</a>
+    <a href="/faq" data-i18n="footer.faq">FAQ</a>
   </div>
   <div class="nav-drawer-footer">
     <span data-i18n="nav.copyright">The College Dropout © 2026</span>
@@ -391,26 +396,50 @@
     <div class="footer-links-row">
       <div class="footer-col">
         <p class="footer-col-label" data-i18n="footer.navLabel">Navigazione</p>
-        <a href="index.html" data-i18n="nav.home">Homepage</a>
-        <a href="soluzioni.html">Soluzioni</a>
-        <a href="servizi.html" data-i18n="nav.services">I Nostri Servizi</a>
-        <a href="contatti.html" data-i18n="nav.contact">Contatti</a>
+        <a href="/" data-i18n="nav.home">Homepage</a>
+        <a href="/soluzioni">Soluzioni</a>
+        <a href="/servizi" data-i18n="nav.services">I Nostri Servizi</a>
+        <a href="/contatti" data-i18n="nav.contact">Contatti</a>
       </div>
       <div class="footer-col">
         <p class="footer-col-label" data-i18n="footer.studentsLabel">Per gli studenti</p>
-        <a href="soluzioni.html" data-i18n="footer.findSolution">Trova una soluzione</a>
-        <a href="soluzioni.html" data-i18n="footer.housingMap">Mappa degli alloggi</a>
-        <a href="rieti-guida.html" data-i18n="footer.cityGuide">Rieti — guida alla città</a>
-        <a href="erasmus.html" data-i18n="footer.erasmus">Rieti - Offerta Formativa</a>
+        <a href="/soluzioni" data-i18n="footer.findSolution">Trova una soluzione</a>
+        <a href="/soluzioni" data-i18n="footer.housingMap">Mappa degli alloggi</a>
+        <a href="/rieti-guida" data-i18n="footer.cityGuide">Rieti — guida alla città</a>
+        <a href="/erasmus" data-i18n="footer.erasmus">Rieti - Offerta Formativa</a>
       </div>
       <div class="footer-col">
         <p class="footer-col-label" data-i18n="footer.ownersLabel">Per i proprietari</p>
-        <a href="proprietari.html" data-i18n="footer.publish">Pubblica il tuo spazio</a>
-        <a href="servizi.html" data-i18n="footer.ourServices">I nostri servizi</a>
-        <a href="contatti.html" data-i18n="footer.writeUs">Scrivici</a>
-        <a href="faq.html" data-i18n="footer.faq">FAQ</a>
+        <a href="/proprietari" data-i18n="footer.publish">Pubblica il tuo spazio</a>
+        <a href="/servizi" data-i18n="footer.ourServices">I nostri servizi</a>
+        <a href="/contatti" data-i18n="footer.writeUs">Scrivici</a>
+        <a href="/faq" data-i18n="footer.faq">FAQ</a>
       </div>
     </div>
+    <nav class="footer-apts" aria-label="Camere e appartamenti in affitto a Rieti">
+      <p class="footer-col-label">Camere &amp; appartamenti a Rieti &middot; Rooms &amp; apartments</p>
+      <div class="footer-apts-list">
+      <a href="/via-garibaldi-188">Via Garibaldi n.188</a>
+      <a href="/via-garibaldi-33">Via G. Garibaldi n.33</a>
+      <a href="/via-garibaldi-89-secondo">Via G. Garibaldi n.89</a>
+      <a href="/via-garibaldi-89-secondo-rialzato">Via G. Garibaldi n.89 - Secondo rialzato</a>
+      <a href="/via-san-leopardo-1">Via San Leopardo n.1</a>
+      <a href="/via-delle-ortensie-8">Via delle Ortensie n.8</a>
+      <a href="/via-maderno-10">Via C. Maderno n.10</a>
+      <a href="/via-nuova-115-piano-1">Via Nuova n.115 - Piano I</a>
+      <a href="/via-nuova-115-piano-2">Via Nuova n.115 - Piano II</a>
+      <a href="/via-nuova-115-piano-3">Via Nuova n.115 - Piano III</a>
+      <a href="/via-porta-romana-22">Via Porta Romana n.22</a>
+      <a href="/via-boschi-29">Via P. Boschi n.29</a>
+      <a href="/largo-dacquisto-14">Largo S. D&#39;Acquisto n.14</a>
+      <a href="/via-morroni-20">Viale T. Morroni n.20</a>
+      <a href="/via-ripresa-73">Via della Ripresa n.73</a>
+      <a href="/via-tigli-14">Via dei Tigli n.14</a>
+      <a href="/via-fratelli-cervi-2">Via fratelli Cervi n.2</a>
+      <a href="/via-san-bernardino-27">Vicolo San Bernardino n.27</a>
+      <a href="/via-contigliano-12">Via Contigliano n.12</a>
+      </div>
+    </nav>
     <div class="footer-bottom">
       <span class="footer-bottom-left">© 2026 The College Dropout<span class="footer-dot"></span><span data-i18n="footer.location">Rieti, Italia</span></span>
       <span class="footer-bottom-right">Teseo Passarani · Via Velinia 20b, 02100 Rieti (RI) · P.IVA IT01282110574&nbsp;·&nbsp;<a href="#">Privacy</a></span>

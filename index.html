@@ -415,7 +415,12 @@
       .hero-content{grid-template-columns:1.2fr 0.8fr}
       .hero-title{font-size:clamp(5rem,10vw,9rem)}
     }
-  </style>
+  
+    .footer-apts{padding:28px 24px;border-bottom:1px solid var(--border)}
+    .footer-apts-list{display:flex;flex-wrap:wrap;gap:4px 22px}
+    .footer-apts-list a{font-family:'Space Grotesk',sans-serif;font-size:.82rem;color:var(--gray);text-decoration:none;padding:4px 0;border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
+    .footer-apts-list a:hover{color:var(--white);border-color:rgba(240,237,232,.1)}
+    @media(min-width:768px){.footer-apts{padding:28px 40px}}  </style>
 </head>
 <body>
 
@@ -447,13 +452,13 @@
     <button class="nav-close" onclick="closeNav()" aria-label="Chiudi menu">✕</button>
   </div>
   <div class="nav-links">
-    <a href="index.html" class="current" data-i18n="nav.home">Homepage</a>
-    <a href="soluzioni.html" data-i18n="nav.solutions">Soluzioni</a>
-    <a href="servizi.html" data-i18n="nav.services">I Nostri Servizi</a>
-    <a href="chi-siamo.html" data-i18n="nav.about">Chi Siamo</a>
-    <a href="contatti.html" data-i18n="nav.contact">Contatti</a>
-    <a href="proprietari.html" data-i18n="nav.owners">Proprietari</a>
-    <a href="faq.html" data-i18n="footer.faq">FAQ</a>
+    <a href="/" class="current" data-i18n="nav.home">Homepage</a>
+    <a href="/soluzioni" data-i18n="nav.solutions">Soluzioni</a>
+    <a href="/servizi" data-i18n="nav.services">I Nostri Servizi</a>
+    <a href="/chi-siamo" data-i18n="nav.about">Chi Siamo</a>
+    <a href="/contatti" data-i18n="nav.contact">Contatti</a>
+    <a href="/proprietari" data-i18n="nav.owners">Proprietari</a>
+    <a href="/faq" data-i18n="footer.faq">FAQ</a>
   </div>
   <div class="nav-drawer-footer">
     <span data-i18n="footer.copyright">The College Dropout © 2026</span>
@@ -489,11 +494,11 @@
     </div>
 
     <div class="hero-buttons-block drop" data-delay="420">
-      <a href="soluzioni.html" class="hero-btn" id="btn1" aria-label="Looking for housing">
+      <a href="/soluzioni" class="hero-btn" id="btn1" aria-label="Looking for housing">
         <span class="btn-label" data-i18n="hero.btn1Label">I'm a student</span>
         <span data-i18n="hero.btn1Text">Looking<br>for a place</span>
       </a>
-      <a href="proprietari.html" class="hero-btn" id="btn2" aria-label="Offering housing">
+      <a href="/proprietari" class="hero-btn" id="btn2" aria-label="Offering housing">
         <span class="btn-label" data-i18n="hero.btn2Label">I have a property</span>
         <span data-i18n="hero.btn2Text">Offering<br>a place</span>
       </a>
@@ -547,7 +552,7 @@
 
       </div>
     </div>
-    <a href="contatti.html" class="how-cta" style="margin-top:40px;display:inline-flex">
+    <a href="/contatti" class="how-cta" style="margin-top:40px;display:inline-flex">
       <span data-i18n="how.cta">Message us on WhatsApp</span> <span class="how-cta-arrow">→</span>
     </a>
   </section>
@@ -562,28 +567,52 @@
     <div class="footer-links-row">
       <div class="footer-col">
         <p class="footer-col-label" data-i18n="footer.navLabel">Navigation</p>
-        <a href="index.html" data-i18n="nav.home">Homepage</a>
-        <a href="soluzioni.html" data-i18n="nav.solutions">Soluzioni</a>
-        <a href="servizi.html" data-i18n="nav.services">I Nostri Servizi</a>
-        <a href="contatti.html" data-i18n="nav.contact">Contatti</a>
-    <a href="proprietari.html" data-i18n="nav.owners">Proprietari</a>
+        <a href="/" data-i18n="nav.home">Homepage</a>
+        <a href="/soluzioni" data-i18n="nav.solutions">Soluzioni</a>
+        <a href="/servizi" data-i18n="nav.services">I Nostri Servizi</a>
+        <a href="/contatti" data-i18n="nav.contact">Contatti</a>
+    <a href="/proprietari" data-i18n="nav.owners">Proprietari</a>
       </div>
       <div class="footer-col">
         <p class="footer-col-label" data-i18n="footer.studentsLabel">For students</p>
-        <a href="soluzioni.html" data-i18n="footer.findPlace">Find a place</a>
-        <a href="soluzioni.html" data-i18n="footer.map">Housing map</a>
-        <a href="rieti-guida.html" data-i18n="footer.cityGuide">Rieti — city guide</a>
-        <a href="erasmus.html" data-i18n="footer.erasmus">Rieti - Study Programs</a>
+        <a href="/soluzioni" data-i18n="footer.findPlace">Find a place</a>
+        <a href="/soluzioni" data-i18n="footer.map">Housing map</a>
+        <a href="/rieti-guida" data-i18n="footer.cityGuide">Rieti — city guide</a>
+        <a href="/erasmus" data-i18n="footer.erasmus">Rieti - Study Programs</a>
       </div>
       <div class="footer-col">
         <p class="footer-col-label" data-i18n="footer.ownersLabel">For property owners</p>
-        <a href="proprietari.html" data-i18n="footer.publish">List your property</a>
-        <a href="servizi.html" data-i18n="nav.services">I Nostri Servizi</a>
-        <a href="contatti.html" data-i18n="footer.writeUs">Get in touch</a>
-        <a href="faq.html" data-i18n="footer.faq">FAQ</a>
+        <a href="/proprietari" data-i18n="footer.publish">List your property</a>
+        <a href="/servizi" data-i18n="nav.services">I Nostri Servizi</a>
+        <a href="/contatti" data-i18n="footer.writeUs">Get in touch</a>
+        <a href="/faq" data-i18n="footer.faq">FAQ</a>
       </div>
     </div>
 
+    <nav class="footer-apts" aria-label="Camere e appartamenti in affitto a Rieti">
+      <p class="footer-col-label">Camere &amp; appartamenti a Rieti &middot; Rooms &amp; apartments</p>
+      <div class="footer-apts-list">
+      <a href="/via-garibaldi-188">Via Garibaldi n.188</a>
+      <a href="/via-garibaldi-33">Via G. Garibaldi n.33</a>
+      <a href="/via-garibaldi-89-secondo">Via G. Garibaldi n.89</a>
+      <a href="/via-garibaldi-89-secondo-rialzato">Via G. Garibaldi n.89 - Secondo rialzato</a>
+      <a href="/via-san-leopardo-1">Via San Leopardo n.1</a>
+      <a href="/via-delle-ortensie-8">Via delle Ortensie n.8</a>
+      <a href="/via-maderno-10">Via C. Maderno n.10</a>
+      <a href="/via-nuova-115-piano-1">Via Nuova n.115 - Piano I</a>
+      <a href="/via-nuova-115-piano-2">Via Nuova n.115 - Piano II</a>
+      <a href="/via-nuova-115-piano-3">Via Nuova n.115 - Piano III</a>
+      <a href="/via-porta-romana-22">Via Porta Romana n.22</a>
+      <a href="/via-boschi-29">Via P. Boschi n.29</a>
+      <a href="/largo-dacquisto-14">Largo S. D&#39;Acquisto n.14</a>
+      <a href="/via-morroni-20">Viale T. Morroni n.20</a>
+      <a href="/via-ripresa-73">Via della Ripresa n.73</a>
+      <a href="/via-tigli-14">Via dei Tigli n.14</a>
+      <a href="/via-fratelli-cervi-2">Via fratelli Cervi n.2</a>
+      <a href="/via-san-bernardino-27">Vicolo San Bernardino n.27</a>
+      <a href="/via-contigliano-12">Via Contigliano n.12</a>
+      </div>
+    </nav>
     <div class="footer-bottom">
       <span class="footer-bottom-left">
         © 2026 The College Dropout

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Camere e appartamenti in affitto per studenti a Rieti — The College Dropout</title>
   <meta name="description" content="Foto, planimetria, prezzi e disponibilità di camere e appartamenti in affitto per studenti universitari a Rieti. The College Dropout: contatto diretto, senza agenzia."/>
-  <meta name="robots" content="index,follow,max-image-preview:large"/>
+  <meta name="robots" content="noindex,follow"/>
   <meta name="geo.region" content="IT-RI"/>
   <meta name="geo.placename" content="Rieti"/>
   <meta property="og:site_name" content="The College Dropout"/>
@@ -357,7 +357,7 @@
 
 <!-- TOP BAR STRIP -->
 <div class="top-bar-strip">
-  <a href="soluzioni.html" class="back-btn">
+  <a href="/soluzioni" class="back-btn">
     <span class="back-arrow">←</span>
     <span data-i18n="apt.backSolutions">Torna a Soluzioni</span>
   </a>
@@ -383,13 +383,13 @@
     <button class="nav-close" onclick="closeNav()">✕</button>
   </div>
   <div class="nav-links">
-    <a href="index.html" data-i18n="nav.home">Homepage</a>
-    <a href="soluzioni.html" data-i18n="nav.solutions">Soluzioni</a>
-    <a href="servizi.html" data-i18n="nav.services">I Nostri Servizi</a>
-    <a href="chi-siamo.html" data-i18n="nav.about">Chi Siamo</a>
-    <a href="contatti.html" data-i18n="nav.contact">Contatti</a>
-    <a href="proprietari.html" data-i18n="nav.owners">Proprietari</a>
-    <a href="faq.html" data-i18n="footer.faq">FAQ</a>
+    <a href="/" data-i18n="nav.home">Homepage</a>
+    <a href="/soluzioni" data-i18n="nav.solutions">Soluzioni</a>
+    <a href="/servizi" data-i18n="nav.services">I Nostri Servizi</a>
+    <a href="/chi-siamo" data-i18n="nav.about">Chi Siamo</a>
+    <a href="/contatti" data-i18n="nav.contact">Contatti</a>
+    <a href="/proprietari" data-i18n="nav.owners">Proprietari</a>
+    <a href="/faq" data-i18n="footer.faq">FAQ</a>
   </div>
   <div class="nav-drawer-footer">
     <span data-i18n="footer.copyright">The College Dropout © 2026</span>
@@ -428,7 +428,7 @@
 
   <header class="apt-header">
     <div class="apt-breadcrumb">
-      <a href="soluzioni.html" data-i18n="nav.solutions">Soluzioni</a>
+      <a href="/soluzioni" data-i18n="nav.solutions">Soluzioni</a>
       <span class="apt-breadcrumb-sep">›</span>
       <span id="hdr-zone">—</span>
     </div>
@@ -489,7 +489,7 @@
       <h3 data-i18n="apt.ctaTitle">Ti interessa questa soluzione?</h3>
       <p data-i18n="apt.ctaText">Contattaci direttamente. Nessuna agenzia, risposta in giornata.</p>
     </div>
-    <a href="contatti.html" class="apt-cta-btn" data-i18n="apt.ctaBtn">Scrivici ora →</a>
+    <a href="/contatti" class="apt-cta-btn" data-i18n="apt.ctaBtn">Scrivici ora →</a>
   </div>
 
 </div>
@@ -853,7 +853,7 @@ function openTile(key){
     }
     case 'condizioni': openTileOverlay(I18N[lang]['apt.tileCondName'],I18N[lang]['apt.tileCondName'],renderCondizioni());break;
     case 'planpics': openTileOverlay('Plan & Pics','Plan & Pics',renderPlanPics());break;
-    case 'contatti': openTileOverlay(I18N[lang]['apt.contactTitle'],I18N[lang]['apt.contactTitle'],`<p>${I18N[lang]['apt.contactText']}</p><p style="margin-top:16px"><a href="contatti.html" style="color:var(--magenta);font-family:'DM Mono',monospace;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase">${I18N[lang]['apt.contactLink']}</a></p>`);break;
+    case 'contatti': openTileOverlay(I18N[lang]['apt.contactTitle'],I18N[lang]['apt.contactTitle'],`<p>${I18N[lang]['apt.contactText']}</p><p style="margin-top:16px"><a href="/contatti" style="color:var(--magenta);font-family:'DM Mono',monospace;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase">${I18N[lang]['apt.contactLink']}</a></p>`);break;
   }
 }
 
@@ -1159,7 +1159,7 @@ setTimeout(function(){
 
 /* ══ NAVIGATION LOGIC ══
    back-btn ("Torna a Soluzioni"):
-     → Venetian Blind exit + soluzioni.html?from=appartamento
+     → Venetian Blind exit + /soluzioni?from=appartamento
      → soluzioni skips its glitch intro on arrival
 
    All other links (navbar, CTA, footer):
