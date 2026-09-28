@@ -1590,6 +1590,101 @@ window.APARTMENTS = {
         overlayPoly:[[59.40,3.95],[82.49,3.95],[82.49,35.01],[59.40,35.01]]
       }
     ]
+  },
+  20:{
+    id:20,
+    slug:'via-tancredi-22',
+    name:{it:'Via Angelo Tancredi n.22',en:'Via Angelo Tancredi n.22'},
+    zone:{it:'Centro Città',en:'City Centre'},
+    available:true,
+    lat:42.404148,lng:12.8651,
+    cover:'images/via-tancredi-22/cucina-01.jpg',
+    sideImg:'images/via-tancredi-22/foto-02.jpg',
+    gallery:[
+      'images/via-tancredi-22/foto-01.jpg',
+      'images/via-tancredi-22/foto-03.jpg',
+      'images/via-tancredi-22/foto-04.jpg',
+      'images/via-tancredi-22/foto-05.jpg',
+      'images/via-tancredi-22/foto-06.jpg',
+      'images/via-tancredi-22/foto-07.jpg',
+      'images/via-tancredi-22/foto-08.jpg',
+      'images/via-tancredi-22/foto-09.jpg',
+      'images/via-tancredi-22/bagno1-01.jpg',
+      'images/via-tancredi-22/bagno1-02.jpg',
+      'images/via-tancredi-22/bagno1-03.jpg',
+      'images/via-tancredi-22/bagno2-01.jpg',
+      'images/via-tancredi-22/bagno2-02.jpg',
+      'images/via-tancredi-22/bagno2-03.jpg',
+      'images/via-tancredi-22/bagno2-04.jpg',
+      'images/via-tancredi-22/bagno2-05.jpg',
+      'images/via-tancredi-22/cucina-01.jpg',
+      'images/via-tancredi-22/cucina-02.jpg',
+      'images/via-tancredi-22/cucina-03.jpg',
+      'images/via-tancredi-22/cucina-04.jpg',
+      'images/via-tancredi-22/cucina-05.jpg',
+      'images/via-tancredi-22/cucina-06.jpg',
+      'images/via-tancredi-22/cucina-07.jpg',
+    ],
+    descrizione:{it:"Ampio appartamento di 110 m² in affitto a studenti fuorisede, situato al quarto piano (con ascensore) di un signorile palazzo di Via Angelo Tancredi, in pieno centro città a Rieti, a pochi passi dal centro storico e da tutti i principali servizi: negozi, banche, bar, ristoranti e fermate degli autobus. L'appartamento si compone di un ampio ingresso su disimpegno con armadio a muro, un lungo corridoio, una cucina abitabile con zona pranzo affacciata su balcone (dotata di frigorifero, forno, microonde e lavatrice), due bagni finestrati (uno con vasca idromassaggio, l'altro con box doccia) e tre ampie camere da letto, tutte con pavimento in parquet e affaccio su balcone. La terza camera, la più spaziosa, gode di doppia esposizione. Riscaldamento autonomo a gas naturale, appartamento completamente arredato.",en:"Spacious 110 m² apartment for rent to out-of-town students, on the fourth floor (with lift) of an elegant building on Via Angelo Tancredi, right in the city centre of Rieti, just a short walk from the historic centre and all main amenities: shops, banks, cafés, restaurants and bus stops. The apartment comprises a large entrance hall with a built-in wardrobe, a long corridor, an eat-in kitchen with dining area opening onto a balcony (equipped with fridge, oven, microwave and washing machine), two bathrooms with windows (one with a whirlpool bathtub, the other with a shower box) and three spacious bedrooms, all with parquet flooring and balcony access. The third bedroom, the largest, has a dual aspect. Independent gas heating, fully furnished apartment."},
+    caratteristiche:[
+      {label:{it:'Superficie',en:'Size'},value:{it:'110 m²',en:'110 m²'}},
+      {label:{it:'Piano',en:'Floor'},value:{it:'4°',en:'4th'}},
+      {label:{it:'Ascensore',en:'Lift'},value:{it:'Sì',en:'Yes'}},
+      {label:{it:'Bagni',en:'Bathrooms'},value:{it:'2',en:'2'}},
+      {label:{it:'Riscaldamento',en:'Heating'},value:{it:'Autonomo (gas)',en:'Independent (gas)'}},
+      {label:{it:'Arredato',en:'Furnished'},value:{it:'Sì',en:'Yes'}},
+    ],
+    servizi:[
+      {name:{it:'Centro storico',en:'Historic centre'},dist:{it:'nelle vicinanze',en:'nearby'}},
+      {name:{it:'Sede Università La Sapienza',en:'La Sapienza University campus'},dist:{it:'nelle vicinanze',en:'nearby'}},
+      {name:{it:'Supermercato',en:'Supermarket'},dist:{it:'nelle vicinanze',en:'nearby'}},
+      {name:{it:'Fermata autobus',en:'Bus stop'},dist:{it:'nelle vicinanze',en:'nearby'}},
+      {name:{it:'Banca',en:'Bank'},dist:{it:'nelle vicinanze',en:'nearby'}},
+      {name:{it:'Locali per mangiare e bere',en:'Food and drinks'},dist:{it:'nelle vicinanze',en:'nearby'}},
+    ],
+    rentalMode:'camere',
+    deposito:2,
+    interoPricing:[],
+    floorplan:'images/via-tancredi-22/planimetria.jpg',
+    rooms:[
+      {
+        id:'camera1',name:{it:'Camera 1',en:'Bedroom 1'},priceSingola:325,priceDoppia:null,sqm:20,
+        features:[{it:'Letto matrimoniale',en:'Double bed'},{it:'Scrivania',en:'Desk'},{it:'Poltrona',en:'Armchair'},{it:'Porta-finestra su balcone',en:'French window to balcony'}],
+        photos:[
+          'images/via-tancredi-22/camera1-01.jpg',
+          'images/via-tancredi-22/camera1-02.jpg',
+          'images/via-tancredi-22/camera1-03.jpg',
+          'images/via-tancredi-22/camera1-04.jpg',
+          'images/via-tancredi-22/camera1-05.jpg'
+        ],
+        hotspot:{x:28.65,y:35.35},
+        overlayPoly:[[22.9,24.4],[34.4,24.4],[34.4,46.3],[22.9,46.3]]
+      },
+      {
+        id:'camera2',name:{it:'Camera 2',en:'Bedroom 2'},priceSingola:325,priceDoppia:null,sqm:20,
+        features:[{it:'Letto matrimoniale',en:'Double bed'},{it:'Doppio affaccio su balcone',en:'Double balcony view'},{it:'Scrivania',en:'Desk'},{it:'Libreria',en:'Bookshelf'}],
+        photos:[
+          'images/via-tancredi-22/camera2-01.jpg',
+          'images/via-tancredi-22/camera2-02.jpg',
+          'images/via-tancredi-22/camera2-03.jpg',
+          'images/via-tancredi-22/camera2-04.jpg'
+        ],
+        hotspot:{x:41.4,y:35.35},
+        overlayPoly:[[35.4,24.4],[47.4,24.4],[47.4,46.3],[35.4,46.3]]
+      },
+      {
+        id:'camera3',name:{it:'Camera 3 (doppia)',en:'Bedroom 3 (double)'},priceSingola:null,priceDoppia:500,sqm:28,
+        features:[{it:'Doppia esposizione',en:'Dual aspect'},{it:'Cassettiera',en:'Chest of drawers'},{it:'Scaffalatura',en:'Shelving unit'},{it:'Completamente arredata',en:'Fully furnished'}],
+        photos:[
+          'images/via-tancredi-22/camera3-01.jpg',
+          'images/via-tancredi-22/camera3-02.jpg',
+          'images/via-tancredi-22/camera3-03.jpg',
+          'images/via-tancredi-22/camera3-04.jpg'
+        ],
+        hotspot:{x:68.7,y:39.25},
+        overlayPoly:[[61.5,24.4],[75.9,24.4],[75.9,54.1],[61.5,54.1]]
+      }
+    ]
   }
 };
 
@@ -1612,5 +1707,6 @@ window.SOLUZIONI_LIST = [
   {id:16,name:"Vicolo San Bernardino n.27",zone:"Centro Storico",price:280,rooms:3,sqm:90,roomDates:['2027-09-01','2027-09-01','2027-09-01'], lat:42.401559,lng:12.86289,img:"images/via-san-bernardino-27/foto-01.jpg"},
   {id:17,name:"Via G. Garibaldi n.89 - Secondo",zone:"Centro Storico",price:275,rooms:3,sqm:300,roomDates:['2026-11-01','2027-10-01','2026-10-01'], lat:42.404495,lng:12.868609,img:"images/via-garibaldi-89-secondo/foto-06.jpg"},
   {id:18,name:"Via G. Garibaldi n.89 - Secondo rialzato",zone:"Centro Storico",price:475,rooms:1,sqm:45,available:false, lat:42.404495,lng:12.868609,img:"images/via-garibaldi-89-secondo-rialzato/foto-07.jpg"},
-  {id:19,name:"Via Contigliano n.12",zone:"Viale Maraini",price:300,rooms:3,sqm:120,roomDates:['2027-03-01','2027-03-01','2027-03-01'], lat:42.406339,lng:12.858418,img:"images/via-contigliano-12/foto-18.jpg"}
+  {id:19,name:"Via Contigliano n.12",zone:"Viale Maraini",price:300,rooms:3,sqm:120,roomDates:['2027-03-01','2027-03-01','2027-03-01'], lat:42.406339,lng:12.858418,img:"images/via-contigliano-12/foto-18.jpg"},
+  {id:20,name:"Via A. Tancredi n.22",zone:"Centro Città",price:325,rooms:3,sqm:110, lat:42.404148,lng:12.8651,img:"images/via-tancredi-22/foto-02.jpg"}
 ];
