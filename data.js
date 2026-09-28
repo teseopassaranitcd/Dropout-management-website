@@ -1708,5 +1708,5 @@ window.SOLUZIONI_LIST = [
   {id:17,name:"Via G. Garibaldi n.89 - Secondo",zone:"Centro Storico",price:275,rooms:3,sqm:300,roomDates:['2026-11-01','2027-10-01','2026-10-01'], lat:42.404495,lng:12.868609,img:"images/via-garibaldi-89-secondo/foto-06.jpg"},
   {id:18,name:"Via G. Garibaldi n.89 - Secondo rialzato",zone:"Centro Storico",price:475,rooms:1,sqm:45,available:false, lat:42.404495,lng:12.868609,img:"images/via-garibaldi-89-secondo-rialzato/foto-07.jpg"},
   {id:19,name:"Via Contigliano n.12",zone:"Viale Maraini",price:300,rooms:3,sqm:120,roomDates:['2027-03-01','2027-03-01','2027-03-01'], lat:42.406339,lng:12.858418,img:"images/via-contigliano-12/foto-18.jpg"},
-  {id:20,name:"Via A. Tancredi n.22",zone:"Centro Città",price:325,rooms:3,sqm:110, lat:42.404148,lng:12.8651,img:"images/via-tancredi-22/foto-02.jpg"}
+  {id:20,name:"Via A. Tancredi n.22",zone:"Centro Città",price:325,rooms:3,sqm:110,available:true, lat:42.404148,lng:12.8651,img:"images/via-tancredi-22/foto-02.jpg"}
 ];
