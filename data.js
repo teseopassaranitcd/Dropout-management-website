@@ -1657,8 +1657,8 @@ window.APARTMENTS = {
           'images/via-tancredi-22/camera1-04.jpg',
           'images/via-tancredi-22/camera1-05.jpg'
         ],
-        hotspot:{x:28.65,y:35.35},
-        overlayPoly:[[22.9,24.4],[34.4,24.4],[34.4,46.3],[22.9,46.3]]
+        hotspot:{x:29.83,y:35.61},
+        overlayPoly:[[23.34,24.92],[36.31,24.92],[36.31,46.29],[23.34,46.29]]
       },
       {
         id:'camera2',name:{it:'Camera 2',en:'Bedroom 2'},priceSingola:325,priceDoppia:null,sqm:20,
@@ -1669,8 +1669,8 @@ window.APARTMENTS = {
           'images/via-tancredi-22/camera2-03.jpg',
           'images/via-tancredi-22/camera2-04.jpg'
         ],
-        hotspot:{x:41.4,y:35.35},
-        overlayPoly:[[35.4,24.4],[47.4,24.4],[47.4,46.3],[35.4,46.3]]
+        hotspot:{x:42.40,y:35.61},
+        overlayPoly:[[36.68,24.92],[48.11,24.92],[48.11,46.29],[36.68,46.29]]
       },
       {
         id:'camera3',name:{it:'Camera 3 (doppia)',en:'Bedroom 3 (double)'},priceSingola:null,priceDoppia:500,sqm:28,
@@ -1681,8 +1681,8 @@ window.APARTMENTS = {
           'images/via-tancredi-22/camera3-03.jpg',
           'images/via-tancredi-22/camera3-04.jpg'
         ],
-        hotspot:{x:68.7,y:39.25},
-        overlayPoly:[[61.5,24.4],[75.9,24.4],[75.9,54.1],[61.5,54.1]]
+        hotspot:{x:68.74,y:39.52},
+        overlayPoly:[[61.93,24.92],[75.55,24.92],[75.55,54.11],[61.93,54.11]]
       }
     ]
   }
