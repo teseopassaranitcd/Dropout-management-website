@@ -75,7 +75,7 @@ window.APARTMENTS = {
     /* coordinate hotspot lette dalla planimetria reale (Franceschini - Via G. Garibaldi 188, piano secondo) */
     rooms:[
       {
-        id:'piccola',name:{it:'Camera Piccola',en:'Small Bedroom'},priceSingola:300,priceDoppia:360,sqm:15.4,legendNum:1,availableFrom:'2026-10-01',
+        id:'piccola',name:{it:'Camera Piccola',en:'Small Bedroom'},priceSingola:300,priceDoppia:360,sqm:15.4,legendNum:1,availableFrom:'2027-10-01',
         features:[{it:'Letto matrimoniale',en:'Double bed'},{it:'Porta-finestra',en:'French window'},{it:'Completamente arredata',en:'Fully furnished'},{it:'Bagno dedicato',en:'Dedicated bathroom'}],
         photos:[
           'images/via-garibaldi-188/piccola-01.jpg',
@@ -86,7 +86,7 @@ window.APARTMENTS = {
         overlayPoly:[[59.72,5.91],[73.94,7.31],[70.62,24.67],[58.36,23.71]]
       },
       {
-        id:'grande',name:{it:'Camera Grande',en:'Large Bedroom'},priceSingola:320,priceDoppia:380,sqm:21.0,legendNum:2,availableFrom:'2026-10-01',
+        id:'grande',name:{it:'Camera Grande',en:'Large Bedroom'},priceSingola:320,priceDoppia:380,sqm:21.0,legendNum:2,availableFrom:'2027-04-01',
         features:[{it:'Letto matrimoniale',en:'Double bed'},{it:'Doppia porta-finestra',en:'Double French window'},{it:'Completamente arredata',en:'Fully furnished'},{it:'Bagno dedicato',en:'Dedicated bathroom'}],
         photos:[
           'images/via-garibaldi-188/grande-01.jpg',
@@ -948,7 +948,7 @@ window.APARTMENTS = {
     rooms:[
       {
         id:'camera1',name:{it:'Camera doppia 1',en:'Camera doppia 1'},priceSingola:null,priceDoppia:450,sqm:24,
-        availableFrom:'2026-10-01',
+        availableFrom:'2026-11-01',
         features:[{it:'Due letti singoli',en:'Two single beds'},{it:'Armadio grande',en:'Large wardrobe'},{it:'Scrivanie',en:'Desks'},{it:'Vista sul centro storico',en:'Historic centre view'}],
         photos:[
           'images/via-morroni-20/foto-05.jpg',
@@ -1689,7 +1689,7 @@ window.APARTMENTS = {
 };
 
 window.SOLUZIONI_LIST = [
-  {id:1,name:"Soluzione Via Garibaldi",    zone:"Centro Storico",  price:300,rooms:2,sqm:117,roomDates:["2026-10-01","2026-10-01"], lat:42.4034304,lng:12.8652728,img:"images/via-garibaldi-188/terrazza-03.jpg"},
+  {id:1,name:"Soluzione Via Garibaldi",    zone:"Centro Storico",  price:300,rooms:2,sqm:117,roomDates:["2027-10-01","2027-04-01"], lat:42.4034304,lng:12.8652728,img:"images/via-garibaldi-188/terrazza-03.jpg"},
   {id:2,name:"Via San Leopardo",zone:"Centro Storico",price:300,rooms:4,sqm:200,roomDates:['2027-09-01','2027-09-01','2027-03-01','2027-08-01'], lat:42.403857,lng:12.8652,img:"images/via-san-leopardo-1/foto-36.jpg"},
   {id:3,name:"Via G. Garibaldi n.33",zone:"Centro Storico",price:650,rooms:1,sqm:80,available:false, lat:42.404762,lng:12.870206,img:"images/via-garibaldi-33/foto-15.jpg"},
   {id:4,name:"Via delle Ortensie n.8",zone:"Città Giardino",price:280,rooms:2,sqm:110,roomDates:['2026-12-01','2027-07-01'], lat:42.399983,lng:12.856886,img:"images/via-delle-ortensie-8/foto-01.jpg"},
@@ -1700,7 +1700,7 @@ window.SOLUZIONI_LIST = [
   {id:9,name:"Via Porta Romana n.22",zone:"Porta Romana",price:600,rooms:1,sqm:50,available:false, lat:42.398305,lng:12.860369,img:"images/via-porta-romana-22/foto-01.jpg"},
   {id:10,name:"Via P. Boschi n.29",zone:"Regina Pacis",price:280,rooms:4,sqm:130,roomDates:['2027-09-01','2027-09-01','2027-09-01','2027-01-01'], lat:42.407603,lng:12.853169,img:"images/via-boschi-29/foto-20.jpg"},
   {id:11,name:"Largo S. D\'Acquisto n.14",zone:"Micioccoli",price:260,rooms:3,sqm:90,roomDates:['2027-03-01','2027-08-01','2027-01-01'], lat:42.41629,lng:12.859835,img:"images/largo-dacquisto-14/foto-07.jpg"},
-  {id:12,name:"Viale T. Morroni n.20",zone:"Viale Morroni",price:450,rooms:2,sqm:85,roomDates:['2026-10-01','2027-09-01'], lat:42.405201,lng:12.8646,img:"images/via-morroni-20/foto-11.jpg"},
+  {id:12,name:"Viale T. Morroni n.20",zone:"Viale Morroni",price:450,rooms:2,sqm:85,roomDates:['2026-11-01','2027-09-01'], lat:42.405201,lng:12.8646,img:"images/via-morroni-20/foto-11.jpg"},
   {id:13,name:"Via della Ripresa n.73",zone:"Centro Storico",price:250,rooms:4,sqm:90,roomDates:['2027-09-01','2027-06-01','2027-01-01','2027-09-01'], lat:42.404539,lng:12.865605,img:"images/via-ripresa-73/foto-03.jpg"},
   {id:14,name:"Via dei Tigli n.14",zone:"Viale Matteucci",price:300,rooms:3,sqm:110,roomDates:['2027-09-01','2027-09-01','2027-09-01'], lat:42.402504,lng:12.854594,img:"images/via-tigli-14/foto-14.jpg"},
   {id:15,name:"Via fratelli Cervi n.2",zone:"Molino della Salce",price:280,rooms:3,sqm:300,roomDates:['2027-08-01','2027-03-01','2026-11-01'], lat:42.404743,lng:12.848819,img:"images/via-fratelli-cervi-2/foto-08.jpg"},
