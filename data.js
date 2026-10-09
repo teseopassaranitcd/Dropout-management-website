@@ -1685,6 +1685,53 @@ window.APARTMENTS = {
         overlayPoly:[[61.93,24.92],[75.55,24.92],[75.55,54.11],[61.93,54.11]]
       }
     ]
+  },
+  21:{
+    id:21,
+    slug:'via-garibaldi-112',
+    name:{it:'Via Garibaldi n.112',en:'Via Garibaldi n.112'},
+    zone:{it:'Centro Storico',en:'Historic Centre'},
+    availableFrom:'2027-10-01',
+    lat:42.404250,lng:12.867830,
+    price:350,
+    cover:'images/via-garibaldi-112/foto-01.jpg',
+    sideImg:'images/via-garibaldi-112/foto-01.jpg',
+    gallery:[
+      'images/via-garibaldi-112/foto-10.png',
+      'images/via-garibaldi-112/foto-02.jpg',
+      'images/via-garibaldi-112/foto-03.jpg',
+      'images/via-garibaldi-112/foto-04.jpg',
+      'images/via-garibaldi-112/foto-05.jpg',
+      'images/via-garibaldi-112/foto-06.jpg',
+      'images/via-garibaldi-112/foto-07.jpg',
+      'images/via-garibaldi-112/foto-08.jpg',
+      'images/via-garibaldi-112/foto-09.jpg',
+    ],
+    descrizione:{it:"Monolocale indipendente nel cuore del centro storico di Rieti, a pochi passi dalle sedi dell'Università La Sapienza e dell'Università della Tuscia, oltre che da negozi, bar e supermercati. Il soffitto a volta e la grande finestra con apertura elettronica rendono l'ambiente luminoso e accogliente: zona notte, angolo studio e cucina attrezzata (piano cottura, forno, frigorifero, lavatrice) convivono nei circa 30 m² dello spazio unico, con bagno finestrato dotato di doccia. Una soluzione pensata per chi cerca la piena indipendenza di vivere da solo, a un canone quasi equivalente a quello di una singola in appartamento condiviso.",en:"Independent studio flat in the heart of Rieti's historic centre, just steps from both the La Sapienza and Tuscia University campuses, as well as shops, cafés and supermarkets. The vaulted ceiling and the large window with electric opening make the room bright and inviting: a sleeping area, study corner and fitted kitchen (hob, oven, fridge, washing machine) share the roughly 30 sqm single-room space, with a windowed bathroom and shower. A solution built for anyone who wants the full independence of living alone, at a rent that's nearly the same as a single room in a shared flat."},
+    caratteristiche:[
+      {label:{it:'Superficie',en:'Size'},value:{it:'30 m²',en:'30 m²'}},
+      {label:{it:'Piano',en:'Floor'},value:{it:'Terra',en:'Ground floor'}},
+      {label:{it:'Ascensore',en:'Lift'},value:{it:'No',en:'No'}},
+      {label:{it:'Bagni',en:'Bathrooms'},value:{it:'1',en:'1'}},
+      {label:{it:'Riscaldamento',en:'Heating'},value:{it:'Autonomo (gas)',en:'Independent (gas)'}},
+      {label:{it:'Arredato',en:'Furnished'},value:{it:'Sì',en:'Yes'}},
+      {label:{it:'Finestra',en:'Window'},value:{it:'Apertura elettronica',en:'Electric opening'}},
+    ],
+    servizi:[
+      {name:{it:'Stazione ferroviaria/bus',en:'Train/bus station'},dist:{it:'nelle vicinanze',en:'nearby'}},
+      {name:{it:'Supermercato',en:'Supermarket'},dist:{it:'nelle vicinanze',en:'nearby'}},
+      {name:{it:'Centro storico',en:'Historic centre'},dist:{it:'nelle vicinanze',en:'nearby'}},
+      {name:{it:'Locali per mangiare e bere',en:'Food and drinks'},dist:{it:'nelle vicinanze',en:'nearby'}},
+      {name:{it:'Sede Università La Sapienza',en:'La Sapienza University campus'},dist:{it:'nelle vicinanze',en:'nearby'}},
+      {name:{it:'Sede Università della Tuscia',en:'Tuscia University campus'},dist:{it:'nelle vicinanze',en:'nearby'}},
+    ],
+    rentalMode:'intero',
+    interoPricing:[{persone:1,prezzo:350}],
+    deposito:1,
+    floorplan:'images/via-garibaldi-112/planimetria.jpg',
+    rooms:[
+
+    ]
   }
 };
 
@@ -1708,5 +1755,6 @@ window.SOLUZIONI_LIST = [
   {id:17,name:"Via G. Garibaldi n.89 - Secondo",zone:"Centro Storico",price:275,rooms:3,sqm:300,roomDates:['2026-11-01','2027-10-01','2026-10-01'], lat:42.404495,lng:12.868609,img:"images/via-garibaldi-89-secondo/foto-06.jpg"},
   {id:18,name:"Via G. Garibaldi n.89 - Secondo rialzato",zone:"Centro Storico",price:475,rooms:1,sqm:45,available:false, lat:42.404495,lng:12.868609,img:"images/via-garibaldi-89-secondo-rialzato/foto-07.jpg"},
   {id:19,name:"Via Contigliano n.12",zone:"Viale Maraini",price:300,rooms:3,sqm:120,roomDates:['2027-03-01','2027-03-01','2027-03-01'], lat:42.406339,lng:12.858418,img:"images/via-contigliano-12/foto-18.jpg"},
-  {id:20,name:"Via A. Tancredi n.22",zone:"Centro Città",price:325,rooms:3,sqm:110,available:true, lat:42.404148,lng:12.8651,img:"images/via-tancredi-22/foto-02.jpg"}
+  {id:20,name:"Via A. Tancredi n.22",zone:"Centro Città",price:325,rooms:3,sqm:110,available:true, lat:42.404148,lng:12.8651,img:"images/via-tancredi-22/foto-02.jpg"},
+  {id:21,name:"Via Garibaldi n.112",zone:"Centro Storico",price:350,rooms:1,sqm:30,available:false, lat:42.404250,lng:12.867830,img:"images/via-garibaldi-112/foto-01.jpg"}
 ];
