@@ -423,7 +423,7 @@ window.APARTMENTS = {
     rooms:[
       {
         id:'camera1',name:{it:'Camera singola con bagno privato',en:'Camera singola con bagno privato'},priceSingola:300,priceDoppia:null,sqm:22,
-        availableFrom:'2027-04-01',
+        availableFrom:'2026-10-01',
         features:[{it:'Letto singolo con cassettone apribile con secondo letto singolo in caso di ospiti',en:'Single bed with pull-out guest bed'},{it:'Balcone privato',en:'Private balcony'},{it:'Bagno privato',en:'Private bathroom'},{it:'Armadio grande',en:'Large wardrobe'},{it:'Scrivania',en:'Desk'}],
         photos:[
           'images/via-maderno-10/foto-04.jpg',
@@ -1739,7 +1739,7 @@ window.SOLUZIONI_LIST = [
   {id:2,name:"Via San Leopardo",zone:"Centro Storico",price:300,rooms:4,sqm:200,roomDates:['2027-09-01','2027-09-01','2027-03-01','2027-08-01'], lat:42.403857,lng:12.8652,img:"images/via-san-leopardo-1/foto-36.jpg"},
   {id:3,name:"Via G. Garibaldi n.33",zone:"Centro Storico",price:650,rooms:1,sqm:80,available:false, lat:42.404762,lng:12.870206,img:"images/via-garibaldi-33/foto-15.jpg"},
   {id:4,name:"Via delle Ortensie n.8",zone:"Città Giardino",price:280,rooms:2,sqm:110,roomDates:['2026-12-01','2027-07-01'], lat:42.399983,lng:12.856886,img:"images/via-delle-ortensie-8/foto-01.jpg"},
-  {id:5,name:"Via C. Maderno n.10",zone:"Micioccoli",price:300,rooms:2,sqm:80,roomDates:['2027-04-01','2027-05-01'], lat:42.41854,lng:12.855783,img:"images/via-maderno-10/foto-09.jpg"},
+  {id:5,name:"Via C. Maderno n.10",zone:"Micioccoli",price:300,rooms:2,sqm:80,roomDates:['2026-10-01','2027-05-01'], lat:42.41854,lng:12.855783,img:"images/via-maderno-10/foto-09.jpg"},
   {id:6,name:"Via Nuova n.115 - Piano I",zone:"Centro Storico",price:520,rooms:1,sqm:55,available:false, lat:42.404778,lng:12.865834,img:"images/via-nuova-115-piano-1/foto-10.jpg"},
   {id:7,name:"Via Nuova n.155 - Piano II",zone:"Centro Storico",price:750,rooms:3,sqm:70,roomDates:['2027-03-01','2027-08-01','2027-08-01'], lat:42.404778,lng:12.865834,img:"images/via-nuova-115-piano-2/foto-11.jpg"},
   {id:8,name:"Via Nuova n.115 - Piano III",zone:"Centro Storico",price:780,rooms:3,sqm:78,roomDates:['2027-10-01','2027-09-01','2027-09-01'], lat:42.404778,lng:12.865834,img:"images/via-nuova-115-piano-3/foto-06.jpg"},
