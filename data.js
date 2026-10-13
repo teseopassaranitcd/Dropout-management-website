@@ -1404,10 +1404,9 @@ window.APARTMENTS = {
         availableFrom:'2026-11-01',
         features:[{it:'Letto singolo',en:'Single bed'},{it:'Scrivania',en:'Desk'},{it:'Lucernaio',en:'Skylight'},{it:'Armadio grande',en:'Large wardrobe'}],
         photos:[
-          'images/via-garibaldi-89-secondo/foto-01.jpg',
-          'images/via-garibaldi-89-secondo/foto-03.jpg',
-          'images/via-garibaldi-89-secondo/foto-10.jpg',
-          'images/via-garibaldi-89-secondo/foto-14.jpg'
+          'images/via-garibaldi-89-secondo/foto-02.jpg',
+          'images/via-garibaldi-89-secondo/foto-05.jpg',
+          'images/via-garibaldi-89-secondo/foto-13.jpg'
         ],
         hotspot:{x:62.87,y:36.84},
         overlayPoly:[[56.53,32.53],[70.01,32.63],[68.32,41.1],[56.6,41.1]]
@@ -1417,9 +1416,10 @@ window.APARTMENTS = {
         availableFrom:'2027-10-01',
         features:[{it:'Letto matrimoniale',en:'Double bed'},{it:'Affaccio panoramico',en:'Panoramic view'},{it:'Scrivania',en:'Desk'},{it:'Armadio a muro',en:'Built-in wardrobe'},{it:'Bagno in camera',en:'En-suite bathroom'}],
         photos:[
-          'images/via-garibaldi-89-secondo/foto-02.jpg',
-          'images/via-garibaldi-89-secondo/foto-05.jpg',
-          'images/via-garibaldi-89-secondo/foto-13.jpg'
+          'images/via-garibaldi-89-secondo/foto-01.jpg',
+          'images/via-garibaldi-89-secondo/foto-03.jpg',
+          'images/via-garibaldi-89-secondo/foto-10.jpg',
+          'images/via-garibaldi-89-secondo/foto-14.jpg'
         ],
         hotspot:{x:63.31,y:26.28},
         overlayPoly:[[55.38,22.48],[69.81,21.42],[70.76,30.76],[57.28,30.47]]
